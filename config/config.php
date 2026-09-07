@@ -1,26 +1,30 @@
 ﻿<?php
 /**
- * Denvonbay - Application Configuration
- * Automatically detects the base URL for correct asset path resolution
+ * Denvonbay - Database Configuration
+ * ------------------------------------
+ * This file handles the database connection only.
+ *
+ * HOW TO USE:
+ *   require_once __DIR__ . '/../config/config.php';
+ *
+ * SECURITY:
+ *   Add this file to .gitignore before pushing to GitHub.
+ *   Never commit real passwords to version control.
+ * ------------------------------------
  */
 
-// Detect base URL dynamically so the site works on localhost/Denvonbay/ AND on a live domain
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
-$script   = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+$dbHost     = "localhost";
+$dbUser     = "root";
+$dbPassword = "";
+$dbName     = "denvonbay";
 
-// Get the directory the script lives in (e.g. /Denvonbay)
-$base_dir = rtrim(dirname($script), '/\\');
+$conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
-// BASE_URL: everything before the first PHP file path segment
-// e.g. http://localhost/Denvonbay
-define('BASE_URL', $protocol . '://' . $host . $base_dir);
+if ($conn->connect_error) {
+    // Do NOT show the real error to users in production.
+    // Log it instead: error_log($conn->connect_error);
+    die("Something went wrong. Please try again later.");
+}
 
-// ASSETS_URL: shortcut for asset paths
-define('ASSETS_URL', BASE_URL . '/assets');
-
-// APP_NAME
-define('APP_NAME', 'Denvonbay');
-
-// APP_ROOT: absolute filesystem path to project root
-define('APP_ROOT', dirname(__DIR__));
+// Use UTF-8 for all database communication
+$conn->set_charset("utf8mb4");

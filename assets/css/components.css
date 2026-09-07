@@ -1,0 +1,290 @@
+﻿/**
+ * Denvonbay - Reusable Component Styles
+ * --------------------------------------------------
+ * Included on every page.
+ * Contains styles for persistent UI components:
+ *   - Navbar / Header
+ *   - Footer
+ * --------------------------------------------------
+ */
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--white);
+  transition: box-shadow var(--transition-base);
+}
+
+.site-header.scrolled {
+  box-shadow: 0 2px 20px rgba(11, 42, 91, 0.1);
+}
+
+#mainNavbar {
+  background: var(--white);
+  padding: 0;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--primary-blue);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  font-size: 1.375rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--navy);
+  letter-spacing: -0.03em;
+}
+
+.brand-accent {
+  color: var(--primary-blue);
+}
+
+.navbar-nav .nav-link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--navy);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-blue);
+  background: rgba(18, 102, 241, 0.06);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--primary-blue);
+  font-weight: var(--fw-semibold);
+}
+
+.navbar-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--primary-blue);
+  border-radius: 2px;
+}
+
+.navbar-cta {
+  flex-shrink: 0;
+}
+
+.navbar-toggler {
+  border: none;
+  background: none;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.toggler-icon {
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.footer-main {
+  padding: 80px 0 56px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.footer-brand-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--aqua);
+  flex-shrink: 0;
+}
+
+.footer-brand-text {
+  font-size: 1.375rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--white);
+  letter-spacing: -0.03em;
+}
+
+.footer-brand-accent {
+  color: var(--aqua);
+}
+
+.footer-tagline {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social-link {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.footer-social-link:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.footer-heading {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--white);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav-link {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color var(--transition-base), padding-left var(--transition-base);
+  display: inline-block;
+}
+
+.footer-nav-link:hover {
+  color: var(--white);
+  padding-left: 6px;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-contact-icon {
+  color: var(--aqua);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer-contact-link {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.footer-contact-link:hover {
+  color: var(--aqua);
+}
+
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 20px 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copyright {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+.footer-copyright strong {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-sub-text {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0;
+  font-style: italic;
+}
+

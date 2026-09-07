@@ -4,13 +4,11 @@
  * Premium coastal accommodation website - Hiriketiya, Sri Lanka
  */
 
-require_once 'config/config.php';
-
-$page_title = 'Denvonbay | Your Relaxed Stay in Hiriketiya, Sri Lanka';
-$page_description = "Stay at Denvonbay, Hiriketiya's most relaxed coastal retreat. Affordable rooms, flexible packages, beach access and tropical mornings on Sri Lanka's south coast.";
-$page_keywords = 'Denvonbay, Hiriketiya accommodation, Sri Lanka beach stay, surf retreat, coastal guesthouse, Dickwella, south coast Sri Lanka';
+$pageTitle = 'Denvonbay | Your Relaxed Stay in Hiriketiya, Sri Lanka';
+$pageDescription = "Stay at Denvonbay, Hiriketiya's most relaxed coastal retreat. Affordable rooms, flexible packages, beach access and tropical mornings on Sri Lanka's south coast.";
+$pageKeywords = 'Denvonbay, Hiriketiya accommodation, Sri Lanka beach stay, surf retreat, coastal guesthouse, Dickwella, south coast Sri Lanka';
 $canonical_url = 'https://denvonbay.com';
-$body_class = 'page-home';
+$bodyClass = 'page-home';
 
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
@@ -27,8 +25,8 @@ require_once 'includes/navbar.php';
         <h1 class="hero-heading">Your Relaxed Stay in <span class="hero-heading-accent">Hiriketiya.</span></h1>
         <p class="hero-subtext">Affordable, comfortable stays near the beach for couples, solo travelers, friends and families exploring Sri Lanka's south coast.</p>
         <div class="hero-buttons">
-          <a href="<?php echo BASE_URL; ?>/rooms.php" class="btn btn-hero-primary" id="heroExploreRoomsBtn">Explore Our Rooms <i class="bi bi-arrow-right ms-2"></i></a>
-          <a href="<?php echo BASE_URL; ?>/booking.php" class="btn btn-hero-secondary" id="heroBookBtn">Book Your Stay</a>
+          <a href="<?= $base ?>/rooms.php" class="btn btn-hero-primary" id="heroExploreRoomsBtn">Explore Our Rooms <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="<?= $base ?>/booking.php" class="btn btn-hero-secondary" id="heroBookBtn">Book Your Stay</a>
         </div>
         <div class="hero-pills">
           <span class="hero-pill"><i class="bi bi-house-door me-1"></i>Only 5 unique rooms</span>
@@ -38,7 +36,7 @@ require_once 'includes/navbar.php';
       </div>
       <div class="col-lg-6 hero-visual" data-reveal="right">
         <div class="hero-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/Female_surfer_walking_tropical_b…_202607210158.jpg"
+          <img src="<?= $base ?>/assets/images/explore/Female_surfer_walking_tropical_b…_202607210158.jpg"
                alt="Female surfer walking on a tropical beach near Hiriketiya, Sri Lanka"
                class="hero-main-img" loading="eager" fetchpriority="high">
           <div class="hero-float-badge"><i class="bi bi-star-fill text-warning me-1"></i><span>Hiriketiya's Favourite Stay</span></div>
@@ -90,7 +88,7 @@ require_once 'includes/navbar.php';
 <section class="featured-image-section" id="featured-lifestyle">
   <div class="container">
     <div class="featured-image-wrap" data-reveal="up">
-      <img src="<?php echo ASSETS_URL; ?>/images/explore/Lady_surfing_on_beach_2K_202607061446.jpg"
+      <img src="<?= $base ?>/assets/images/explore/Lady_surfing_on_beach_2K_202607061446.jpg"
            alt="Lady surfing a wave at Hiriketiya beach, Sri Lanka"
            class="featured-lifestyle-img" loading="lazy">
       <div class="featured-image-overlay">
@@ -116,7 +114,7 @@ require_once 'includes/navbar.php';
 
       <article class="exp-card" data-reveal="up" data-reveal-delay="0">
         <div class="exp-card-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/Lady_surfing_on_Sri_Lankan_202607061450.jpg"
+          <img src="<?= $base ?>/assets/images/explore/Lady_surfing_on_Sri_Lankan_202607061450.jpg"
                alt="Lady surfing at a Sri Lankan beach near Hiriketiya" class="exp-card-img" loading="lazy">
         </div>
         <div class="exp-card-label">
@@ -131,7 +129,7 @@ require_once 'includes/navbar.php';
 
       <article class="exp-card" data-reveal="up" data-reveal-delay="100">
         <div class="exp-card-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/Woman_lying_on_beach_towel_202607210218.jpg"
+          <img src="<?= $base ?>/assets/images/explore/Woman_lying_on_beach_towel_202607210218.jpg"
                alt="Relaxed coastal lifestyle near Hiriketiya beach" class="exp-card-img" loading="lazy">
         </div>
         <div class="exp-card-label">
@@ -146,7 +144,7 @@ require_once 'includes/navbar.php';
 
       <article class="exp-card" data-reveal="up" data-reveal-delay="200">
         <div class="exp-card-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/Woman_practicing_yoga_on_rooftop_202607210327.jpg"
+          <img src="<?= $base ?>/assets/images/explore/Woman_practicing_yoga_on_rooftop_202607210327.jpg"
                alt="Woman practicing yoga on a rooftop with ocean views" class="exp-card-img" loading="lazy">
         </div>
         <div class="exp-card-label">
@@ -161,7 +159,7 @@ require_once 'includes/navbar.php';
 
       <article class="exp-card" data-reveal="up" data-reveal-delay="300">
         <div class="exp-card-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/White_spa_slippers_on_beach_202607210209.jpg"
+          <img src="<?= $base ?>/assets/images/explore/White_spa_slippers_on_beach_202607210209.jpg"
                alt="Comfortable coastal accommodation - spa slippers on beach" class="exp-card-img" loading="lazy">
         </div>
         <div class="exp-card-label">
@@ -238,7 +236,7 @@ require_once 'includes/navbar.php';
       <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
         <article class="room-card" id="room-cozy">
           <div class="room-card-image-wrap">
-            <img src="<?php echo ASSETS_URL; ?>/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg"
+            <img src="<?= $base ?>/assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg"
                  alt="The Cozy Room - comfortable single room at Denvonbay" class="room-card-img" loading="lazy">
             <div class="room-card-badge">Perfect for Solo</div>
           </div>
@@ -250,7 +248,7 @@ require_once 'includes/navbar.php';
               <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
               <span class="room-meta-item"><i class="bi bi-moon-stars me-1"></i>Peaceful</span>
             </div>
-            <a href="<?php echo BASE_URL; ?>/rooms.php#cozy" class="btn btn-room-view" id="viewCozyRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="<?= $base ?>/rooms.php#cozy" class="btn btn-room-view" id="viewCozyRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
           </div>
         </article>
       </div>
@@ -258,7 +256,7 @@ require_once 'includes/navbar.php';
       <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
         <article class="room-card room-card--featured" id="room-couples">
           <div class="room-card-image-wrap">
-            <img src="<?php echo ASSETS_URL; ?>/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg"
+            <img src="<?= $base ?>/assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg"
                  alt="The Couple's Retreat room at Denvonbay" class="room-card-img" loading="lazy">
             <div class="room-card-badge room-card-badge--blue">Most Popular</div>
           </div>
@@ -270,7 +268,7 @@ require_once 'includes/navbar.php';
               <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
               <span class="room-meta-item"><i class="bi bi-heart me-1"></i>Romantic</span>
             </div>
-            <a href="<?php echo BASE_URL; ?>/rooms.php#couples" class="btn btn-room-view btn-room-view--primary" id="viewCouplesRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="<?= $base ?>/rooms.php#couples" class="btn btn-room-view btn-room-view--primary" id="viewCouplesRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
           </div>
         </article>
       </div>
@@ -278,7 +276,7 @@ require_once 'includes/navbar.php';
       <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
         <article class="room-card" id="room-friends">
           <div class="room-card-image-wrap">
-            <img src="<?php echo ASSETS_URL; ?>/images/explore/Friends_walking_on_beach_202607210209.jpg"
+            <img src="<?= $base ?>/assets/images/explore/Friends_walking_on_beach_202607210209.jpg"
                  alt="The Friends' Stay room at Denvonbay" class="room-card-img" loading="lazy">
             <div class="room-card-badge">Great for Groups</div>
           </div>
@@ -290,14 +288,14 @@ require_once 'includes/navbar.php';
               <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
               <span class="room-meta-item"><i class="bi bi-sun me-1"></i>Lively</span>
             </div>
-            <a href="<?php echo BASE_URL; ?>/rooms.php#friends" class="btn btn-room-view" id="viewFriendsRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="<?= $base ?>/rooms.php#friends" class="btn btn-room-view" id="viewFriendsRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
           </div>
         </article>
       </div>
 
     </div>
     <div class="text-center mt-5" data-reveal="up">
-      <a href="<?php echo BASE_URL; ?>/rooms.php" class="btn btn-view-all" id="viewAllRoomsBtn">View All Rooms <i class="bi bi-arrow-right ms-2"></i></a>
+      <a href="<?= $base ?>/rooms.php" class="btn btn-view-all" id="viewAllRoomsBtn">View All Rooms <i class="bi bi-arrow-right ms-2"></i></a>
     </div>
   </div>
 </section>
@@ -319,7 +317,7 @@ require_once 'includes/navbar.php';
           <h3 class="pkg-card-title">Day Escape</h3>
           <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>Daytime stay</p>
           <p class="pkg-card-desc">Enjoy the Denvonbay experience without an overnight stay. Perfect for beach day explorers.</p>
-          <a href="<?php echo BASE_URL; ?>/packages.php#day-escape" class="btn btn-pkg" id="pkgDayBtn">Explore Package</a>
+          <a href="<?= $base ?>/packages.php#day-escape" class="btn btn-pkg" id="pkgDayBtn">Explore Package</a>
         </article>
 
         <article class="pkg-card pkg-card--highlight" data-reveal="up" data-reveal-delay="100">
@@ -328,7 +326,7 @@ require_once 'includes/navbar.php';
           <h3 class="pkg-card-title">One Night Getaway</h3>
           <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>1 Night</p>
           <p class="pkg-card-desc">Arrive, unwind, wake up to the coast. The ideal short escape from everyday life.</p>
-          <a href="<?php echo BASE_URL; ?>/packages.php#one-night" class="btn btn-pkg-primary" id="pkgOneNightBtn">Explore Package</a>
+          <a href="<?= $base ?>/packages.php#one-night" class="btn btn-pkg-primary" id="pkgOneNightBtn">Explore Package</a>
         </article>
 
         <article class="pkg-card" data-reveal="up" data-reveal-delay="200">
@@ -336,7 +334,7 @@ require_once 'includes/navbar.php';
           <h3 class="pkg-card-title">Weekend Escape</h3>
           <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>2 Nights</p>
           <p class="pkg-card-desc">Two full days of beaches, surf and tropical living. The perfect long weekend.</p>
-          <a href="<?php echo BASE_URL; ?>/packages.php#weekend" class="btn btn-pkg" id="pkgWeekendBtn">Explore Package</a>
+          <a href="<?= $base ?>/packages.php#weekend" class="btn btn-pkg" id="pkgWeekendBtn">Explore Package</a>
         </article>
 
         <article class="pkg-card" data-reveal="up" data-reveal-delay="300">
@@ -344,7 +342,7 @@ require_once 'includes/navbar.php';
           <h3 class="pkg-card-title">Slow Island Stay</h3>
           <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>3+ Nights</p>
           <p class="pkg-card-desc">Linger longer. Explore deeper. The full south coast slow-travel experience.</p>
-          <a href="<?php echo BASE_URL; ?>/packages.php#slow-stay" class="btn btn-pkg" id="pkgSlowBtn">Explore Package</a>
+          <a href="<?= $base ?>/packages.php#slow-stay" class="btn btn-pkg" id="pkgSlowBtn">Explore Package</a>
         </article>
 
       </div>
@@ -364,7 +362,7 @@ require_once 'includes/navbar.php';
     <div class="row align-items-center gy-5">
       <div class="col-lg-6" data-reveal="left">
         <div class="explore-image-wrap">
-          <img src="<?php echo ASSETS_URL; ?>/images/explore/Surfer_carving_ocean_barrel_2K_202607210258.jpg"
+          <img src="<?= $base ?>/assets/images/explore/Surfer_carving_ocean_barrel_2K_202607210258.jpg"
                alt="Surfer carving through an ocean barrel wave at Hiriketiya"
                class="explore-img" loading="lazy">
           <div class="explore-img-badge"><i class="bi bi-geo-alt-fill me-1"></i>Hiriketiya, Sri Lanka</div>
@@ -381,7 +379,7 @@ require_once 'includes/navbar.php';
             <span class="explore-chip" role="listitem"><i class="bi bi-water me-1"></i>Blue Beach Island</span>
             <span class="explore-chip" role="listitem"><i class="bi bi-cup-hot me-1"></i>Local Cafes</span>
           </div>
-          <a href="<?php echo BASE_URL; ?>/explore.php" class="btn btn-explore-cta" id="exploreNearbyBtn">Explore Nearby <i class="bi bi-arrow-right ms-2"></i></a>
+          <a href="<?= $base ?>/explore.php" class="btn btn-explore-cta" id="exploreNearbyBtn">Explore Nearby <i class="bi bi-arrow-right ms-2"></i></a>
         </div>
       </div>
     </div>
@@ -487,7 +485,7 @@ require_once 'includes/navbar.php';
       <h2 class="final-cta-heading">Your Hiriketiya Stay<br><span class="final-cta-accent">Starts Here.</span></h2>
       <p class="final-cta-text">Choose your room, find the package that suits your trip, and make Denvonbay part of your Sri Lankan adventure.</p>
       <div class="final-cta-buttons">
-        <a href="<?php echo BASE_URL; ?>/booking.php" class="btn btn-cta-primary" id="finalCtaCheckBtn"><i class="bi bi-calendar2-check me-2"></i>Check Availability</a>
+        <a href="<?= $base ?>/booking.php" class="btn btn-cta-primary" id="finalCtaCheckBtn"><i class="bi bi-calendar2-check me-2"></i>Check Availability</a>
         <a href="https://wa.me/94xxxxxxxxxx" class="btn btn-cta-whatsapp" id="finalCtaWhatsappBtn" aria-label="Book via WhatsApp"><i class="bi bi-whatsapp me-2"></i>Book via WhatsApp</a>
       </div>
     </div>

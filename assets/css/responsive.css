@@ -1,0 +1,149 @@
+﻿/**
+ * Denvonbay - Responsive & Media Queries
+ * --------------------------------------------------
+ * Included on every page after all other stylesheets.
+ * Contains:
+ *   - Breakpoints: Desktop (1440px+), Tablet (991px), Mobile (767px), Small Mobile (480px)
+ *   - Global overflow prevention
+ * --------------------------------------------------
+ */
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* --- Large Desktop (1440px+) --- */
+@media (min-width: 1440px) {
+  .hero-main-img { height: 680px; }
+  .packages-grid { gap: 24px; }
+}
+
+/* --- Tablet/Medium (< 992px) --- */
+@media (max-width: 991.98px) {
+
+  :root {
+    --section-py: 72px;
+  }
+
+  .hero-section { min-height: auto; padding-top: 48px; }
+  .hero-row { min-height: auto; padding-bottom: 60px; }
+  .hero-content { padding-right: 0; margin-bottom: 48px; }
+  .hero-heading { font-size: 2.5rem; }
+  .hero-main-img { height: 460px; }
+  .hero-float-badge { left: -8px; }
+  .hero-float-pill { right: -4px; }
+
+  .brand-marquee-item { font-size: 2.5rem; }
+
+  .featured-lifestyle-img { height: 380px; }
+
+  .experiences-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .why-item { grid-template-columns: 120px 1fr; gap: 20px; padding: 28px 0; }
+  .why-number { font-size: 2.25rem; }
+
+  .packages-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+  .explore-content { padding-left: 0; }
+  .explore-img { height: 400px; }
+
+  .amenity-item { padding: 0 24px; }
+
+  .navbar-collapse {
+    background: var(--white);
+    border-top: 1px solid var(--border-grey);
+    padding: 16px 0;
+    margin-top: 8px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .navbar-cta {
+    padding: 12px 16px 4px;
+  }
+
+  .navbar-cta .btn-book {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Mobile (< 768px) --- */
+@media (max-width: 767.98px) {
+
+  :root {
+    --section-py: 56px;
+  }
+
+  .hero-section { padding-top: 32px; }
+  .hero-heading { font-size: 2.125rem; }
+  .hero-float-badge { display: none; }
+  .hero-float-pill { display: none; }
+  .hero-main-img { height: 320px; border-radius: var(--radius-lg); }
+  .hero-image-wrap { border-radius: var(--radius-lg); }
+
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
+
+  .brand-marquee-item { font-size: 1.75rem; }
+
+  .featured-lifestyle-img { height: 260px; }
+  .featured-image-overlay { padding: 24px; }
+  .featured-label-heading { font-size: 1.5rem; }
+
+  .experiences-grid { grid-template-columns: 1fr; gap: 16px; }
+  .exp-card-image-wrap { height: 220px; }
+
+  .why-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .why-number { font-size: 2rem; }
+
+  .packages-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .amenities-strip-inner { flex-direction: column; gap: 24px; }
+  .amenity-divider { width: 48px; height: 1px; }
+  .amenity-item { flex-direction: row; padding: 0; gap: 16px; width: 100%; justify-content: center; max-width: 220px; }
+
+  .explore-img { height: 280px; }
+  .explore-chips { gap: 8px; }
+  .explore-chip { font-size: var(--fs-xs); padding: 6px 14px; }
+
+  .room-card-image-wrap { height: 200px; }
+
+  .testi-card { padding: 24px 20px; }
+
+  .final-cta-heading { font-size: 2rem; }
+  .final-cta-buttons { flex-direction: column; align-items: center; }
+  .final-cta-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
+
+  .footer-main { padding: 56px 0 40px; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  .section-header { margin-bottom: 40px; }
+}
+
+/* --- Small Mobile (< 480px) --- */
+@media (max-width: 479.98px) {
+  .hero-heading { font-size: 1.875rem; }
+  .brand-marquee-item { font-size: 1.5rem; }
+  .hero-pills { flex-direction: column; }
+  .hero-pill { font-size: 0.7rem; }
+  .room-card-meta { gap: 6px; }
+}
+
+/* ============================================================
+   PREVENT HORIZONTAL OVERFLOW GLOBALLY
+   ============================================================ */
+body, .site-header, main, footer,
+section, .container, .row {
+  max-width: 100%;
+}
+
+.brand-wave-section,
+.experiences-section,
+.packages-section,
+.final-cta-section {
+  overflow-x: hidden;
+}

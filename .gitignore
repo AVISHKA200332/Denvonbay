@@ -1,0 +1,28 @@
+# ============================================================
+# Denvonbay - Git Ignore Rules
+# ============================================================
+
+# Database credentials and environment settings
+/config/config.php
+
+# Runtime logs
+/logs/*.log
+*.log
+
+# User uploads (keep directory structure with .gitkeep)
+/uploads/gallery/*
+!/uploads/gallery/.gitkeep
+/uploads/reviews/*
+!/uploads/reviews/.gitkeep
+/uploads/rooms/*
+!/uploads/rooms/.gitkeep
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
