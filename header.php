@@ -9,8 +9,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
             <!-- Brand / Logo -->
             <a href="index.php" class="navbar-brand brand-logo">
-                <span class="brand-icon"><i class="bi bi-water"></i></span>
-                <span class="brand-text">Denvon<span class="brand-accent">bay</span></span>
+                <img src="assets/images/logo/PrimaryLogo.png" alt="Denvonbay" class="brand-logo-img">
             </a>
 
             <!-- Mobile Hamburger Button -->

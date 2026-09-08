@@ -23,6 +23,10 @@ $flash = get_flash();
     <meta name="description" content="<?= e($pageDescription) ?>">
     <meta name="keywords" content="Denvonbay, Hiriketiya accommodation, Sri Lanka beach stay, surf retreat, coastal guesthouse, Dickwella">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/logo/appicon.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -49,6 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+
     <!-- Admin Stylesheet -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
@@ -56,8 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="admin-login-wrap">
         <div class="text-center mb-4">
+            <img src="../assets/images/logo/appicon.png" alt="Denvonbay Logo" width="64" height="64" class="mb-3" style="border-radius: 16px; box-shadow: var(--shadow-sm);">
             <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--admin-dark);">
-                <i class="bi bi-water text-primary me-1"></i> Denvon<span class="text-primary">bay</span>
+                Denvon<span class="text-primary">bay</span>
             </h1>
             <p class="text-muted" style="font-size: 0.875rem;">Admin Management Portal</p>
         </div>

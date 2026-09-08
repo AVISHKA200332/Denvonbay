@@ -31,6 +31,9 @@ $flash = get_flash();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+
     <!-- Admin Stylesheet -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
@@ -39,7 +42,7 @@ $flash = get_flash();
 <header class="admin-navbar">
     <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
         <a href="dashboard.php" class="admin-brand">
-            <i class="bi bi-water"></i> Denvon<span>bay</span> <small class="text-white-50 ms-1 fw-normal" style="font-size: 0.8rem;">Admin</small>
+            <img src="../assets/images/logo/appicon.png" alt="Denvonbay Logo" width="30" height="30" style="border-radius: 6px;"> Denvon<span>bay</span> <small class="text-white-50 ms-1 fw-normal" style="font-size: 0.8rem;">Admin</small>
         </a>
 
         <nav class="admin-nav-links">

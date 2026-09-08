@@ -6,9 +6,8 @@
 
                 <!-- Brand + Tagline + Social Links -->
                 <div class="col-lg-4 col-md-6">
-                    <a href="index.php" class="footer-brand">
-                        <span class="footer-brand-icon"><i class="bi bi-water"></i></span>
-                        <span class="footer-brand-text">Denvon<span class="footer-brand-accent">bay</span></span>
+                    <a href="index.php" class="footer-brand" aria-label="Denvonbay Home">
+                        <img src="assets/images/logo/horizontal.png" alt="Denvonbay" class="footer-brand-img">
                     </a>
                     <p class="footer-tagline">
                         Affordable stays. Tropical mornings.<br>Hiriketiya at your doorstep.
