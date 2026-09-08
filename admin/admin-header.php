@@ -87,7 +87,7 @@ $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
                     <span>Live Site</span>
                 </a>
 
-                <a href="profile.php" class="admin-user-pill">
+                <a href="profile.php" class="admin-user-pill" title="View Admin Profile">
                     <div class="admin-user-avatar">
                         <?= strtoupper(substr($adminUsername, 0, 1)) ?>
                     </div>
@@ -95,6 +95,11 @@ $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
                         <div class="admin-user-name"><?= e($adminUsername) ?></div>
                         <div class="admin-user-role">Manager</div>
                     </div>
+                </a>
+
+                <a href="logout.php" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-1 ms-1" style="border-radius: 8px; font-weight: 600; padding: 6px 12px;" title="Sign out of Admin Dashboard">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="d-none d-md-inline">Sign Out</span>
                 </a>
             </div>
         </header>

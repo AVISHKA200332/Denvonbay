@@ -9,12 +9,6 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/auth.php';
 
-// Redirect if already logged in
-if (is_admin_logged_in()) {
-    header('Location: dashboard.php');
-    exit;
-}
-
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,6 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </h1>
             <p class="text-muted" style="font-size: 0.875rem;">Admin Management Portal</p>
         </div>
+
+        <?php 
+        $flash = get_flash();
+        if ($flash): 
+            $alertClass = ($flash['type'] === 'success') ? 'alert-success' : 'alert-danger';
+        ?>
+            <div class="alert <?= $alertClass ?> d-flex align-items-center gap-2 mb-3" role="alert" style="font-size: 0.875rem;">
+                <i class="bi <?= ($flash['type'] === 'success') ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill' ?>"></i>
+                <div><?= e($flash['message']) ?></div>
+            </div>
+        <?php endif; ?>
 
         <?php if (!empty($error)): ?>
             <div class="alert alert-danger" role="alert" style="font-size: 0.875rem;">

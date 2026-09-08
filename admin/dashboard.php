@@ -5,6 +5,11 @@
  * Real-time metrics, quick reservations overview, and inquiries.
  */
 
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../includes/auth.php';
+require_admin_login();
+
 $adminTitle = 'Dashboard';
 require_once __DIR__ . '/admin-header.php';
 

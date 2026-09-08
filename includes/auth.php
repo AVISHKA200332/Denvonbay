@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
  * Check if the admin is logged in
  */
 function is_admin_logged_in() {
-    return isset($_SESSION['admin_id']);
+    return !empty($_SESSION['admin_id']);
 }
 
 /**
@@ -21,6 +21,7 @@ function is_admin_logged_in() {
  */
 function require_admin() {
     if (!is_admin_logged_in()) {
+        set_flash('danger', 'Access restricted. Please log in with your admin credentials to access the dashboard.');
         header('Location: login.php');
         exit;
     }
@@ -42,6 +43,9 @@ function login_admin($pdo, $email, $password) {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id(true);
+        }
         $_SESSION['admin_id']       = $user['id'];
         $_SESSION['admin_username'] = $user['username'];
         $_SESSION['admin_email']    = $user['email'];
@@ -52,11 +56,18 @@ function login_admin($pdo, $email, $password) {
 }
 
 /**
- * Log out admin
+ * Log out admin and completely destroy session
  */
 function logout_admin() {
-    unset($_SESSION['admin_id']);
-    unset($_SESSION['admin_username']);
-    unset($_SESSION['admin_email']);
-    session_destroy();
+    $_SESSION = [];
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_destroy();
+    }
 }
