@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function handleNavbarScroll() {
     if (!siteHeader) return;
-    if (window.scrollY > 40) {
+    if (window.scrollY > 20) {
       siteHeader.classList.add('scrolled');
     } else {
       siteHeader.classList.remove('scrolled');
@@ -75,39 +75,94 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
+        closeMobileNav();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // Close mobile navbar if open
-        const navbarCollapse = document.getElementById('navbarMain');
-        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-          if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) bsCollapse.hide();
-          }
-        }
       }
     });
   });
 
   /* ============================================================
-     4. MOBILE NAVBAR: CLOSE ON OUTSIDE CLICK
+     4. MOBILE NAVIGATION DRAWER
      ============================================================ */
-  document.addEventListener('click', function (e) {
-    const navbar = document.getElementById('navbarMain');
-    const toggler = document.querySelector('.navbar-toggler');
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
 
-    if (
-      navbar &&
-      navbar.classList.contains('show') &&
-      !navbar.contains(e.target) &&
-      toggler &&
-      !toggler.contains(e.target)
-    ) {
-      if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbar);
-        if (bsCollapse) bsCollapse.hide();
-      }
+  function openMobileNav() {
+    if (!mobileNav || !menuToggle) return;
+    menuToggle.classList.add('is-active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.classList.add('is-open');
+      mobileNavBackdrop.setAttribute('aria-hidden', 'false');
+    }
+    document.body.classList.add('nav-open');
+  }
+
+  function closeMobileNav() {
+    if (!mobileNav || !menuToggle) return;
+    menuToggle.classList.remove('is-active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.classList.remove('is-open');
+      mobileNavBackdrop.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('nav-open');
+  }
+
+  function toggleMobileNav() {
+    if (!mobileNav) return;
+    const isOpen = mobileNav.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleMobileNav();
+    });
+  }
+
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', function () {
+      closeMobileNav();
+    });
+  }
+
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', function () {
+      closeMobileNav();
+    });
+  }
+
+  // Close when clicking any nav link inside the drawer
+  document.querySelectorAll('.mobile-nav-link, .mobile-book-btn').forEach(function (link) {
+    link.addEventListener('click', function () {
+      closeMobileNav();
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('is-open')) {
+      closeMobileNav();
     }
   });
+
+  // Auto-close on resize to desktop viewport
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 992 && mobileNav && mobileNav.classList.contains('is-open')) {
+      closeMobileNav();
+    }
+  }, { passive: true });
 
 });
