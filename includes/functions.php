@@ -86,22 +86,6 @@ function get_packages($pdo) {
     }
 }
 
-/**
- * Fetch all active gallery items from database
- */
-function get_gallery_items($pdo, $activeOnly = true) {
-    try {
-        $sql = "SELECT * FROM gallery";
-        if ($activeOnly) {
-            $sql .= " WHERE is_active = 1";
-        }
-        $sql .= " ORDER BY id DESC";
-        $stmt = $pdo->query($sql);
-        return $stmt->fetchAll();
-    } catch (PDOException $e) {
-        return [];
-    }
-}
 
 /**
  * Fetch approved guest reviews from database

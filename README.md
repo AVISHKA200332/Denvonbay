@@ -28,7 +28,6 @@ Denvonbay/
 ├── packages.php              # Stay & surf packages
 ├── explore.php               # Hiriketiya local area guide
 ├── amenities.php             # Facilities & comforts breakdown
-├── gallery.php               # Visual photography gallery
 ├── faq.php                   # Frequently asked questions
 ├── contact.php               # Contact info & message form
 ├── booking.php               # Room reservation form
@@ -61,7 +60,6 @@ Denvonbay/
 │   │   ├── packages.css      # Packages grid styles
 │   │   ├── explore.css       # Local guide styles
 │   │   ├── amenities.css     # Amenities list styles
-│   │   ├── gallery.css       # Photo gallery styles
 │   │   ├── faq.css           # FAQ accordion styles
 │   │   ├── contact.css       # Contact form styles
 │   │   ├── booking.css       # Booking form styles

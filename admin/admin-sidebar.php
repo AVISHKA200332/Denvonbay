@@ -74,13 +74,6 @@ $activePage = basename($_SERVER['PHP_SELF'], '.php');
             <?php endif; ?>
         </a>
 
-        <a href="gallery.php" class="admin-nav-item <?= (strpos($activePage, 'gallery') !== false) ? 'active' : '' ?>">
-            <span class="admin-nav-item-content">
-                <i class="bi bi-images"></i>
-                <span>Gallery</span>
-            </span>
-        </a>
-
         <span class="admin-sidebar-heading">Management</span>
 
         <a href="settings.php" class="admin-nav-item <?= ($activePage === 'settings') ? 'active' : '' ?>">

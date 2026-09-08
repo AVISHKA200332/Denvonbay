@@ -40,7 +40,6 @@ $f_wa_digits = preg_replace('/[^0-9]/', '', $f_wa);
                         <li><a href="packages.php" class="footer-nav-link">Packages</a></li>
                         <li><a href="explore.php" class="footer-nav-link">Explore</a></li>
                         <li><a href="amenities.php" class="footer-nav-link">Amenities</a></li>
-                        <li><a href="gallery.php" class="footer-nav-link">Gallery</a></li>
                         <li><a href="faq.php" class="footer-nav-link">FAQ</a></li>
                         <li><a href="contact.php" class="footer-nav-link">Contact</a></li>
                     </ul>

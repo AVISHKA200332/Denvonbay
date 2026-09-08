@@ -98,7 +98,7 @@ $pageDescription = e($room['description']);
                 <div class="col-lg-8" data-reveal="left">
                     <img src="<?= e($room['image_url']) ?>"
                          alt="<?= e($room['name']) ?>"
-                         class="room-gallery-main">
+                         class="room-detail-hero-img">
 
                     <h2 class="section-heading-dark" style="font-size: 1.75rem; margin-top: 12px;">Room Overview</h2>
                     <p class="about-text" style="font-size: 1.05rem; line-height: 1.8;">

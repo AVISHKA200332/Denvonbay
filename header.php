@@ -33,9 +33,6 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
                     <a class="nav-link <?= ($currentPage === 'amenities') ? 'active' : '' ?>" href="amenities.php">Amenities</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage === 'gallery') ? 'active' : '' ?>" href="gallery.php">Gallery</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link <?= ($currentPage === 'faq') ? 'active' : '' ?>" href="faq.php">FAQ</a>
                 </li>
                 <li class="nav-item">
@@ -111,12 +108,6 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
                 <li>
                     <a class="mobile-nav-link <?= ($currentPage === 'amenities') ? 'active' : '' ?>" href="amenities.php">
                         <span>Amenities</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'gallery') ? 'active' : '' ?>" href="gallery.php">
-                        <span>Gallery</span>
                         <i class="bi bi-chevron-right"></i>
                     </a>
                 </li>
