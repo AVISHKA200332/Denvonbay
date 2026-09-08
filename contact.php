@@ -12,6 +12,13 @@ $pageTitle = 'Contact Us | Denvonbay Hiriketiya';
 $pageDescription = 'Get in touch with Denvonbay. Located in Hiriketiya, Sri Lanka. Send an inquiry or reach us directly via WhatsApp or email.';
 
 $flash = get_flash();
+$settings = get_site_settings($pdo);
+$c_phone = $settings['contact_phone'] ?? '+94 77 123 4567';
+$c_wa = $settings['whatsapp_number'] ?? '94771234567';
+$c_email = $settings['contact_email'] ?? 'hello@denvonbay.com';
+$c_address = $settings['hotel_address'] ?? 'Hiriketiya, Dickwella, Southern Province, Sri Lanka';
+$c_insta = $settings['instagram_url'] ?? 'https://instagram.com';
+$c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +86,7 @@ $flash = get_flash();
                                 <div class="contact-method-icon"><i class="bi bi-geo-alt-fill"></i></div>
                                 <div>
                                     <div class="contact-method-label">Our Location</div>
-                                    <p class="contact-method-val">Hiriketiya, Dickwella, Southern Province, Sri Lanka</p>
+                                    <p class="contact-method-val"><?= htmlspecialchars($c_address) ?></p>
                                 </div>
                             </div>
 
@@ -88,8 +95,8 @@ $flash = get_flash();
                                 <div>
                                     <div class="contact-method-label">WhatsApp Direct</div>
                                     <p class="contact-method-val">
-                                        <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="text-white">
-                                            +94 77 123 4567
+                                        <a href="https://wa.me/<?= $c_wa_digits ?>" target="_blank" rel="noopener" class="text-white">
+                                            <?= htmlspecialchars($c_phone) ?>
                                         </a>
                                     </p>
                                 </div>
@@ -100,7 +107,7 @@ $flash = get_flash();
                                 <div>
                                     <div class="contact-method-label">Email Us</div>
                                     <p class="contact-method-val">
-                                        <a href="mailto:hello@denvonbay.com" class="text-white">hello@denvonbay.com</a>
+                                        <a href="mailto:<?= htmlspecialchars($c_email) ?>" class="text-white"><?= htmlspecialchars($c_email) ?></a>
                                     </p>
                                 </div>
                             </div>
@@ -110,13 +117,13 @@ $flash = get_flash();
                                 <div>
                                     <div class="contact-method-label">Follow Us</div>
                                     <p class="contact-method-val">
-                                        <a href="https://instagram.com" target="_blank" rel="noopener" class="text-white">@denvonbay</a>
+                                        <a href="<?= htmlspecialchars($c_insta) ?>" target="_blank" rel="noopener" class="text-white">Instagram</a>
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="btn btn-cta-whatsapp w-100 text-center">
+                        <a href="https://wa.me/<?= $c_wa_digits ?>" target="_blank" rel="noopener" class="btn btn-cta-whatsapp w-100 text-center">
                             <i class="bi bi-whatsapp me-2"></i> Chat on WhatsApp
                         </a>
                     </div>

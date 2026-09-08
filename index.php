@@ -12,6 +12,12 @@ $pageTitle = 'Denvonbay | Your Relaxed Stay in Hiriketiya, Sri Lanka';
 $pageDescription = "Stay at Denvonbay, Hiriketiya's most relaxed coastal retreat. Affordable rooms, flexible packages, beach access and tropical mornings on Sri Lanka's south coast.";
 
 $flash = get_flash();
+
+// Dynamic content from database
+$featuredRooms = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC LIMIT 3")->fetchAll();
+$featuredPackages = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC LIMIT 4")->fetchAll();
+$featuredReviews = get_approved_reviews($pdo, 3);
+$whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -267,67 +273,96 @@ $flash = get_flash();
         <p class="section-subtext-dark">Choose a room that matches your travel style.</p>
       </div>
       <div class="row gy-4 rooms-grid">
-
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
-          <article class="room-card" id="room-cozy">
-            <div class="room-card-image-wrap">
-              <img src="assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg"
-                   alt="The Cozy Room - comfortable single room at Denvonbay" class="room-card-img" loading="lazy">
-              <div class="room-card-badge">Perfect for Solo</div>
+        <?php if (!empty($featuredRooms)): ?>
+          <?php foreach ($featuredRooms as $idx => $fRoom): 
+            $delay = $idx * 150;
+            $isPopular = ($idx === 1);
+            $cardClass = $isPopular ? "room-card room-card--featured" : "room-card";
+            $badgeClass = $isPopular ? "room-card-badge room-card-badge--blue" : "room-card-badge";
+            $btnClass = $isPopular ? "btn btn-room-view btn-room-view--primary" : "btn btn-room-view";
+            $roomTag = $fRoom['tag'] ?? ($fRoom['capacity'] == 1 ? 'Perfect for Solo' : ($fRoom['capacity'] == 2 ? 'Most Popular' : 'Great for Groups'));
+          ?>
+            <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="<?= $delay ?>">
+              <article class="<?= $cardClass ?>" id="room-<?= e($fRoom['slug']) ?>">
+                <div class="room-card-image-wrap">
+                  <img src="<?= e($fRoom['image_url']) ?>"
+                       alt="<?= e($fRoom['name']) ?> at Denvonbay" class="room-card-img" loading="lazy">
+                  <div class="<?= $badgeClass ?>"><?= e($roomTag) ?></div>
+                </div>
+                <div class="room-card-body">
+                  <h3 class="room-card-title"><?= e($fRoom['name']) ?></h3>
+                  <p class="room-card-desc"><?= e($fRoom['description']) ?></p>
+                  <div class="room-card-meta">
+                    <span class="room-meta-item"><i class="bi bi-person-fill me-1"></i><?= (int)$fRoom['capacity'] ?> Guest<?= $fRoom['capacity'] > 1 ? 's' : '' ?></span>
+                    <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
+                    <span class="room-meta-item"><i class="bi bi-geo-alt me-1"></i>Near Beach</span>
+                  </div>
+                  <a href="rooms.php#<?= e($fRoom['slug']) ?>" class="<?= $btnClass ?>">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+              </article>
             </div>
-            <div class="room-card-body">
-              <h3 class="room-card-title">The Cozy Room</h3>
-              <p class="room-card-desc">A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.</p>
-              <div class="room-card-meta">
-                <span class="room-meta-item"><i class="bi bi-person-fill me-1"></i>1 Guest</span>
-                <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
-                <span class="room-meta-item"><i class="bi bi-moon-stars me-1"></i>Peaceful</span>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
+            <article class="room-card" id="room-cozy">
+              <div class="room-card-image-wrap">
+                <img src="assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg"
+                     alt="The Cozy Room - comfortable single room at Denvonbay" class="room-card-img" loading="lazy">
+                <div class="room-card-badge">Perfect for Solo</div>
               </div>
-              <a href="rooms.php#cozy" class="btn btn-room-view" id="viewCozyRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
-          <article class="room-card room-card--featured" id="room-couples">
-            <div class="room-card-image-wrap">
-              <img src="assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg"
-                   alt="The Couple's Retreat room at Denvonbay" class="room-card-img" loading="lazy">
-              <div class="room-card-badge room-card-badge--blue">Most Popular</div>
-            </div>
-            <div class="room-card-body">
-              <h3 class="room-card-title">The Couple's Retreat</h3>
-              <p class="room-card-desc">A romantic coastal escape designed for two - comfortable, private and just steps from the beach.</p>
-              <div class="room-card-meta">
-                <span class="room-meta-item"><i class="bi bi-people-fill me-1"></i>2 Guests</span>
-                <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
-                <span class="room-meta-item"><i class="bi bi-heart me-1"></i>Romantic</span>
+              <div class="room-card-body">
+                <h3 class="room-card-title">The Cozy Room</h3>
+                <p class="room-card-desc">A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.</p>
+                <div class="room-card-meta">
+                  <span class="room-meta-item"><i class="bi bi-person-fill me-1"></i>1 Guest</span>
+                  <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
+                  <span class="room-meta-item"><i class="bi bi-moon-stars me-1"></i>Peaceful</span>
+                </div>
+                <a href="rooms.php#cozy" class="btn btn-room-view" id="viewCozyRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
-              <a href="rooms.php#couples" class="btn btn-room-view btn-room-view--primary" id="viewCouplesRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
-          <article class="room-card" id="room-friends">
-            <div class="room-card-image-wrap">
-              <img src="assets/images/explore/Friends_walking_on_beach_202607210209.jpg"
-                   alt="The Friends' Stay room at Denvonbay" class="room-card-img" loading="lazy">
-              <div class="room-card-badge">Great for Groups</div>
-            </div>
-            <div class="room-card-body">
-              <h3 class="room-card-title">The Friends' Stay</h3>
-              <p class="room-card-desc">Spacious, social and fun. The ideal base for a group trip to the south coast surf scene.</p>
-              <div class="room-card-meta">
-                <span class="room-meta-item"><i class="bi bi-people-fill me-1"></i>3-4 Guests</span>
-                <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
-                <span class="room-meta-item"><i class="bi bi-sun me-1"></i>Lively</span>
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
+            <article class="room-card room-card--featured" id="room-couples">
+              <div class="room-card-image-wrap">
+                <img src="assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg"
+                     alt="The Couple's Retreat room at Denvonbay" class="room-card-img" loading="lazy">
+                <div class="room-card-badge room-card-badge--blue">Most Popular</div>
               </div>
-              <a href="rooms.php#friends" class="btn btn-room-view" id="viewFriendsRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
-            </div>
-          </article>
-        </div>
+              <div class="room-card-body">
+                <h3 class="room-card-title">The Couple's Retreat</h3>
+                <p class="room-card-desc">A romantic coastal escape designed for two - comfortable, private and just steps from the beach.</p>
+                <div class="room-card-meta">
+                  <span class="room-meta-item"><i class="bi bi-people-fill me-1"></i>2 Guests</span>
+                  <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
+                  <span class="room-meta-item"><i class="bi bi-heart me-1"></i>Romantic</span>
+                </div>
+                <a href="rooms.php#couples" class="btn btn-room-view btn-room-view--primary" id="viewCouplesRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
 
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
+            <article class="room-card" id="room-friends">
+              <div class="room-card-image-wrap">
+                <img src="assets/images/explore/Friends_walking_on_beach_202607210209.jpg"
+                     alt="The Friends' Stay room at Denvonbay" class="room-card-img" loading="lazy">
+                <div class="room-card-badge">Great for Groups</div>
+              </div>
+              <div class="room-card-body">
+                <h3 class="room-card-title">The Friends' Stay</h3>
+                <p class="room-card-desc">Spacious, social and fun. The ideal base for a group trip to the south coast surf scene.</p>
+                <div class="room-card-meta">
+                  <span class="room-meta-item"><i class="bi bi-people-fill me-1"></i>3-4 Guests</span>
+                  <span class="room-meta-item"><i class="bi bi-wifi me-1"></i>Wi-Fi</span>
+                  <span class="room-meta-item"><i class="bi bi-sun me-1"></i>Lively</span>
+                </div>
+                <a href="rooms.php#friends" class="btn btn-room-view" id="viewFriendsRoomBtn">View Room <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+        <?php endif; ?>
       </div>
       <div class="text-center mt-5" data-reveal="up">
         <a href="rooms.php" class="btn btn-view-all" id="viewAllRoomsBtn">View All Rooms <i class="bi bi-arrow-right ms-2"></i></a>
@@ -345,40 +380,61 @@ $flash = get_flash();
           <p class="section-subtext text-white-75">From a quick escape to a longer island slow-down - we have the right package for you.</p>
         </div>
         <div class="packages-grid">
+          <?php if (!empty($featuredPackages)): ?>
+            <?php 
+              $icons = ['bi-sun', 'bi-moon-stars', 'bi-calendar2-week', 'bi-tropical-storm'];
+              foreach ($featuredPackages as $pIdx => $fPkg): 
+                $pDelay = $pIdx * 100;
+                $isHighlight = ($pIdx === 1);
+                $pCardClass = $isHighlight ? "pkg-card pkg-card--highlight" : "pkg-card";
+                $pBtnClass = $isHighlight ? "btn btn-pkg-primary" : "btn btn-pkg";
+                $icon = $icons[$pIdx % count($icons)];
+            ?>
+              <article class="<?= $pCardClass ?>" data-reveal="up" data-reveal-delay="<?= $pDelay ?>">
+                <?php if ($isHighlight): ?>
+                  <div class="pkg-card-popular-badge">Most Booked</div>
+                <?php endif; ?>
+                <div class="pkg-card-icon"><i class="bi <?= $icon ?>"></i></div>
+                <h3 class="pkg-card-title"><?= e($fPkg['name']) ?></h3>
+                <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i><?= e($fPkg['duration']) ?></p>
+                <p class="pkg-card-desc"><?= e($fPkg['description']) ?></p>
+                <a href="packages.php#<?= e($fPkg['slug']) ?>" class="<?= $pBtnClass ?>">Explore Package</a>
+              </article>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <article class="pkg-card" data-reveal="up" data-reveal-delay="0">
+              <div class="pkg-card-icon"><i class="bi bi-sun"></i></div>
+              <h3 class="pkg-card-title">Day Escape</h3>
+              <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>Daytime stay</p>
+              <p class="pkg-card-desc">Enjoy the Denvonbay experience without an overnight stay. Perfect for beach day explorers.</p>
+              <a href="packages.php#day-escape" class="btn btn-pkg" id="pkgDayBtn">Explore Package</a>
+            </article>
 
-          <article class="pkg-card" data-reveal="up" data-reveal-delay="0">
-            <div class="pkg-card-icon"><i class="bi bi-sun"></i></div>
-            <h3 class="pkg-card-title">Day Escape</h3>
-            <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>Daytime stay</p>
-            <p class="pkg-card-desc">Enjoy the Denvonbay experience without an overnight stay. Perfect for beach day explorers.</p>
-            <a href="packages.php#day-escape" class="btn btn-pkg" id="pkgDayBtn">Explore Package</a>
-          </article>
+            <article class="pkg-card pkg-card--highlight" data-reveal="up" data-reveal-delay="100">
+              <div class="pkg-card-popular-badge">Most Booked</div>
+              <div class="pkg-card-icon"><i class="bi bi-moon-stars"></i></div>
+              <h3 class="pkg-card-title">One Night Getaway</h3>
+              <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>1 Night</p>
+              <p class="pkg-card-desc">Arrive, unwind, wake up to the coast. The ideal short escape from everyday life.</p>
+              <a href="packages.php#one-night" class="btn btn-pkg-primary" id="pkgOneNightBtn">Explore Package</a>
+            </article>
 
-          <article class="pkg-card pkg-card--highlight" data-reveal="up" data-reveal-delay="100">
-            <div class="pkg-card-popular-badge">Most Booked</div>
-            <div class="pkg-card-icon"><i class="bi bi-moon-stars"></i></div>
-            <h3 class="pkg-card-title">One Night Getaway</h3>
-            <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>1 Night</p>
-            <p class="pkg-card-desc">Arrive, unwind, wake up to the coast. The ideal short escape from everyday life.</p>
-            <a href="packages.php#one-night" class="btn btn-pkg-primary" id="pkgOneNightBtn">Explore Package</a>
-          </article>
+            <article class="pkg-card" data-reveal="up" data-reveal-delay="200">
+              <div class="pkg-card-icon"><i class="bi bi-calendar2-week"></i></div>
+              <h3 class="pkg-card-title">Weekend Escape</h3>
+              <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>2 Nights</p>
+              <p class="pkg-card-desc">Two full days of beaches, surf and tropical living. The perfect long weekend.</p>
+              <a href="packages.php#weekend" class="btn btn-pkg" id="pkgWeekendBtn">Explore Package</a>
+            </article>
 
-          <article class="pkg-card" data-reveal="up" data-reveal-delay="200">
-            <div class="pkg-card-icon"><i class="bi bi-calendar2-week"></i></div>
-            <h3 class="pkg-card-title">Weekend Escape</h3>
-            <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>2 Nights</p>
-            <p class="pkg-card-desc">Two full days of beaches, surf and tropical living. The perfect long weekend.</p>
-            <a href="packages.php#weekend" class="btn btn-pkg" id="pkgWeekendBtn">Explore Package</a>
-          </article>
-
-          <article class="pkg-card" data-reveal="up" data-reveal-delay="300">
-            <div class="pkg-card-icon"><i class="bi bi-tropical-storm"></i></div>
-            <h3 class="pkg-card-title">Slow Island Stay</h3>
-            <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>3+ Nights</p>
-            <p class="pkg-card-desc">Linger longer. Explore deeper. The full south coast slow-travel experience.</p>
-            <a href="packages.php#slow-stay" class="btn btn-pkg" id="pkgSlowBtn">Explore Package</a>
-          </article>
-
+            <article class="pkg-card" data-reveal="up" data-reveal-delay="300">
+              <div class="pkg-card-icon"><i class="bi bi-tropical-storm"></i></div>
+              <h3 class="pkg-card-title">Slow Island Stay</h3>
+              <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i>3+ Nights</p>
+              <p class="pkg-card-desc">Linger longer. Explore deeper. The full south coast slow-travel experience.</p>
+              <a href="packages.php#slow-stay" class="btn btn-pkg" id="pkgSlowBtn">Explore Package</a>
+            </article>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -460,49 +516,72 @@ $flash = get_flash();
         <p class="section-subtext-dark">Small Stay. Big Memories.</p>
       </div>
       <div class="row gy-4 testimonials-grid">
+        <?php if (!empty($featuredReviews)): ?>
+          <?php foreach ($featuredReviews as $rIdx => $rev): 
+            $rDelay = $rIdx * 150;
+            $rFeatured = ($rIdx === 1) ? 'testi-card testi-card--featured' : 'testi-card';
+          ?>
+            <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="<?= $rDelay ?>">
+              <article class="<?= $rFeatured ?>">
+                <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
+                <blockquote class="testi-text"><?= e($rev['comment']) ?></blockquote>
+                <footer class="testi-footer">
+                  <div class="testi-stars" aria-label="<?= (int)$rev['rating'] ?> out of 5 stars">
+                    <?php for ($s = 1; $s <= 5; $s++): ?>
+                      <i class="bi bi-star<?= $s <= $rev['rating'] ? '-fill' : '' ?>"></i>
+                    <?php endfor; ?>
+                  </div>
+                  <p class="testi-author"><?= e($rev['guest_name']) ?></p>
+                  <?php if (!empty($rev['location'])): ?>
+                    <p class="testi-location"><i class="bi bi-geo-alt me-1"></i><?= e($rev['location']) ?></p>
+                  <?php endif; ?>
+                </footer>
+              </article>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
+            <article class="testi-card">
+              <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
+              <blockquote class="testi-text">Absolutely loved our stay at Denvonbay. The location is perfect - just minutes from Hiriketiya beach. The room was clean, cozy and had everything we needed. Highly recommend for anyone visiting the south coast.</blockquote>
+              <footer class="testi-footer">
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p class="testi-author">Sophie &amp; Liam</p>
+                <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Melbourne, Australia</p>
+              </footer>
+            </article>
+          </div>
 
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
-          <article class="testi-card">
-            <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
-            <blockquote class="testi-text">Absolutely loved our stay at Denvonbay. The location is perfect - just minutes from Hiriketiya beach. The room was clean, cozy and had everything we needed. Highly recommend for anyone visiting the south coast.</blockquote>
-            <footer class="testi-footer">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p class="testi-author">Sophie &amp; Liam</p>
-              <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Melbourne, Australia</p>
-            </footer>
-          </article>
-        </div>
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
+            <article class="testi-card testi-card--featured">
+              <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
+              <blockquote class="testi-text">We came for two nights and ended up staying four. The vibe is so relaxed and the team genuinely looked after us. It felt like a home away from home. Perfect for a surf trip or just slowing down.</blockquote>
+              <footer class="testi-footer">
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p class="testi-author">Marco R.</p>
+                <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Milan, Italy</p>
+              </footer>
+            </article>
+          </div>
 
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
-          <article class="testi-card testi-card--featured">
-            <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
-            <blockquote class="testi-text">We came for two nights and ended up staying four. The vibe is so relaxed and the team genuinely looked after us. It felt like a home away from home. Perfect for a surf trip or just slowing down.</blockquote>
-            <footer class="testi-footer">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p class="testi-author">Marco R.</p>
-              <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Milan, Italy</p>
-            </footer>
-          </article>
-        </div>
-
-        <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
-          <article class="testi-card">
-            <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
-            <blockquote class="testi-text">Great value, great location and great atmosphere. Only 5 rooms means it never feels crowded. Woke up to beautiful tropical mornings every day. Will definitely be back next season.</blockquote>
-            <footer class="testi-footer">
-              <div class="testi-stars" aria-label="5 out of 5 stars">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              </div>
-              <p class="testi-author">Elena K.</p>
-              <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Berlin, Germany</p>
-            </footer>
-          </article>
-        </div>
-
+          <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
+            <article class="testi-card">
+              <div class="testi-quote-mark" aria-hidden="true">&ldquo;</div>
+              <blockquote class="testi-text">Great value, great location and great atmosphere. Only 5 rooms means it never feels crowded. Woke up to beautiful tropical mornings every day. Will definitely be back next season.</blockquote>
+              <footer class="testi-footer">
+                <div class="testi-stars" aria-label="5 out of 5 stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p class="testi-author">Elena K.</p>
+                <p class="testi-location"><i class="bi bi-geo-alt me-1"></i>Berlin, Germany</p>
+              </footer>
+            </article>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </section>
@@ -516,7 +595,7 @@ $flash = get_flash();
         <p class="final-cta-text">Choose your room, find the package that suits your trip, and make Denvonbay part of your Sri Lankan adventure.</p>
         <div class="final-cta-buttons">
           <a href="booking.php" class="btn btn-cta-primary" id="finalCtaCheckBtn"><i class="bi bi-calendar2-check me-2"></i>Check Availability</a>
-          <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="btn btn-cta-whatsapp" id="finalCtaWhatsappBtn" aria-label="Book via WhatsApp"><i class="bi bi-whatsapp me-2"></i>Book via WhatsApp</a>
+          <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $whatsappNumber) ?>" target="_blank" rel="noopener" class="btn btn-cta-whatsapp" id="finalCtaWhatsappBtn" aria-label="Book via WhatsApp"><i class="bi bi-whatsapp me-2"></i>Book via WhatsApp</a>
         </div>
       </div>
     </div>

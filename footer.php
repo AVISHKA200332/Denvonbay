@@ -1,3 +1,13 @@
+<?php
+// Dynamic footer settings if functions & pdo are loaded
+$f_phone = isset($pdo) ? get_setting($pdo, 'contact_phone', '+94 77 123 4567') : '+94 77 123 4567';
+$f_wa = isset($pdo) ? get_setting($pdo, 'whatsapp_number', '94771234567') : '94771234567';
+$f_email = isset($pdo) ? get_setting($pdo, 'contact_email', 'hello@denvonbay.com') : 'hello@denvonbay.com';
+$f_address = isset($pdo) ? get_setting($pdo, 'hotel_address', 'Hiriketiya, Dickwella, Sri Lanka') : 'Hiriketiya, Dickwella, Sri Lanka';
+$f_insta = isset($pdo) ? get_setting($pdo, 'instagram_url', 'https://instagram.com') : 'https://instagram.com';
+$f_fb = isset($pdo) ? get_setting($pdo, 'facebook_url', 'https://facebook.com') : 'https://facebook.com';
+$f_wa_digits = preg_replace('/[^0-9]/', '', $f_wa);
+?>
 <!-- ===== SITE FOOTER ===== -->
 <footer class="site-footer" role="contentinfo">
     <div class="footer-main">
@@ -13,9 +23,9 @@
                         Affordable stays. Tropical mornings.<br>Hiriketiya at your doorstep.
                     </p>
                     <div class="footer-socials">
-                        <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="<?= htmlspecialchars($f_insta) ?>" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="<?= htmlspecialchars($f_fb) ?>" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="https://wa.me/<?= $f_wa_digits ?>" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
                         <a href="#" class="footer-social-link" aria-label="TripAdvisor"><i class="bi bi-star-fill"></i></a>
                     </div>
                 </div>
@@ -54,19 +64,19 @@
                     <ul class="footer-contact-list">
                         <li class="footer-contact-item">
                             <i class="bi bi-geo-alt-fill footer-contact-icon"></i>
-                            <span>Hiriketiya, Dickwella, Sri Lanka</span>
+                            <span><?= htmlspecialchars($f_address) ?></span>
                         </li>
                         <li class="footer-contact-item">
                             <i class="bi bi-whatsapp footer-contact-icon"></i>
-                            <a href="https://wa.me/94771234567" class="footer-contact-link">+94 77 123 4567</a>
+                            <a href="https://wa.me/<?= $f_wa_digits ?>" class="footer-contact-link"><?= htmlspecialchars($f_phone) ?></a>
                         </li>
                         <li class="footer-contact-item">
                             <i class="bi bi-envelope-fill footer-contact-icon"></i>
-                            <a href="mailto:hello@denvonbay.com" class="footer-contact-link">hello@denvonbay.com</a>
+                            <a href="mailto:<?= htmlspecialchars($f_email) ?>" class="footer-contact-link"><?= htmlspecialchars($f_email) ?></a>
                         </li>
                         <li class="footer-contact-item">
                             <i class="bi bi-instagram footer-contact-icon"></i>
-                            <a href="https://instagram.com" class="footer-contact-link">@denvonbay</a>
+                            <a href="<?= htmlspecialchars($f_insta) ?>" target="_blank" rel="noopener" class="footer-contact-link">Instagram</a>
                         </li>
                     </ul>
                     <a href="booking.php" class="btn btn-book-footer mt-3">
