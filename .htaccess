@@ -1,0 +1,17 @@
+# =====================================================
+# Denvonbay - Apache Configuration
+# =====================================================
+
+# Prevent directory indexing
+Options -Indexes
+
+# Custom 404 Error Page
+ErrorDocument 404 404.php
+
+# Block access to SQL dumps and git files
+<FilesMatch "(\.sql|\.git|\.env)$">
+    Require all denied
+</FilesMatch>
+
+# Enable UTF-8 encoding
+AddDefaultCharset UTF-8

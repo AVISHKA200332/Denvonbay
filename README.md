@@ -1,16 +1,18 @@
 # Denvonbay — Coastal Accommodation Website
 
-A modern, fast, and beginner-friendly coastal accommodation website for **Denvonbay**, located near Hiriketiya Beach, Sri Lanka.
+A clean, beginner-friendly coastal accommodation website for **Denvonbay**, located in Hiriketiya, Sri Lanka.
+
+Built with a simple traditional PHP architecture: straightforward includes, direct CSS/JS linking, PDO MySQL database, and flat admin management.
 
 ---
 
 ## 🚀 Tech Stack
 
 - **PHP 8+** (Clean, procedural, reusable includes)
-- **HTML5 & Vanilla CSS3** (Modular, organized stylesheets)
-- **Bootstrap 5** (Layout utilities, grid, icons, modal components)
-- **Vanilla JavaScript** (Navbar scroll effects, mobile navigation, scroll-reveal animations)
-- **MySQL / MySQL Workbench** (Database management for bookings and contact inquiries)
+- **HTML5 & Vanilla CSS3** (Organized per-page stylesheets)
+- **Bootstrap 5 & Bootstrap Icons** (Grid layout and icons)
+- **Vanilla JavaScript** (Navbar scroll effects, booking calculations, and mobile toggling)
+- **MySQL / PDO** (Prepared statements for bookings, contact inquiries, and admin auth)
 
 ---
 
@@ -19,109 +21,114 @@ A modern, fast, and beginner-friendly coastal accommodation website for **Denvon
 ```text
 Denvonbay/
 │
-├── actions/                  # Form processing endpoints (POST handlers)
-│   ├── submit-booking.php    # Handles booking submissions
-│   └── submit-contact.php    # Handles contact message submissions
+├── index.php                 # Home page
+├── about.php                 # About story & ethos
+├── rooms.php                 # 5 coastal rooms listing
+├── room-details.php          # Single room details & booking widget
+├── packages.php              # Stay & surf packages
+├── explore.php               # Hiriketiya local area guide
+├── amenities.php             # Facilities & comforts breakdown
+├── gallery.php               # Visual photography gallery
+├── faq.php                   # Frequently asked questions
+├── contact.php               # Contact info & message form
+├── booking.php               # Room reservation form
+├── booking-success.php       # Booking confirmation screen
+├── 404.php                   # Page not found error screen
+│
+├── header.php                # Reusable site navigation bar
+├── footer.php                # Reusable site footer
+│
+├── config/
+│   ├── database.php          # PDO database connection ONLY
+│   └── config.php            # Site constants (email, phone, address)
+│
+├── includes/
+│   ├── functions.php         # Procedural helpers (formatting, sanitize, flash)
+│   ├── validation.php        # Input validation helpers
+│   └── auth.php              # Admin session authentication helpers
+│
+├── actions/
+│   ├── submit-booking.php    # Handles booking POST requests
+│   ├── submit-contact.php    # Handles contact form POST requests
+│   └── submit-review.php     # Handles review form POST requests
 │
 ├── assets/
-│   ├── css/                  # Modular external CSS stylesheets
-│   │   ├── style.css         # Design tokens, reset, typography, buttons
-│   │   ├── components.css    # Header, navbar, and footer styles
-│   │   ├── home.css          # Home page section styles
-│   │   └── responsive.css    # Mobile, tablet, and desktop media queries
+│   ├── css/
+│   │   ├── common.css        # Shared tokens, reset, buttons, navbar, footer
+│   │   ├── home.css          # Home page sections
+│   │   ├── about.css         # About page styles
+│   │   ├── rooms.css         # Rooms & details styles
+│   │   ├── packages.css      # Packages grid styles
+│   │   ├── explore.css       # Local guide styles
+│   │   ├── amenities.css     # Amenities list styles
+│   │   ├── gallery.css       # Photo gallery styles
+│   │   ├── faq.css           # FAQ accordion styles
+│   │   ├── contact.css       # Contact form styles
+│   │   ├── booking.css       # Booking form styles
+│   │   └── admin.css         # Admin panel styling
+│   │
 │   ├── js/
-│   │   └── main.js           # Client-side interactions & animations
+│   │   ├── common.js         # Shared navigation, animations, smooth scroll
+│   │   ├── home.js           # Home page scripts
+│   │   ├── booking.js        # Live booking calculations
+│   │   ├── contact.js        # Contact form validation
+│   │   └── admin.js          # Admin confirmation prompts
+│   │
 │   └── images/
 │       └── explore/          # Real photography assets
 │
-├── config/
-│   └── config.php            # MySQL database connection ONLY (ignored in git)
+├── admin/
+│   ├── login.php             # Admin login screen
+│   ├── logout.php            # Session destroy and redirect
+│   ├── dashboard.php         # Metric counters & recent reservations
+│   ├── bookings.php          # Manage all reservations & status
+│   ├── booking-view.php      # Full reservation detail view
+│   ├── rooms.php             # Manage room listings
+│   ├── room-add.php          # Add new room form
+│   ├── room-edit.php         # Edit room details form
+│   ├── packages.php          # Manage packages
+│   ├── package-add.php       # Add package form
+│   ├── package-edit.php      # Edit package form
+│   ├── messages.php          # View & respond to contact messages
+│   ├── reviews.php           # Moderate guest reviews
+│   └── admin-header.php      # Admin navigation bar component
 │
 ├── database/
-│   ├── denvonbay.sql         # Database schema
-│   └── sample-data.sql       # Initial test data
+│   └── denvonbay.sql         # Clean database schema & seed data
 │
-├── includes/
-│   ├── header.php            # HTML <head>, meta tags, $base path, CSS links
-│   ├── navbar.php            # Sticky site navigation bar
-│   └── footer.php            # Site footer, copyright, JS script tags
-│
-├── index.php                 # Home page
-├── about.php                 # About us page
-├── rooms.php                 # Rooms & accommodation
-├── packages.php              # Stay packages & offers
-├── explore.php               # Hiriketiya local guide
-├── contact.php               # Contact & location
-├── booking.php               # Booking request page
-│
-├── .gitignore                # Excludes credentials and temporary files
-└── README.md                 # Project documentation
+├── .htaccess                 # Security & 404 handler
+├── .gitignore                # Excludes credentials and temp files
+└── README.md                 # Documentation
 ```
 
 ---
 
-## 🎨 How CSS Works
+## 💻 Local Development Setup (XAMPP)
 
-Styles are organized into **4 focused stylesheets** loaded via standard `<link>` tags in `includes/header.php`:
-
-1. **`style.css`**: Global design system — CSS custom properties (colors, fonts, shadows), resets, accessibility, utility classes, and buttons.
-2. **`components.css`**: Reusable page components — Navigation bar and footer.
-3. **`home.css`**: Home page sections — Hero, brand marquee, experiences, room previews, packages, amenities, and testimonials.
-4. **`responsive.css`**: All media queries — Tablet, mobile, and small screen optimizations.
-
----
-
-## 💻 Local Development (XAMPP)
-
-1. **Install XAMPP** with Apache and MySQL.
-2. Clone or copy this repository into your XAMPP web directory:
+1. Start **Apache** and **MySQL** in XAMPP.
+2. Ensure the repository is located in:
    ```text
    C:\xampp\htdocs\Denvonbay\
    ```
-3. Start **Apache** and **MySQL** from the XAMPP Control Panel.
-4. Open your browser and navigate to:
+3. Import the database:
+   - Open **phpMyAdmin** (`http://localhost/phpmyadmin/`) or **MySQL Workbench**.
+   - Import `database/denvonbay.sql`.
+4. Open the website in your browser:
    ```text
    http://localhost/Denvonbay/
    ```
-
----
-
-## 🌐 Deploying to Live Hosting
-
-All internal links and asset paths use the `$base` variable defined in **`includes/header.php`**:
-
-```php
-// includes/header.php (line 17)
-$base = '/Denvonbay'; // Localhost
-```
-
-When deploying to a live domain (e.g. `https://yourdomain.com/`):
-```php
-$base = ''; // Change to an empty string on production
-```
-Everything else (links, images, stylesheets, scripts) will update automatically.
-
----
-
-## 🗄️ Database Setup
-
-1. Open **phpMyAdmin** (`http://localhost/phpmyadmin/`) or **MySQL Workbench**.
-2. Create a new database named `denvonbay`:
-   ```sql
-   CREATE DATABASE denvonbay CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+5. Access the Admin Panel:
+   ```text
+   http://localhost/Denvonbay/admin/login.php
    ```
-3. Configure your database credentials in `config/config.php`:
-   ```php
-   $dbHost     = "localhost";
-   $dbUser     = "root";
-   $dbPassword = "";
-   $dbName     = "denvonbay";
-   ```
+   - **Email**: `admin@denvonbay.com`
+   - **Password**: `admin123`
 
 ---
 
-## 🛡️ Security Best Practices
+## 🛡️ Security & Best Practices
 
-- `config/config.php` contains database credentials and is excluded by `.gitignore`.
-- User input in form handlers (`actions/`) is validated and bound using prepared statements (`mysqli::prepare`).
-- Output rendered in views is sanitized with `htmlspecialchars()` to prevent XSS.
+- **PDO Prepared Statements**: Used across all queries (`SELECT`, `INSERT`, `UPDATE`, `DELETE`) to eliminate SQL injection risks.
+- **Output Escaping**: User content passed through `htmlspecialchars()` via helper function `e()`.
+- **Password Hashing**: Admin passwords stored using native `password_hash()` and verified with `password_verify()`.
+- **Session Protection**: All admin pages guarded by `require_admin()`.

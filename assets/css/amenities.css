@@ -1,0 +1,81 @@
+/**
+ * Denvonbay - Amenities Page Styles
+ */
+
+.amenities-page-section {
+  padding: var(--section-py) 0;
+  background-color: var(--off-white);
+}
+
+.amenity-category-title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.amenity-category-title i {
+  color: var(--primary-blue);
+}
+
+.amenities-grid-full {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.amenity-card-item {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  border: 1px solid var(--border-grey);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.amenity-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.amenity-card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(18, 102, 241, 0.08);
+  color: var(--primary-blue);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.amenity-card-heading {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.amenity-card-desc {
+  font-size: var(--fs-xs);
+  color: var(--text-grey);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .amenities-grid-full { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767.98px) {
+  .amenities-grid-full { grid-template-columns: 1fr; }
+}

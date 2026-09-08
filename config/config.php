@@ -1,30 +1,24 @@
-﻿<?php
+<?php
 /**
- * Denvonbay - Database Configuration
- * ------------------------------------
- * This file handles the database connection only.
- *
- * HOW TO USE:
- *   require_once __DIR__ . '/../config/config.php';
- *
- * SECURITY:
- *   Add this file to .gitignore before pushing to GitHub.
- *   Never commit real passwords to version control.
- * ------------------------------------
+ * Denvonbay - Application Configuration
+ * --------------------------------------
+ * Basic site constants and environment settings.
+ * Does NOT control CSS, JavaScript, HTML or styling.
  */
 
-$dbHost     = "localhost";
-$dbUser     = "root";
-$dbPassword = "";
-$dbName     = "denvonbay";
+// Site Information
+define('SITE_NAME', 'Denvonbay');
+define('SITE_TAGLINE', 'Your Relaxed Stay in Hiriketiya, Sri Lanka');
 
-$conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
+// Contact Details
+define('CONTACT_EMAIL', 'hello@denvonbay.com');
+define('CONTACT_PHONE', '+94 77 123 4567');
+define('CONTACT_WHATSAPP', '94771234567');
+define('CONTACT_LOCATION', 'Hiriketiya, Dickwella, Sri Lanka');
 
-if ($conn->connect_error) {
-    // Do NOT show the real error to users in production.
-    // Log it instead: error_log($conn->connect_error);
-    die("Something went wrong. Please try again later.");
-}
+// Currency
+define('CURRENCY_SYMBOL', '$');
+define('CURRENCY_CODE', 'USD');
 
-// Use UTF-8 for all database communication
-$conn->set_charset("utf8mb4");
+// Timezone
+date_default_timezone_set('Asia/Colombo');

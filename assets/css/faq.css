@@ -1,0 +1,56 @@
+/**
+ * Denvonbay - FAQ Page Styles
+ */
+
+.faq-page-section {
+  padding: var(--section-py) 0;
+  background-color: var(--off-white);
+}
+
+.faq-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-grey);
+  box-shadow: var(--shadow-sm);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  transition: box-shadow var(--transition-base);
+}
+
+.faq-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.faq-question i {
+  color: var(--primary-blue);
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  font-size: var(--fs-sm);
+  color: var(--text-grey);
+  line-height: 1.8;
+  margin: 0;
+  padding-left: 32px;
+}
+
+.faq-contact-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 100%);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  margin-top: 48px;
+}
