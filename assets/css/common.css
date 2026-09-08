@@ -89,7 +89,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -99,7 +99,7 @@ body {
   line-height: 1.6;
   color: var(--navy);
   background-color: var(--white);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {
@@ -362,13 +362,21 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1030;
   background: var(--white);
   border-bottom: 1px solid rgba(11, 42, 91, 0.06);
-  transition: background-color var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
   width: 100%;
+  will-change: transform;
 }
 
 .site-header.scrolled {
   box-shadow: 0 4px 20px rgba(11, 42, 91, 0.08);
   border-bottom-color: transparent;
+}
+
+/* Hidden when scrolling down */
+.site-header.header-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
 }
 
 .header-container {

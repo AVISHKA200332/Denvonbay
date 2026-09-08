@@ -12,21 +12,56 @@ document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   /* ============================================================
-     1. NAVBAR: SCROLL SHADOW
+     1. SMART STICKY HEADER (HIDE ON SCROLL DOWN, SHOW ON SCROLL UP)
      ============================================================ */
   const siteHeader = document.getElementById('site-header');
+  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  let isTicking = false;
+  const scrollThreshold = 8;
 
-  function handleNavbarScroll() {
+  function handleSmartHeader() {
     if (!siteHeader) return;
-    if (window.scrollY > 20) {
-      siteHeader.classList.add('scrolled');
-    } else {
-      siteHeader.classList.remove('scrolled');
+
+    // Keep header visible if mobile drawer is currently open
+    const mobileNavEl = document.getElementById('mobileNav');
+    if (mobileNavEl && mobileNavEl.classList.contains('is-open')) {
+      siteHeader.classList.remove('header-hidden');
+      isTicking = false;
+      return;
     }
+
+    const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    if (currentScrollY <= 20) {
+      // At the top of page: restore initial un-scrolled appearance
+      siteHeader.classList.remove('scrolled', 'header-hidden');
+    } else {
+      // Below top: apply scrolled shadow & compact height
+      siteHeader.classList.add('scrolled');
+
+      // Scrolling DOWN past header height -> hide header
+      if (scrollDelta > scrollThreshold && currentScrollY > 80) {
+        siteHeader.classList.add('header-hidden');
+      }
+      // Scrolling UP -> reveal header smoothly
+      else if (scrollDelta < -scrollThreshold) {
+        siteHeader.classList.remove('header-hidden');
+      }
+    }
+
+    lastScrollY = currentScrollY;
+    isTicking = false;
   }
 
-  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-  handleNavbarScroll();
+  window.addEventListener('scroll', function () {
+    if (!isTicking) {
+      window.requestAnimationFrame(handleSmartHeader);
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  handleSmartHeader();
 
   /* ============================================================
      2. SCROLL REVEAL ANIMATIONS
