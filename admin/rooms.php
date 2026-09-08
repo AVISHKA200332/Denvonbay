@@ -5,8 +5,9 @@
  * Manage room inventory, pricing, availability, and photographic assets.
  */
 
-$adminTitle = 'Rooms';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 // Handle POST actions (Delete, Toggle Availability)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,6 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $rooms = $pdo->query("SELECT * FROM rooms ORDER BY id ASC")->fetchAll();
+
+$adminTitle = 'Rooms';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

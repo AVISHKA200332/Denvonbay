@@ -5,8 +5,9 @@
  * Manage coastal packages, durations, features, and pricing.
  */
 
-$adminTitle = 'Packages';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 // Handle POST actions (Delete, Toggle Active Status)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,6 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $packages = $pdo->query("SELECT * FROM packages ORDER BY id ASC")->fetchAll();
+
+$adminTitle = 'Packages';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

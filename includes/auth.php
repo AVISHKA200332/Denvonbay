@@ -27,6 +27,13 @@ function require_admin() {
 }
 
 /**
+ * Alias for require_admin
+ */
+function require_admin_login() {
+    require_admin();
+}
+
+/**
  * Authenticate admin with email and password
  */
 function login_admin($pdo, $email, $password) {

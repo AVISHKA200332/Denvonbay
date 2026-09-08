@@ -5,8 +5,9 @@
  * Update room details, pricing, and photos with live website synchronization.
  */
 
-$adminTitle = 'Edit Room';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 $roomId = (int)($_GET['id'] ?? 0);
 
@@ -114,6 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$adminTitle = 'Edit Room';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

@@ -5,8 +5,9 @@
  * Update package duration, features, badge, and pricing.
  */
 
-$adminTitle = 'Edit Package';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 $packageId = (int)($_GET['id'] ?? 0);
 
@@ -102,6 +103,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$adminTitle = 'Edit Package';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

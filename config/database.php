@@ -1,4 +1,7 @@
 <?php
+if (!ob_get_level()) {
+    ob_start();
+}
 /**
  * Denvonbay - Database Connection
  * --------------------------------

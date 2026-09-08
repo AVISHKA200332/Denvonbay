@@ -5,8 +5,9 @@
  * Comprehensive reservation inspector with status controls & overlap protection.
  */
 
-$adminTitle = 'Booking Details';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 $bookingId = (int)($_GET['id'] ?? 0);
 
@@ -75,6 +76,9 @@ $d1 = new DateTime($b['check_in']);
 $d2 = new DateTime($b['check_out']);
 $nights = $d1->diff($d2)->days;
 if ($nights <= 0) $nights = 1;
+
+$adminTitle = 'Booking Details';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

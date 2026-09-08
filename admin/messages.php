@@ -5,8 +5,9 @@
  * Manage customer inquiries submitted via the website contact form.
  */
 
-$adminTitle = 'Messages';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 // Handle POST actions (Toggle Read Status, Delete)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -51,6 +52,9 @@ $messages = $stmt->fetchAll();
 
 $countUnread = (int)$pdo->query("SELECT COUNT(*) FROM contact_messages WHERE is_read = 0")->fetchColumn();
 $countAll    = (int)$pdo->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
+
+$adminTitle = 'Messages';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

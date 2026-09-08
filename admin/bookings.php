@@ -5,8 +5,9 @@
  * Filter, search, and manage guest reservations with double-booking prevention.
  */
 
-$adminTitle = 'Bookings';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 // Handle POST actions (Update Status, Delete)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -100,6 +101,9 @@ $countConfirmed = (int)$pdo->query("SELECT COUNT(*) FROM bookings WHERE status =
 $countCompleted = (int)$pdo->query("SELECT COUNT(*) FROM bookings WHERE status = 'completed'")->fetchColumn();
 $countCancelled = (int)$pdo->query("SELECT COUNT(*) FROM bookings WHERE status = 'cancelled'")->fetchColumn();
 $countAll       = (int)$pdo->query("SELECT COUNT(*) FROM bookings")->fetchColumn();
+
+$adminTitle = 'Bookings';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

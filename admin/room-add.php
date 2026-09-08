@@ -5,8 +5,9 @@
  * Create a new room with image upload and live website synchronization.
  */
 
-$adminTitle = 'Add New Room';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 $errors = [];
 
@@ -90,6 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$adminTitle = 'Add New Room';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">

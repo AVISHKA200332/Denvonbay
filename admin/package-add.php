@@ -5,8 +5,9 @@
  * Create a new stay / surf package.
  */
 
-$adminTitle = 'Add New Package';
-require_once __DIR__ . '/admin-header.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+require_admin_login();
 
 $errors = [];
 
@@ -74,6 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$adminTitle = 'Add New Package';
+require_once __DIR__ . '/admin-header.php';
 ?>
 
 <div class="admin-page-header">
