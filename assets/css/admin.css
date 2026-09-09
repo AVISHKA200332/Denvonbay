@@ -20,7 +20,7 @@
   --admin-border-light: #F1F3F5;
   --admin-text: #1E293B;
   --admin-muted: #64748B;
-  
+
   --admin-success: #16A34A;
   --admin-success-bg: #DCFCE7;
   --admin-warning: #D97706;
@@ -37,7 +37,9 @@
   --admin-shadow-lg: 0 10px 30px rgba(11, 42, 91, 0.08);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -420,12 +422,35 @@ body.admin-body {
   font-size: 1.25rem;
 }
 
-.admin-stat-icon.blue   { background: rgba(18, 102, 241, 0.1); color: var(--admin-primary); }
-.admin-stat-icon.yellow { background: var(--admin-warning-bg); color: var(--admin-warning); }
-.admin-stat-icon.green  { background: var(--admin-success-bg); color: var(--admin-success); }
-.admin-stat-icon.purple { background: rgba(147, 51, 234, 0.1); color: #7C3AED; }
-.admin-stat-icon.cyan   { background: rgba(66, 207, 232, 0.15); color: #0891B2; }
-.admin-stat-icon.teal   { background: rgba(13, 148, 136, 0.1); color: #0D9488; }
+.admin-stat-icon.blue {
+  background: rgba(18, 102, 241, 0.1);
+  color: var(--admin-primary);
+}
+
+.admin-stat-icon.yellow {
+  background: var(--admin-warning-bg);
+  color: var(--admin-warning);
+}
+
+.admin-stat-icon.green {
+  background: var(--admin-success-bg);
+  color: var(--admin-success);
+}
+
+.admin-stat-icon.purple {
+  background: rgba(147, 51, 234, 0.1);
+  color: #7C3AED;
+}
+
+.admin-stat-icon.cyan {
+  background: rgba(66, 207, 232, 0.15);
+  color: #0891B2;
+}
+
+.admin-stat-icon.teal {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0D9488;
+}
 
 .admin-stat-num {
   font-size: 1.75rem;
@@ -589,6 +614,7 @@ body.admin-body {
   background: var(--admin-primary);
   color: #FFFFFF;
 }
+
 .admin-btn-primary:hover {
   background: var(--admin-primary-hover);
   color: #FFFFFF;
@@ -599,6 +625,7 @@ body.admin-body {
   color: var(--admin-dark);
   border-color: var(--admin-border);
 }
+
 .admin-btn-secondary:hover {
   background: var(--admin-bg);
   color: var(--admin-dark);
@@ -608,6 +635,7 @@ body.admin-body {
   background: var(--admin-danger);
   color: #FFFFFF;
 }
+
 .admin-btn-danger:hover {
   background: #B91C1C;
   color: #FFFFFF;
@@ -640,7 +668,9 @@ body.admin-body {
   margin-bottom: 8px;
 }
 
-.admin-input, .admin-select, .admin-textarea {
+.admin-input,
+.admin-select,
+.admin-textarea {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid var(--admin-border);
@@ -652,7 +682,9 @@ body.admin-body {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.admin-input:focus, .admin-select:focus, .admin-textarea:focus {
+.admin-input:focus,
+.admin-select:focus,
+.admin-textarea:focus {
   outline: none;
   border-color: var(--admin-primary);
   box-shadow: 0 0 0 3px rgba(18, 102, 241, 0.12);
@@ -763,10 +795,29 @@ body.admin-body {
   font-weight: 500;
 }
 
-.admin-alert-success { background: var(--admin-success-bg); color: #166534; border: 1px solid #BBF7D0; }
-.admin-alert-danger  { background: var(--admin-danger-bg);  color: #991B1B; border: 1px solid #FECACA; }
-.admin-alert-warning { background: var(--admin-warning-bg); color: #92400E; border: 1px solid #FDE68A; }
-.admin-alert-info    { background: var(--admin-info-bg);    color: #075985; border: 1px solid #BAE6FD; }
+.admin-alert-success {
+  background: var(--admin-success-bg);
+  color: #166534;
+  border: 1px solid #BBF7D0;
+}
+
+.admin-alert-danger {
+  background: var(--admin-danger-bg);
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.admin-alert-warning {
+  background: var(--admin-warning-bg);
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.admin-alert-info {
+  background: var(--admin-info-bg);
+  color: #075985;
+  border: 1px solid #BAE6FD;
+}
 
 /* ============================================================
    BACKDROP & RESPONSIVE BEHAVIOR
@@ -799,22 +850,28 @@ body.admin-body {
   .admin-sidebar {
     transform: translateX(-100%);
   }
+
   .admin-sidebar.open {
     transform: translateX(0);
   }
+
   .admin-main {
     margin-left: 0;
     width: 100%;
   }
+
   .admin-mobile-toggle {
     display: inline-flex;
   }
+
   .admin-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .admin-content {
     padding: 24px 16px 48px;
   }
+
   .admin-topbar {
     padding: 0 16px;
   }
@@ -824,6 +881,7 @@ body.admin-body {
   .admin-stats-grid {
     grid-template-columns: 1fr;
   }
+
   .admin-quick-link {
     display: none;
   }

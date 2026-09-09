@@ -63,6 +63,14 @@ function get_flash() {
 }
 
 /**
+ * Redirect to a given URL and terminate execution
+ */
+function redirect($url) {
+    header('Location: ' . $url);
+    exit;
+}
+
+/**
  * Fetch all available rooms from database
  */
 function get_rooms($pdo) {

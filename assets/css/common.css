@@ -80,7 +80,9 @@
 /* ============================================================
    RESET & BASE ELEMENTS
    ============================================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -120,7 +122,12 @@ ul {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
   font-weight: var(--fw-bold);
   color: var(--navy);
@@ -146,10 +153,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Utilities */
-.text-aqua { color: var(--aqua) !important; }
-.text-navy { color: var(--navy) !important; }
-.text-white-75 { color: rgba(255, 255, 255, 0.75) !important; }
-.bg-off-white { background-color: var(--off-white) !important; }
+.text-aqua {
+  color: var(--aqua) !important;
+}
+
+.text-navy {
+  color: var(--navy) !important;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.bg-off-white {
+  background-color: var(--off-white) !important;
+}
 
 /* ============================================================
    SCROLL REVEAL ANIMATIONS
@@ -256,6 +274,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--primary-blue);
   box-shadow: var(--shadow-blue);
 }
+
 .btn-hero-primary:hover {
   background: var(--brand-blue);
   border-color: var(--brand-blue);
@@ -269,6 +288,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--navy);
   border-color: var(--navy);
 }
+
 .btn-hero-secondary:hover {
   background: var(--navy);
   color: var(--white);
@@ -283,6 +303,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fs-sm);
   border-radius: var(--radius-full);
 }
+
 .btn-book:hover {
   background: var(--brand-blue);
   border-color: var(--brand-blue);
@@ -298,6 +319,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 14px 36px;
   font-size: var(--fs-base);
 }
+
 .btn-view-all:hover {
   background: var(--primary-blue);
   color: var(--white);
@@ -313,6 +335,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
 }
+
 .btn-cta-primary:hover {
   background: var(--aqua);
   border-color: var(--aqua);
@@ -328,6 +351,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px 36px;
   font-size: var(--fs-md);
 }
+
 .btn-cta-whatsapp:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--white);
@@ -346,6 +370,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
 }
+
 .btn-book-footer:hover {
   background: var(--white);
   border-color: var(--white);
@@ -1018,13 +1043,16 @@ body.nav-open {
     padding: 0 20px;
     gap: 12px;
   }
+
   .desktop-nav .nav-list {
     gap: 2px;
   }
+
   .desktop-nav .nav-link {
     padding: 8px 8px;
     font-size: 0.875rem;
   }
+
   .header-book-btn {
     padding: 10px 18px;
     font-size: 0.8125rem;
@@ -1035,22 +1063,28 @@ body.nav-open {
   .desktop-nav {
     display: none;
   }
+
   .menu-toggle {
     display: inline-flex;
   }
+
   .header-container {
     height: 72px;
     padding: 0 20px;
   }
+
   .site-header.scrolled .header-container {
     height: 64px;
   }
+
   .site-logo-img {
     height: 44px;
   }
+
   .site-header.scrolled .site-logo-img {
     height: 38px;
   }
+
   .header-book-btn {
     display: none;
   }
@@ -1060,14 +1094,17 @@ body.nav-open {
   .header-container {
     padding: 0 16px;
   }
+
   .footer-main {
     padding: 56px 0 40px;
   }
+
   .footer-bottom-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
+
   .page-hero {
     padding: 56px 0 48px;
   }
