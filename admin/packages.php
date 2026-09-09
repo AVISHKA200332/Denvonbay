@@ -84,12 +84,9 @@ require_once __DIR__ . '/admin-header.php';
                     <?php foreach ($packages as $p): ?>
                         <tr>
                             <td>
-                                <div class="d-flex align-items-center gap-2">
-                                    <i class="<?= e($p['icon'] ?: 'bi-sun') ?> text-primary fs-5"></i>
-                                    <div>
-                                        <div class="fw-bold text-dark fs-6"><?= e($p['title']) ?></div>
-                                        <div class="text-muted small">Slug: <code><?= e($p['slug']) ?></code></div>
-                                    </div>
+                                <div>
+                                    <div class="fw-bold text-dark fs-6"><?= e($p['title']) ?></div>
+                                    <div class="text-muted small">Slug: <code><?= e($p['slug']) ?></code></div>
                                 </div>
                             </td>
                             <td><?= e($p['duration']) ?></td>

@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duration    = sanitize($_POST['duration'] ?? '');
     $price       = (float)($_POST['price'] ?? 0);
     $badge       = sanitize($_POST['badge'] ?? '');
-    $icon        = sanitize($_POST['icon'] ?? 'bi-sun');
     $features    = trim($_POST['features'] ?? '');
     $isActive    = isset($_POST['is_active']) ? 1 : 0;
 
@@ -77,7 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     duration = ?,
                     price = ?,
                     badge = ?,
-                    icon = ?,
                     features = ?,
                     is_active = ?
                 WHERE id = ?
@@ -89,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $duration,
                 $price,
                 $badge ?: null,
-                $icon,
                 $features,
                 $isActive,
                 $packageId
@@ -165,31 +162,24 @@ require_once __DIR__ . '/admin-header.php';
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="admin-form-group">
                     <label class="admin-label">Duration *</label>
                     <input type="text" name="duration" class="admin-input" value="<?= e($_POST['duration'] ?? $package['duration']) ?>" required>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="admin-form-group">
                     <label class="admin-label">Total Price (USD) *</label>
                     <input type="number" step="0.01" min="1" name="price" class="admin-input" value="<?= e($_POST['price'] ?? $package['price']) ?>" required>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="admin-form-group">
                     <label class="admin-label">Badge (optional)</label>
                     <input type="text" name="badge" class="admin-input" placeholder="e.g., Most Booked" value="<?= e($_POST['badge'] ?? $package['badge']) ?>">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="admin-form-group">
-                    <label class="admin-label">Bootstrap Icon</label>
-                    <input type="text" name="icon" class="admin-input" value="<?= e($_POST['icon'] ?? $package['icon']) ?>">
                 </div>
             </div>
 
