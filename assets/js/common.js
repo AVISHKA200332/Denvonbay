@@ -2,36 +2,63 @@
  * Denvonbay - Common JavaScript
  * -----------------------------
  * Shared interactive behavior across all pages:
- *   - Navbar scroll shadow
+ *   - Smart sticky header with mobile tap protection (hide on deliberate scroll down, reveal on scroll up)
  *   - Scroll reveal animations (IntersectionObserver)
  *   - Smooth anchor scrolling
- *   - Mobile menu click-outside to close
+ *   - Mobile navigation drawer toggle with body scroll lock
  */
 
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   /* ============================================================
-     1. SMART STICKY HEADER (HIDE ON SCROLL DOWN, SHOW ON SCROLL UP)
+     1. SMART STICKY HEADER WITH MOBILE INTERACTION PROTECTION
      ============================================================ */
   const siteHeader = document.getElementById('site-header');
-  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+  let lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
   let isTicking = false;
-  const scrollThreshold = 8;
+  let headerInteractionLockUntil = 0;
+
+  // Temporarily lock header visible during/after user interactions
+  function lockHeaderVisible(durationMs) {
+    headerInteractionLockUntil = Date.now() + (durationMs || 1000);
+    if (siteHeader) {
+      siteHeader.classList.remove('header-hidden');
+      siteHeader.classList.add('header-locked');
+      setTimeout(function () {
+        if (Date.now() >= headerInteractionLockUntil && siteHeader) {
+          siteHeader.classList.remove('header-locked');
+        }
+      }, durationMs || 1000);
+    }
+  }
 
   function handleSmartHeader() {
     if (!siteHeader) return;
 
-    // Keep header visible if mobile drawer is currently open
-    const mobileNavEl = document.getElementById('mobileNav');
-    if (mobileNavEl && mobileNavEl.classList.contains('is-open')) {
+    // Never hide header if mobile drawer is currently open or recently interacted with
+    const isMobileNavOpen = (mobileNav && mobileNav.classList.contains('is-open')) ||
+                            document.body.classList.contains('nav-open');
+
+    if (isMobileNavOpen || Date.now() < headerInteractionLockUntil) {
       siteHeader.classList.remove('header-hidden');
+      lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
       isTicking = false;
       return;
     }
 
     const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
     const scrollDelta = currentScrollY - lastScrollY;
+
+    // Mobile screens need a much larger scroll delta threshold so taps and touch-drifts never trigger hide
+    const isMobile = window.innerWidth < 992;
+    const scrollThreshold = isMobile ? 26 : 10;
+    const minScrollDepth = isMobile ? 120 : 80;
 
     if (currentScrollY <= 20) {
       // At the top of page: restore initial un-scrolled appearance
@@ -41,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
       siteHeader.classList.add('scrolled');
 
       // Scrolling DOWN past header height -> hide header
-      if (scrollDelta > scrollThreshold && currentScrollY > 80) {
+      if (scrollDelta > scrollThreshold && currentScrollY > minScrollDepth) {
         siteHeader.classList.add('header-hidden');
       }
       // Scrolling UP -> reveal header smoothly
@@ -60,6 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
       isTicking = true;
     }
   }, { passive: true });
+
+  // Keep header solidly visible whenever user touches, clicks, or interacts with it
+  if (siteHeader) {
+    ['pointerdown', 'touchstart', 'mousedown', 'click'].forEach(function (evt) {
+      siteHeader.addEventListener(evt, function () {
+        lockHeaderVisible(1000);
+      }, { passive: true });
+    });
+  }
 
   handleSmartHeader();
 
@@ -119,13 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ============================================================
      4. MOBILE NAVIGATION DRAWER
      ============================================================ */
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-
   function openMobileNav() {
     if (!mobileNav || !menuToggle) return;
+    lockHeaderVisible(1200);
     menuToggle.classList.add('is-active');
     menuToggle.setAttribute('aria-expanded', 'true');
     mobileNav.classList.add('is-open');
@@ -139,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function closeMobileNav() {
     if (!mobileNav || !menuToggle) return;
+    lockHeaderVisible(1200);
     menuToggle.classList.remove('is-active');
     menuToggle.setAttribute('aria-expanded', 'false');
     mobileNav.classList.remove('is-open');
@@ -148,10 +181,12 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileNavBackdrop.setAttribute('aria-hidden', 'true');
     }
     document.body.classList.remove('nav-open');
+    lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop || 0);
   }
 
   function toggleMobileNav() {
     if (!mobileNav) return;
+    lockHeaderVisible(1200);
     const isOpen = mobileNav.classList.contains('is-open');
     if (isOpen) {
       closeMobileNav();
@@ -161,6 +196,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (menuToggle) {
+    // Touch/pointer protection on the hamburger toggle button
+    ['pointerdown', 'touchstart'].forEach(function (evt) {
+      menuToggle.addEventListener(evt, function () {
+        lockHeaderVisible(1200);
+      }, { passive: true });
+    });
+
     menuToggle.addEventListener('click', function (e) {
       e.stopPropagation();
       toggleMobileNav();

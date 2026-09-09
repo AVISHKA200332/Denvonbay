@@ -379,6 +379,18 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: none;
 }
 
+/* Safety override: keep header visible when drawer is active or locked */
+body.nav-open .site-header,
+.site-header.header-locked {
+  transform: translateY(0) !important;
+}
+
+/* Lock body scrolling when mobile drawer is open */
+body.nav-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -544,6 +556,9 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   outline: none;
   transition: background-color var(--transition-fast);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .menu-toggle:hover {

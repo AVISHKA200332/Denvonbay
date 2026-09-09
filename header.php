@@ -58,78 +58,78 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
         </div>
 
     </div>
-
-    <!-- Mobile Navigation Backdrop Overlay -->
-    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-
-    <!-- Mobile Navigation Drawer -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-        <div class="mobile-nav-header">
-            <a href="index.php" class="mobile-nav-logo" aria-label="Denvonbay Home">
-                <img src="assets/images/logo/PrimaryLogo.png" alt="Denvonbay" class="mobile-logo-img">
-            </a>
-            <button class="mobile-close-btn" id="mobileCloseBtn" type="button" aria-label="Close navigation">
-                <i class="bi bi-x-lg"></i>
-            </button>
-        </div>
-
-        <div class="mobile-nav-body">
-            <ul class="mobile-nav-list">
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'index' || $currentPage === '') ? 'active' : '' ?>" href="index.php">
-                        <span>Home</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'about') ? 'active' : '' ?>" href="about.php">
-                        <span>About</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'rooms' || $currentPage === 'room-details') ? 'active' : '' ?>" href="rooms.php">
-                        <span>Rooms</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'packages') ? 'active' : '' ?>" href="packages.php">
-                        <span>Packages</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'explore') ? 'active' : '' ?>" href="explore.php">
-                        <span>Explore</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'amenities') ? 'active' : '' ?>" href="amenities.php">
-                        <span>Amenities</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'faq') ? 'active' : '' ?>" href="faq.php">
-                        <span>FAQ</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="mobile-nav-link <?= ($currentPage === 'contact') ? 'active' : '' ?>" href="contact.php">
-                        <span>Contact</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="mobile-nav-footer">
-                <a href="booking.php" class="mobile-book-btn">
-                    <i class="bi bi-calendar2-check me-2"></i>Book Your Stay
-                </a>
-            </div>
-        </div>
-    </nav>
 </header>
+
+<!-- Mobile Navigation Backdrop Overlay -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-nav-header">
+        <a href="index.php" class="mobile-nav-logo" aria-label="Denvonbay Home">
+            <img src="assets/images/logo/PrimaryLogo.png" alt="Denvonbay" class="mobile-logo-img">
+        </a>
+        <button class="mobile-close-btn" id="mobileCloseBtn" type="button" aria-label="Close navigation">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav-body">
+        <ul class="mobile-nav-list">
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'index' || $currentPage === '') ? 'active' : '' ?>" href="index.php">
+                    <span>Home</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'about') ? 'active' : '' ?>" href="about.php">
+                    <span>About</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'rooms' || $currentPage === 'room-details') ? 'active' : '' ?>" href="rooms.php">
+                    <span>Rooms</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'packages') ? 'active' : '' ?>" href="packages.php">
+                    <span>Packages</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'explore') ? 'active' : '' ?>" href="explore.php">
+                    <span>Explore</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'amenities') ? 'active' : '' ?>" href="amenities.php">
+                    <span>Amenities</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'faq') ? 'active' : '' ?>" href="faq.php">
+                    <span>FAQ</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="mobile-nav-link <?= ($currentPage === 'contact') ? 'active' : '' ?>" href="contact.php">
+                    <span>Contact</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+
+        <div class="mobile-nav-footer">
+            <a href="booking.php" class="mobile-book-btn">
+                <i class="bi bi-calendar2-check me-2"></i>Book Your Stay
+            </a>
+        </div>
+    </div>
+</nav>
