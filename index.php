@@ -388,17 +388,20 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
                 $isHighlight = ($pIdx === 1);
                 $pCardClass = $isHighlight ? "pkg-card pkg-card--highlight" : "pkg-card";
                 $pBtnClass = $isHighlight ? "btn btn-pkg-primary" : "btn btn-pkg";
-                $icon = $icons[$pIdx % count($icons)];
+                $icon = !empty($fPkg['icon']) ? $fPkg['icon'] : $icons[$pIdx % count($icons)];
+                $pkgTitle = $fPkg['title'] ?? $fPkg['name'] ?? '';
+                $pkgDesc = $fPkg['subtitle'] ?? $fPkg['description'] ?? '';
+                $pkgBadge = !empty($fPkg['badge']) ? $fPkg['badge'] : ($isHighlight ? 'Most Booked' : null);
             ?>
               <article class="<?= $pCardClass ?>" data-reveal="up" data-reveal-delay="<?= $pDelay ?>">
-                <?php if ($isHighlight): ?>
-                  <div class="pkg-card-popular-badge">Most Booked</div>
+                <?php if ($pkgBadge): ?>
+                  <div class="pkg-card-popular-badge"><?= e($pkgBadge) ?></div>
                 <?php endif; ?>
-                <div class="pkg-card-icon"><i class="bi <?= $icon ?>"></i></div>
-                <h3 class="pkg-card-title"><?= e($fPkg['name']) ?></h3>
-                <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i><?= e($fPkg['duration']) ?></p>
-                <p class="pkg-card-desc"><?= e($fPkg['description']) ?></p>
-                <a href="packages.php#<?= e($fPkg['slug']) ?>" class="<?= $pBtnClass ?>">Explore Package</a>
+                <div class="pkg-card-icon"><i class="bi <?= e($icon) ?>"></i></div>
+                <h3 class="pkg-card-title"><?= e($pkgTitle) ?></h3>
+                <p class="pkg-card-duration"><i class="bi bi-clock me-1"></i><?= e($fPkg['duration'] ?? '') ?></p>
+                <p class="pkg-card-desc"><?= e($pkgDesc) ?></p>
+                <a href="packages.php#<?= e($fPkg['slug'] ?? '') ?>" class="<?= $pBtnClass ?>">Explore Package</a>
               </article>
             <?php endforeach; ?>
           <?php else: ?>
