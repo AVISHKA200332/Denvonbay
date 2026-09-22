@@ -93,9 +93,9 @@ if (empty($packages)) {
 <?php include 'header.php'; ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero" style="background-image: url('assets/images/explore/White_spa_slippers_on_beach_202607210209.jpg');">
     <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-calendar2-check"></i> Stay Packages</span>
+        <span class="page-hero-badge"><i class="bi bi-calendar2-check" aria-hidden="true"></i> Stay Packages</span>
         <h1 class="page-hero-title">Stay Your Way</h1>
         <p class="page-hero-subtitle">Curated packages designed for surf seekers, weekend travelers, and slow-travel wanderers.</p>
     </div>

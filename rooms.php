@@ -111,9 +111,9 @@ if (empty($rooms)) {
 <?php include 'header.php'; ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero" style="background-image: url('assets/images/explore/Friends_walking_on_beach_202607210209.jpg');">
     <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-house-door"></i> Accommodations</span>
+        <span class="page-hero-badge"><i class="bi bi-house-door" aria-hidden="true"></i> Accommodations</span>
         <h1 class="page-hero-title">Our Coastal Rooms</h1>
         <p class="page-hero-subtitle">Five unique spaces tailored for rest, coastal breezes, and slow mornings.</p>
     </div>

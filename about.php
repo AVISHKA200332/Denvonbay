@@ -42,9 +42,9 @@ $pageDescription = 'Learn the story behind Denvonbay, our relaxed 5-room coastal
 <?php include 'header.php'; ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero" style="background-image: url('assets/images/explore/Woman_practicing_yoga_on_rooftop_202607210327.jpg');">
     <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-water"></i> Our Story</span>
+        <span class="page-hero-badge"><i class="bi bi-water" aria-hidden="true"></i> Our Story</span>
         <h1 class="page-hero-title">About Denvonbay</h1>
         <p class="page-hero-subtitle">A calm, personal coastal retreat created for surfers, wanderers, and sun-seekers.</p>
     </div>

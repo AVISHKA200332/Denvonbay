@@ -1,56 +1,163 @@
 /**
- * Denvonbay - FAQ Page Styles
+ * Denvonbay - FAQ Page Premium Styles
  */
 
+/* ============================================================
+   FAQ PAGE SECTION
+   ============================================================ */
 .faq-page-section {
   padding: var(--section-py) 0;
-  background-color: var(--off-white);
+  background: var(--warm-white);
 }
 
+/* ============================================================
+   FAQ ACCORDION CARD
+   ============================================================ */
 .faq-card {
   background: var(--white);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-grey);
-  box-shadow: var(--shadow-sm);
-  padding: 28px 32px;
-  margin-bottom: 20px;
-  transition: box-shadow var(--transition-base);
+  box-shadow: var(--shadow-xs);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow var(--transition-smooth), border-color var(--transition-base);
 }
 
 .faq-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(18, 102, 241, 0.2);
+}
+
+.faq-card.is-open {
   box-shadow: var(--shadow-md);
+  border-color: rgba(18, 102, 241, 0.25);
 }
 
+/* Question toggle button */
 .faq-question {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-bold);
-  color: var(--navy);
-  margin-bottom: 12px;
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 32px;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--dark-text);
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  user-select: none;
+  transition: color var(--transition-base);
 }
 
-.faq-question i {
+.faq-question:hover {
   color: var(--primary-blue);
-  font-size: 1.25rem;
-  margin-top: 2px;
+}
+
+.faq-card.is-open .faq-question {
+  color: var(--primary-blue);
+  border-bottom: 1px solid var(--border-grey);
+}
+
+.faq-question-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(18, 102, 241, 0.07);
+  border: 1.5px solid rgba(18, 102, 241, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  transition: all var(--transition-smooth);
+}
+
+.faq-question-icon-wrap i {
+  font-size: 1rem;
+  color: var(--primary-blue);
+  transition: transform var(--transition-smooth);
+}
+
+.faq-card.is-open .faq-question-icon-wrap {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.faq-card.is-open .faq-question-icon-wrap i {
+  color: var(--white);
+  transform: rotate(45deg);
+}
+
+/* Answer body */
+.faq-answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-card.is-open .faq-answer-wrap {
+  max-height: 600px;
 }
 
 .faq-answer {
-  font-size: var(--fs-sm);
-  color: var(--text-grey);
-  line-height: 1.8;
+  font-size: var(--fs-base);
+  color: var(--muted-text);
+  line-height: 1.85;
   margin: 0;
-  padding-left: 32px;
+  padding: 22px 32px 28px 32px;
 }
 
+/* ============================================================
+   FAQ CONTACT CARD
+   ============================================================ */
 .faq-contact-card {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 60%, #0D4BAF 100%);
   color: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 40px;
+  border-radius: var(--radius-2xl);
+  padding: 56px 64px;
   text-align: center;
-  margin-top: 48px;
+  margin-top: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-contact-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(66, 207, 232, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.faq-contact-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 767.98px) {
+  .faq-question {
+    padding: 20px 24px;
+    font-size: var(--fs-base);
+  }
+
+  .faq-answer {
+    padding: 16px 24px 24px;
+  }
+
+  .faq-contact-card {
+    padding: 40px 28px;
+    border-radius: var(--radius-xl);
+    margin-top: 40px;
+  }
 }

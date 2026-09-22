@@ -86,26 +86,35 @@ $faqs = [
     <section class="faq-page-section">
         <div class="container" style="max-width: 860px;">
 
-            <?php foreach ($faqs as $faq): ?>
-                <article class="faq-card" data-reveal="up">
-                    <h2 class="faq-question">
-                        <i class="bi bi-question-circle-fill"></i>
+            <?php foreach ($faqs as $faqIdx => $faq): ?>
+                <article class="faq-card" data-reveal="up" data-reveal-delay="<?= $faqIdx * 60 ?>">
+                    <button class="faq-question" type="button"
+                            aria-expanded="false"
+                            aria-controls="faq-answer-<?= $faqIdx ?>">
                         <span><?= e($faq['q']) ?></span>
-                    </h2>
-                    <p class="faq-answer"><?= e($faq['a']) ?></p>
+                        <span class="faq-question-icon-wrap" aria-hidden="true">
+                            <i class="bi bi-plus-lg"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-wrap" id="faq-answer-<?= $faqIdx ?>" role="region">
+                        <p class="faq-answer"><?= e($faq['a']) ?></p>
+                    </div>
                 </article>
             <?php endforeach; ?>
 
             <div class="faq-contact-card" data-reveal="up">
-                <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">Still Have Questions?</h3>
-                <p style="opacity: 0.85; margin-bottom: 24px; font-size: 0.95rem;">
-                    We are happy to assist with your itinerary, special requests, or transport.
-                </p>
-                <div class="d-flex justify-content-center gap-3 flex-wrap">
-                    <a href="contact.php" class="btn btn-cta-primary">Contact Us</a>
-                    <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="btn btn-cta-whatsapp">
-                        <i class="bi bi-whatsapp me-2"></i>WhatsApp Us
-                    </a>
+                <div style="position: relative; z-index: 1;">
+                    <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--aqua); margin-bottom: 14px;">Still Have Questions?</p>
+                    <h3 style="font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -0.03em;">We Are Here to Help.</h3>
+                    <p style="color: rgba(255,255,255,0.72); margin-bottom: 32px; font-size: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.75;">
+                        We are happy to assist with your itinerary, special requests, or transport.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="contact.php" class="btn btn-cta-primary" id="faqContactBtn">Contact Us</a>
+                        <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="btn btn-cta-whatsapp" id="faqWhatsappBtn">
+                            <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>WhatsApp Us
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -120,6 +129,34 @@ $faqs = [
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Common JS -->
 <script src="assets/js/common.js"></script>
+
+<!-- FAQ Accordion -->
+<script>
+(function () {
+  'use strict';
+  var faqCards = document.querySelectorAll('.faq-card');
+  faqCards.forEach(function (card) {
+    var btn    = card.querySelector('.faq-question');
+    var wrap   = card.querySelector('.faq-answer-wrap');
+    if (!btn || !wrap) return;
+
+    btn.addEventListener('click', function () {
+      var isOpen = card.classList.contains('is-open');
+      // Close all
+      faqCards.forEach(function (c) {
+        c.classList.remove('is-open');
+        var b = c.querySelector('.faq-question');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        card.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

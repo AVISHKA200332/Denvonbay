@@ -42,10 +42,10 @@ $pageDescription = 'Your insider guide to Hiriketiya Beach, surfing breaks, hidd
 <?php include 'header.php'; ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero" style="background-image: url('assets/images/explore/Lady_surfing_on_beach_2K_202607061446.jpg');">
     <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-compass"></i> Local Guide</span>
-        <h1 class="page-hero-title">Explore Hiriketiya & The South Coast</h1>
+        <span class="page-hero-badge"><i class="bi bi-compass" aria-hidden="true"></i> Local Guide</span>
+        <h1 class="page-hero-title">Explore Hiriketiya &amp; The South Coast</h1>
         <p class="page-hero-subtitle">World-class waves, serene coastal walks, vibrant beach cafes, and slow island life.</p>
     </div>
 </section>

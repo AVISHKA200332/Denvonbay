@@ -51,9 +51,9 @@ $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
 <?php include 'header.php'; ?>
 
 <!-- Page Hero -->
-<section class="page-hero">
+<section class="page-hero" style="background-image: url('assets/images/explore/Tote_bag_with_branding_202607210209.jpg');">
     <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-chat-dots"></i> Get In Touch</span>
+        <span class="page-hero-badge"><i class="bi bi-chat-dots" aria-hidden="true"></i> Get In Touch</span>
         <h1 class="page-hero-title">Contact Denvonbay</h1>
         <p class="page-hero-subtitle">We are here to help make your stay in Hiriketiya seamless and memorable.</p>
     </div>
