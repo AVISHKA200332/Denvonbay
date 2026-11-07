@@ -110,19 +110,16 @@ if (empty($rooms)) {
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero" style="background-image: url('assets/images/explore/Friends_walking_on_beach_202607210209.jpg');">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-house-door" aria-hidden="true"></i> Accommodations</span>
-        <h1 class="page-hero-title">Our Coastal Rooms</h1>
-        <p class="page-hero-subtitle">Five unique spaces tailored for rest, coastal breezes, and slow mornings.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="rooms-list-section">
         <div class="container">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <span class="section-eyebrow-dark"><i class="bi bi-house-door me-1"></i>Accommodations</span>
+                <h1 class="section-heading-dark">Our Coastal Rooms</h1>
+                <p class="section-subtext-dark">Five unique spaces tailored for rest, coastal breezes, and slow mornings in Hiriketiya.</p>
+            </div>
 
             <?php foreach ($rooms as $index => $room): ?>
                 <article class="room-full-card" id="<?= e($room['slug']) ?>" data-reveal="up">

@@ -41,15 +41,6 @@ $pageDescription = 'Learn the story behind Denvonbay, our relaxed 5-room coastal
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero" style="background-image: url('assets/images/explore/Woman_practicing_yoga_on_rooftop_202607210327.jpg');">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-water" aria-hidden="true"></i> Our Story</span>
-        <h1 class="page-hero-title">About Denvonbay</h1>
-        <p class="page-hero-subtitle">A calm, personal coastal retreat created for surfers, wanderers, and sun-seekers.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <!-- Intro Story Section -->
@@ -71,8 +62,8 @@ $pageDescription = 'Learn the story behind Denvonbay, our relaxed 5-room coastal
                 </div>
                 <div class="col-lg-6" data-reveal="right">
                     <div class="about-content">
-                        <span class="section-eyebrow-dark">Slow Living By The Ocean</span>
-                        <h2 class="section-heading-dark">Born from a Love for Sri Lanka's South Coast.</h2>
+                        <span class="section-eyebrow-dark"><i class="bi bi-water me-1"></i>Our Story &middot; About Denvonbay</span>
+                        <h1 class="section-heading-dark">Born from a Love for Sri Lanka's South Coast.</h1>
                         <p class="about-lead">
                             Denvonbay was created with one simple conviction: traveling should feel restful, personal, and grounded in its surroundings.
                         </p>

@@ -160,8 +160,8 @@ VALUES
 ('site_name', 'Denvonbay'),
 ('site_tagline', 'Your Relaxed Stay in Hiriketiya, Sri Lanka'),
 ('contact_email', 'hello@denvonbay.com'),
-('contact_phone', '+94 77 123 4567'),
-('contact_whatsapp', '94771234567'),
+('contact_phone', '+9477 301 1436'),
+('contact_whatsapp', '94773011436'),
 ('contact_location', 'Hiriketiya, Dickwella, Sri Lanka'),
 ('instagram_url', 'https://instagram.com'),
 ('facebook_url', 'https://facebook.com')

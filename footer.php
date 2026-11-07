@@ -1,7 +1,7 @@
 <?php
 // Dynamic footer settings if functions & pdo are loaded
-$f_phone = isset($pdo) ? get_setting($pdo, 'contact_phone', '+94 77 123 4567') : '+94 77 123 4567';
-$f_wa = isset($pdo) ? get_setting($pdo, 'whatsapp_number', '94771234567') : '94771234567';
+$f_phone = isset($pdo) ? get_setting($pdo, 'contact_phone', '+9477 301 1436') : '+9477 301 1436';
+$f_wa = isset($pdo) ? get_setting($pdo, 'whatsapp_number', '94773011436') : '94773011436';
 $f_email = isset($pdo) ? get_setting($pdo, 'contact_email', 'hello@denvonbay.com') : 'hello@denvonbay.com';
 $f_address = isset($pdo) ? get_setting($pdo, 'hotel_address', 'Hiriketiya, Dickwella, Sri Lanka') : 'Hiriketiya, Dickwella, Sri Lanka';
 $f_insta = isset($pdo) ? get_setting($pdo, 'instagram_url', 'https://instagram.com') : 'https://instagram.com';

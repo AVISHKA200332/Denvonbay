@@ -13,8 +13,8 @@ $pageDescription = 'Get in touch with Denvonbay. Located in Hiriketiya, Sri Lank
 
 $flash = get_flash();
 $settings = get_site_settings($pdo);
-$c_phone = $settings['contact_phone'] ?? '+94 77 123 4567';
-$c_wa = $settings['whatsapp_number'] ?? '94771234567';
+$c_phone = $settings['contact_phone'] ?? '+9477 301 1436';
+$c_wa = $settings['whatsapp_number'] ?? '94773011436';
 $c_email = $settings['contact_email'] ?? 'hello@denvonbay.com';
 $c_address = $settings['hotel_address'] ?? 'Hiriketiya, Dickwella, Southern Province, Sri Lanka';
 $c_insta = $settings['instagram_url'] ?? 'https://instagram.com';
@@ -50,19 +50,16 @@ $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero" style="background-image: url('assets/images/explore/Tote_bag_with_branding_202607210209.jpg');">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-chat-dots" aria-hidden="true"></i> Get In Touch</span>
-        <h1 class="page-hero-title">Contact Denvonbay</h1>
-        <p class="page-hero-subtitle">We are here to help make your stay in Hiriketiya seamless and memorable.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="contact-page-section">
         <div class="container">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <span class="section-eyebrow-dark"><i class="bi bi-chat-dots me-1"></i>Get In Touch</span>
+                <h1 class="section-heading-dark">Contact Denvonbay</h1>
+                <p class="section-subtext-dark">We are here to help make your stay in Hiriketiya seamless and memorable.</p>
+            </div>
 
             <?php if ($flash): ?>
                 <div class="alert-flash alert-<?= e($flash['type']) ?> mb-4" data-reveal="up">

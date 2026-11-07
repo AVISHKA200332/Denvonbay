@@ -12,8 +12,8 @@ define('SITE_TAGLINE', 'Your Relaxed Stay in Hiriketiya, Sri Lanka');
 
 // Contact Details
 define('CONTACT_EMAIL', 'hello@denvonbay.com');
-define('CONTACT_PHONE', '+94 77 123 4567');
-define('CONTACT_WHATSAPP', '94771234567');
+define('CONTACT_PHONE', '+9477 301 1436');
+define('CONTACT_WHATSAPP', '94773011436');
 define('CONTACT_LOCATION', 'Hiriketiya, Dickwella, Sri Lanka');
 
 // Currency

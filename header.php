@@ -27,7 +27,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
                     <a class="nav-link <?= ($currentPage === 'packages') ? 'active' : '' ?>" href="packages.php">Packages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage === 'explore') ? 'active' : '' ?>" href="explore.php">Explore</a>
+                    <a class="nav-link <?= ($currentPage === 'explore' || $currentPage === 'destination-details') ? 'active' : '' ?>" href="explore.php">Explore</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= ($currentPage === 'amenities') ? 'active' : '' ?>" href="amenities.php">Amenities</a>
@@ -101,7 +101,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
                 </a>
             </li>
             <li>
-                <a class="mobile-nav-link <?= ($currentPage === 'explore') ? 'active' : '' ?>" href="explore.php">
+                <a class="mobile-nav-link <?= ($currentPage === 'explore' || $currentPage === 'destination-details') ? 'active' : '' ?>" href="explore.php">
                     <span>Explore</span>
                     <i class="bi bi-chevron-right"></i>
                 </a>

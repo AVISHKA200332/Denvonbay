@@ -57,19 +57,16 @@ $flash = get_flash();
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-calendar2-check"></i> Direct Reservation</span>
-        <h1 class="page-hero-title">Book Your Stay at Denvonbay</h1>
-        <p class="page-hero-subtitle">Secure your room near Hiriketiya beach. Simple, fast, and transparent.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="booking-page-section">
         <div class="container">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <span class="section-eyebrow-dark"><i class="bi bi-calendar2-check me-1"></i>Direct Reservation</span>
+                <h1 class="section-heading-dark">Book Your Stay at Denvonbay</h1>
+                <p class="section-subtext-dark">Secure your room near Hiriketiya beach. Simple, fast, and transparent.</p>
+            </div>
 
             <?php if ($flash): ?>
                 <div class="alert-flash alert-<?= e($flash['type']) ?> mb-4" data-reveal="up">

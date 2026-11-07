@@ -74,14 +74,14 @@ require_once __DIR__ . '/admin-header.php';
                         <label class="form-label fw-semibold">Contact Phone</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                            <input type="text" name="contact_phone" class="form-control" value="<?= htmlspecialchars($settings['contact_phone'] ?? '') ?>" placeholder="+94 77 123 4567">
+                            <input type="text" name="contact_phone" class="form-control" value="<?= htmlspecialchars($settings['contact_phone'] ?? '') ?>" placeholder="+9477 301 1436">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label fw-semibold">WhatsApp Number</label>
                         <div class="input-group">
                             <span class="input-group-text text-success"><i class="bi bi-whatsapp"></i></span>
-                            <input type="text" name="whatsapp_number" class="form-control" value="<?= htmlspecialchars($settings['whatsapp_number'] ?? '') ?>" placeholder="+94771234567">
+                            <input type="text" name="whatsapp_number" class="form-control" value="<?= htmlspecialchars($settings['whatsapp_number'] ?? '') ?>" placeholder="+9477 301 1436">
                         </div>
                         <div class="form-text">Include country code without spaces for instant click-to-chat.</div>
                     </div>
