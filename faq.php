@@ -72,19 +72,16 @@ $faqs = [
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-question-circle"></i> Answers</span>
-        <h1 class="page-hero-title">Frequently Asked Questions</h1>
-        <p class="page-hero-subtitle">Everything you need to know about preparing for your stay at Denvonbay.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="faq-page-section">
         <div class="container" style="max-width: 860px;">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <span class="section-eyebrow-dark"><i class="bi bi-question-circle me-1"></i>Answers</span>
+                <h1 class="section-heading-dark">Frequently Asked Questions</h1>
+                <p class="section-subtext-dark">Everything you need to know about preparing for your stay at Denvonbay.</p>
+            </div>
 
             <?php foreach ($faqs as $faq): ?>
                 <article class="faq-card" data-reveal="up">
@@ -103,7 +100,7 @@ $faqs = [
                 </p>
                 <div class="d-flex justify-content-center gap-3 flex-wrap">
                     <a href="contact.php" class="btn btn-cta-primary">Contact Us</a>
-                    <a href="https://wa.me/94771234567" target="_blank" rel="noopener" class="btn btn-cta-whatsapp">
+                    <a href="https://wa.me/94773011436" target="_blank" rel="noopener" class="btn btn-cta-whatsapp">
                         <i class="bi bi-whatsapp me-2"></i>WhatsApp Us
                     </a>
                 </div>

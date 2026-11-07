@@ -45,50 +45,13 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
 
 <main id="main-content">
 
-    <!-- ===== SECTION A: CINEMATIC EXPLORE HERO ===== -->
-    <section class="explore-hero" aria-label="Discover the beauty of Sri Lanka">
-        <div class="explore-hero-bg">
-            <img
-                src="assets/images/explore/Lady_surfing_on_beach_2K_202607061446.jpg"
-                alt="Beautiful tropical coastal scenery of Sri Lanka's southern coast"
-                loading="eager"
-                fetchpriority="high"
-            >
-        </div>
-
-        <div class="explore-hero-content container">
-            <div data-reveal="up">
-                <span class="explore-hero-badge">
-                    <i class="bi bi-compass me-2" aria-hidden="true"></i>Destination Guide
-                </span>
-                <h1 class="explore-hero-title">Discover the Beauty<br>of Sri Lanka</h1>
-                <p class="explore-hero-subtitle">From tropical beaches and hidden coastal escapes to ancient temples, wildlife adventures and misty hill-country landscapes.</p>
-                <p class="explore-hero-text">Discover unforgettable experiences across Sri Lanka, beginning with the beautiful southern coast around Denvonbay.</p>
-                <div class="explore-hero-cta">
-                    <a href="#destinations" class="btn btn-explore-hero">
-                        <i class="bi bi-map me-2" aria-hidden="true"></i>Explore Destinations
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="explore-scroll-indicator" aria-hidden="true">
-            <span>Scroll</span>
-            <div class="explore-scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION B: DESTINATION INTRODUCTION ===== -->
-    <section class="explore-intro-section" id="explore-intro" aria-label="Introduction">
+    <!-- ===== DESTINATION INTRODUCTION ===== -->
+    <section class="explore-intro-section" id="explore-intro" aria-label="Discover the beauty of Sri Lanka">
         <div class="container">
             <div class="explore-intro-inner" data-reveal="up">
-                <span class="explore-intro-eyebrow">Your Island Awaits</span>
-                <h2 class="explore-intro-heading">The Island Is Yours to Explore</h2>
-                <p class="explore-intro-text">Discover quiet beaches, remarkable natural landmarks, Sri Lankan culture and unforgettable journeys through the island. This guide features both coastal attractions close to Denvonbay and carefully selected destinations across Sri Lanka — including longer day trips and multi-day adventures for those who want to explore further.</p>
-                <div class="explore-intro-note">
-                    <i class="bi bi-info-circle me-2 text-primary" aria-hidden="true"></i>
-                    <strong>Nearby attractions</strong> such as Blue Beach Island, Turtle View Point and Dickwella Beach are easily reachable from Denvonbay. Destinations like Ella and Yala National Park are longer excursions — best planned as day trips or overnight journeys. Ask us about exploring the area.
-                </div>
+                <span class="explore-intro-eyebrow"><i class="bi bi-compass me-1" aria-hidden="true"></i>Destination Guide</span>
+                <h1 class="explore-intro-heading">Discover the Beauty of Sri Lanka</h1>
+                <p class="explore-intro-text mb-0">From tropical beaches and hidden coastal escapes to ancient temples, wildlife adventures and misty hill-country landscapes. Discover quiet beaches, remarkable natural landmarks, Sri Lankan culture and unforgettable journeys through the island — beginning with the beautiful southern coast around Denvonbay.</p>
             </div>
         </div>
     </section>
@@ -97,20 +60,20 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
     <section class="explore-filters-section" aria-label="Filter destinations by category">
         <div class="container">
             <div class="filter-tabs" role="group" aria-label="Destination category filters" id="filterTabs">
-                <button class="filter-tab is-active" data-filter="all" aria-pressed="true">
+                <button type="button" class="filter-tab is-active" data-filter="all" aria-pressed="true">
                     <i class="bi bi-grid-3x3-gap me-1" aria-hidden="true"></i>All Destinations
                 </button>
-                <button class="filter-tab" data-filter="beaches" aria-pressed="false">
+                <button type="button" class="filter-tab" data-filter="beaches" aria-pressed="false">
                     <i class="bi bi-water me-1" aria-hidden="true"></i>Beaches &amp; Islands
                 </button>
-                <button class="filter-tab" data-filter="nature" aria-pressed="false">
+                <button type="button" class="filter-tab" data-filter="nature" aria-pressed="false">
                     <i class="bi bi-tree me-1" aria-hidden="true"></i>Nature &amp; Wildlife
                 </button>
-                <button class="filter-tab" data-filter="culture" aria-pressed="false">
+                <button type="button" class="filter-tab" data-filter="culture" aria-pressed="false">
                     <i class="bi bi-building me-1" aria-hidden="true"></i>Culture &amp; Heritage
                 </button>
-                <button class="filter-tab" data-filter="hills" aria-pressed="false">
-                    <i class="bi bi-mountains me-1" aria-hidden="true"></i>Hill Country
+                <button type="button" class="filter-tab" data-filter="hills" aria-pressed="false">
+                    <i class="bi bi-cloud-sun me-1" aria-hidden="true"></i>Hill Country
                 </button>
             </div>
         </div>
@@ -124,7 +87,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
 
                 <!-- DESTINATION 01: Blue Beach Island -->
                 <div class="dest-grid-item" data-categories="all beaches" data-reveal="up" data-reveal-delay="0">
-                    <article class="dest-card" data-dest="blue-beach" tabindex="0" role="button" aria-label="Explore Blue Beach Island">
+                    <a href="destination-details.php?slug=blue-beach" class="dest-card" aria-label="Explore Blue Beach Island">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-blue-beach-island.jpg"
@@ -138,16 +101,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Blue Beach Island</h2>
                             <p class="dest-card-desc">A hidden natural sandbar emerging from turquoise Indian Ocean waters — walk across the sandbar and explore coastal scenery.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 02: Turtle View Point -->
                 <div class="dest-grid-item" data-categories="all nature" data-reveal="up" data-reveal-delay="80">
-                    <article class="dest-card" data-dest="turtle-view" tabindex="0" role="button" aria-label="Explore Turtle View Point">
+                    <a href="destination-details.php?slug=turtle-view" class="dest-card" aria-label="Explore Turtle View Point">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-turtle-view-point.jpg"
@@ -161,16 +124,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Turtle View Point</h2>
                             <p class="dest-card-desc">A special encounter with marine life where sea turtles may be observed swimming in their natural coastal habitat.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 03: Wewurukannala Temple -->
                 <div class="dest-grid-item" data-categories="all culture" data-reveal="up" data-reveal-delay="160">
-                    <article class="dest-card" data-dest="wewurukannala" tabindex="0" role="button" aria-label="Explore Wewurukannala Temple">
+                    <a href="destination-details.php?slug=wewurukannala" class="dest-card" aria-label="Explore Wewurukannala Temple">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-wewurukannala-temple.jpg"
@@ -184,16 +147,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Wewurukannala Temple</h2>
                             <p class="dest-card-desc">Discover Sri Lanka's spiritual heritage featuring an approximately 160-foot seated Buddha statue and traditional sacred murals.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 04: Hummanaya Blow Hole -->
                 <div class="dest-grid-item" data-categories="all nature" data-reveal="up" data-reveal-delay="0">
-                    <article class="dest-card" data-dest="hummanaya" tabindex="0" role="button" aria-label="Explore Hummanaya Blow Hole">
+                    <a href="destination-details.php?slug=hummanaya" class="dest-card" aria-label="Explore Hummanaya Blow Hole">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-hummanaya-blowhole.jpg"
@@ -207,16 +170,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Hummanaya Blow Hole</h2>
                             <p class="dest-card-desc">Witness the spectacular power of the Indian Ocean as seawater erupts through a natural rock formation in a remarkable coastal display.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 05: Dickwella Beach -->
                 <div class="dest-grid-item" data-categories="all beaches" data-reveal="up" data-reveal-delay="80">
-                    <article class="dest-card" data-dest="dickwella-beach" tabindex="0" role="button" aria-label="Explore Dickwella Beach">
+                    <a href="destination-details.php?slug=dickwella-beach" class="dest-card" aria-label="Explore Dickwella Beach">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-dickwella-beach.jpg"
@@ -230,16 +193,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Dickwella Beach</h2>
                             <p class="dest-card-desc">A peaceful coastal paradise of golden sandy shores, beautiful ocean views and the relaxed, unhurried atmosphere of Sri Lanka's south coast.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 06: Rekawa Turtle Beach -->
                 <div class="dest-grid-item" data-categories="all nature" data-reveal="up" data-reveal-delay="160">
-                    <article class="dest-card" data-dest="rekawa" tabindex="0" role="button" aria-label="Explore Rekawa Turtle Beach">
+                    <a href="destination-details.php?slug=rekawa" class="dest-card" aria-label="Explore Rekawa Turtle Beach">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-rekawa-turtle-beach.jpg"
@@ -253,16 +216,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Rekawa Turtle Beach</h2>
                             <p class="dest-card-desc">Discover the world of sea turtle conservation at one of Sri Lanka's most important natural nesting beaches, guided by local experts.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 07: Ella -->
                 <div class="dest-grid-item" data-categories="all hills" data-reveal="up" data-reveal-delay="0">
-                    <article class="dest-card" data-dest="ella" tabindex="0" role="button" aria-label="Explore Ella Hill Country">
+                    <a href="destination-details.php?slug=ella" class="dest-card" aria-label="Explore Ella Hill Country">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-ella-hill-country.jpg"
@@ -276,16 +239,16 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Ella</h2>
                             <p class="dest-card-desc">Where mountains, mist and adventure meet — discover the iconic Nine Arch Bridge, scenic train journeys, tea plantations and hiking trails.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
                 <!-- DESTINATION 08: Yala National Park -->
                 <div class="dest-grid-item" data-categories="all nature" data-reveal="up" data-reveal-delay="80">
-                    <article class="dest-card" data-dest="yala" tabindex="0" role="button" aria-label="Explore Yala National Park">
+                    <a href="destination-details.php?slug=yala" class="dest-card" aria-label="Explore Yala National Park">
                         <div class="dest-card-image-wrap">
                             <img
                                 src="assets/images/explore/dest-yala-national-park.jpg"
@@ -299,11 +262,11 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                             <h2 class="dest-card-title">Yala National Park</h2>
                             <p class="dest-card-desc">An unforgettable wildlife safari excursion home to leopards, elephants, crocodiles and rich birdlife in pristine national wilderness.</p>
                             <div class="dest-card-cta">
-                                <span class="dest-card-link">Explore Destination <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                                <span class="dest-card-link">Explore Destination</span>
                                 <span class="dest-card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             </div>
                         </div>
-                    </article>
+                    </a>
                 </div>
 
             </div><!-- /destinations-grid -->
@@ -386,9 +349,60 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Common JS -->
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?v=<?= file_exists('assets/js/common.js') ? filemtime('assets/js/common.js') : '2.0' ?>"></script>
 <!-- Explore JS -->
-<script src="assets/js/explore.js"></script>
+<script src="assets/js/explore.js?v=<?= file_exists('assets/js/explore.js') ? filemtime('assets/js/explore.js') : '2.0' ?>"></script>
+
+<script>
+/* Immediate inline filter engine for 100% reliable category switching */
+(function() {
+    function initFilters() {
+        var tabs = document.querySelectorAll('.filter-tab');
+        var items = document.querySelectorAll('.dest-grid-item');
+        var empty = document.getElementById('destEmptyState');
+        if (!tabs.length || !items.length) return;
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function(e) {
+                if (e) e.preventDefault();
+                var filter = this.getAttribute('data-filter') || 'all';
+
+                tabs.forEach(function(t) {
+                    t.classList.remove('is-active');
+                    t.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('is-active');
+                this.setAttribute('aria-pressed', 'true');
+
+                var visibleCount = 0;
+                items.forEach(function(item) {
+                    var cats = (item.getAttribute('data-categories') || '').toLowerCase().split(/\s+/);
+                    var match = (filter === 'all') || (cats.indexOf(filter) !== -1);
+                    if (match) {
+                        item.style.display = 'flex';
+                        item.classList.add('is-visible');
+                        item.style.opacity = '1';
+                        item.style.transform = 'translate(0, 0)';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (empty) {
+                    empty.style.display = (visibleCount === 0) ? 'block' : 'none';
+                }
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFilters);
+    } else {
+        initFilters();
+    }
+})();
+</script>
 
 </body>
 </html>

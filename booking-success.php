@@ -88,7 +88,7 @@ $pageDescription = 'Your booking request at Denvonbay Hiriketiya has been succes
                 <a href="index.php" class="btn btn-hero-secondary">
                     <i class="bi bi-house me-1"></i> Return Home
                 </a>
-                <a href="https://wa.me/94771234567?text=<?= urlencode('Hi Denvonbay, I just placed booking reference ' . $bookingRef) ?>"
+                <a href="https://wa.me/94773011436?text=<?= urlencode('Hi Denvonbay, I just placed booking reference ' . $bookingRef) ?>"
                    target="_blank" rel="noopener" class="btn btn-hero-primary">
                     <i class="bi bi-whatsapp me-1"></i> Chat with Us
                 </a>

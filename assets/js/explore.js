@@ -155,34 +155,37 @@
   /* ============================================================
      CATEGORY FILTER SYSTEM
      ============================================================ */
-  var filterTabs = document.querySelectorAll('.filter-tab');
-  var destGridItems = document.querySelectorAll('.dest-grid-item');
-  var destEmptyState = document.getElementById('destEmptyState');
-
   function applyFilter(filter) {
     var items = document.querySelectorAll('.dest-grid-item');
     var visibleCount = 0;
 
     items.forEach(function (item) {
-      var cats = (item.dataset.categories || '').split(' ');
-      var show = (filter === 'all') || cats.indexOf(filter) !== -1;
-      item.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
+      var catsAttr = item.getAttribute('data-categories') || '';
+      var cats = catsAttr.toLowerCase().split(/\s+/);
+      var show = (filter === 'all') || (cats.indexOf(filter) !== -1);
+
+      if (show) {
+        item.style.display = 'flex';
+        item.classList.add('is-visible');
+        item.style.opacity = '1';
+        item.style.transform = 'translate(0, 0)';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
     });
 
+    var destEmptyState = document.getElementById('destEmptyState');
     if (destEmptyState) {
-      destEmptyState.style.display = visibleCount === 0 ? '' : 'none';
+      destEmptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
     }
   }
 
-    if (destEmptyState) {
-      destEmptyState.style.display = visibleCount === 0 ? '' : 'none';
-    }
-  }
-
+  var filterTabs = document.querySelectorAll('.filter-tab');
   filterTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var filter = this.dataset.filter || 'all';
+    tab.addEventListener('click', function (e) {
+      if (e) e.preventDefault();
+      var filter = this.getAttribute('data-filter') || 'all';
 
       // Update active state
       filterTabs.forEach(function (t) {
@@ -280,22 +283,6 @@
       }, 50);
     }
   }
-
-  // Open modal when card is clicked or Enter/Space pressed
-  document.querySelectorAll('.dest-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var key = this.dataset.dest;
-      if (key) openModal(key);
-    });
-
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        var key = this.dataset.dest;
-        if (key) openModal(key);
-      }
-    });
-  });
 
   // Close button
   if (modalClose) {

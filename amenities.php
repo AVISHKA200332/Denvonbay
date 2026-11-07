@@ -41,19 +41,16 @@ $pageDescription = 'Enjoy high-speed Wi-Fi, surfboard storage, outdoor tropical 
 
 <?php include 'header.php'; ?>
 
-<!-- Page Hero -->
-<section class="page-hero">
-    <div class="container">
-        <span class="page-hero-badge"><i class="bi bi-stars"></i> Amenities</span>
-        <h1 class="page-hero-title">Thoughtful Comforts</h1>
-        <p class="page-hero-subtitle">Everything you need for an easy, comfortable, and refreshing tropical holiday.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="amenities-page-section">
         <div class="container">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <span class="section-eyebrow-dark"><i class="bi bi-stars me-1"></i>Amenities</span>
+                <h1 class="section-heading-dark">Thoughtful Comforts</h1>
+                <p class="section-subtext-dark">Everything you need for an easy, comfortable, and refreshing tropical holiday.</p>
+            </div>
 
             <!-- Stay Essentials -->
             <h2 class="amenity-category-title" data-reveal="up">

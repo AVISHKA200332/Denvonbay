@@ -78,20 +78,18 @@ $pageDescription = e($room['description']);
 
 <?php include 'header.php'; ?>
 
-<section class="page-hero">
-    <div class="container">
-        <?php if (!empty($room['tag'])): ?>
-            <span class="page-hero-badge"><i class="bi bi-tag"></i> <?= e($room['tag']) ?></span>
-        <?php endif; ?>
-        <h1 class="page-hero-title"><?= e($room['name']) ?></h1>
-        <p class="page-hero-subtitle">Experience thoughtful coastal hospitality at Denvonbay.</p>
-    </div>
-</section>
-
 <main id="main-content">
 
     <section class="room-details-section">
         <div class="container">
+
+            <div class="section-header text-center mb-5" data-reveal="up">
+                <?php if (!empty($room['tag'])): ?>
+                    <span class="section-eyebrow-dark"><i class="bi bi-tag me-1"></i><?= e($room['tag']) ?></span>
+                <?php endif; ?>
+                <h1 class="section-heading-dark"><?= e($room['name']) ?></h1>
+                <p class="section-subtext-dark">Experience thoughtful coastal hospitality at Denvonbay.</p>
+            </div>
             <div class="row gy-5">
 
                 <!-- Left Column: Media & Overview -->
@@ -160,7 +158,7 @@ $pageDescription = e($room['description']);
                             <i class="bi bi-calendar-check me-2"></i> Book This Room
                         </a>
 
-                        <a href="https://wa.me/94771234567?text=<?= urlencode('Hi Denvonbay, I have an inquiry about ' . $room['name']) ?>"
+                        <a href="https://wa.me/94773011436?text=<?= urlencode('Hi Denvonbay, I have an inquiry about ' . $room['name']) ?>"
                            target="_blank" rel="noopener"
                            class="btn btn-hero-secondary w-100" style="border-radius: var(--radius-sm); padding: 12px; font-size: 0.9rem;">
                             <i class="bi bi-whatsapp me-2 text-success"></i> Inquire via WhatsApp

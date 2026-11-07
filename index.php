@@ -17,7 +17,7 @@ $flash = get_flash();
 $featuredRooms = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC LIMIT 3")->fetchAll();
 $featuredPackages = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC LIMIT 4")->fetchAll();
 $featuredReviews = get_approved_reviews($pdo, 3);
-$whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
+$whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -490,7 +490,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
       <div class="beyond-cards-grid">
 
         <!-- Blue Beach Island -->
-        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="0" aria-label="Explore Blue Beach Island — Nilwella">
+        <a href="destination-details.php?slug=blue-beach" class="beyond-card" data-reveal="up" data-reveal-delay="0" aria-label="Explore Blue Beach Island — Nilwella">
           <div class="beyond-card-image-wrap">
             <img src="assets/images/explore/dest-blue-beach-island.jpg"
                  alt="Blue Beach Island — natural sandbar and turquoise waters at Nilwella, Sri Lanka"
@@ -505,7 +505,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
         </a>
 
         <!-- Turtle View Point -->
-        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="80" aria-label="Explore Turtle View Point — Hiriketiya">
+        <a href="destination-details.php?slug=turtle-view" class="beyond-card" data-reveal="up" data-reveal-delay="80" aria-label="Explore Turtle View Point — Hiriketiya">
           <div class="beyond-card-image-wrap">
             <img src="assets/images/explore/dest-turtle-view-point.jpg"
                  alt="Turtle View Point — coastal scenery and marine turtle observation near Dickwella"
@@ -520,7 +520,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
         </a>
 
         <!-- Hummanaya Blow Hole -->
-        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="160" aria-label="Explore Hummanaya Blow Hole — Kudawella">
+        <a href="destination-details.php?slug=hummanaya" class="beyond-card" data-reveal="up" data-reveal-delay="160" aria-label="Explore Hummanaya Blow Hole — Kudawella">
           <div class="beyond-card-image-wrap">
             <img src="assets/images/explore/dest-hummanaya-blowhole.jpg"
                  alt="Hummanaya Blow Hole — powerful Indian Ocean seawater eruptions at Kudawella"
@@ -535,7 +535,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
         </a>
 
         <!-- Dickwella Beach -->
-        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="240" aria-label="Explore Dickwella Beach — Southern Province">
+        <a href="destination-details.php?slug=dickwella-beach" class="beyond-card" data-reveal="up" data-reveal-delay="240" aria-label="Explore Dickwella Beach — Southern Province">
           <div class="beyond-card-image-wrap">
             <img src="assets/images/explore/dest-dickwella-beach.jpg"
                  alt="Dickwella Beach — golden sandy shores on Sri Lanka's southern coast"
