@@ -478,6 +478,87 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94771234567');
     </div>
   </section>
 
+  <!-- ===== BEYOND THE STAY — FEATURED DESTINATIONS PREVIEW ===== -->
+  <section class="beyond-stay-section" id="beyond-the-stay" aria-label="Featured destinations to explore from Denvonbay">
+    <div class="container">
+      <div class="beyond-stay-header" data-reveal="up">
+        <span class="beyond-stay-eyebrow">Explore Sri Lanka</span>
+        <h2 class="beyond-stay-heading">Beyond the Stay</h2>
+        <p class="beyond-stay-subtext">Unforgettable places, incredible experiences, and the beauty of Sri Lanka waiting to be discovered.</p>
+      </div>
+
+      <div class="beyond-cards-grid">
+
+        <!-- Blue Beach Island -->
+        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="0" aria-label="Explore Blue Beach Island — Nilwella">
+          <div class="beyond-card-image-wrap">
+            <img src="assets/images/explore/dest-blue-beach-island.jpg"
+                 alt="Blue Beach Island — natural sandbar and turquoise waters at Nilwella, Sri Lanka"
+                 loading="lazy">
+            <div class="beyond-card-overlay"></div>
+          </div>
+          <div class="beyond-card-body">
+            <div class="beyond-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>Nilwella</div>
+            <h3 class="beyond-card-title">Blue Beach Island</h3>
+            <span class="beyond-card-cta">Discover <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></span>
+          </div>
+        </a>
+
+        <!-- Turtle View Point -->
+        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="80" aria-label="Explore Turtle View Point — Hiriketiya">
+          <div class="beyond-card-image-wrap">
+            <img src="assets/images/explore/dest-turtle-view-point.jpg"
+                 alt="Turtle View Point — coastal scenery and marine turtle observation near Dickwella"
+                 loading="lazy">
+            <div class="beyond-card-overlay"></div>
+          </div>
+          <div class="beyond-card-body">
+            <div class="beyond-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>Hiriketiya / Dickwella</div>
+            <h3 class="beyond-card-title">Turtle View Point</h3>
+            <span class="beyond-card-cta">Discover <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></span>
+          </div>
+        </a>
+
+        <!-- Hummanaya Blow Hole -->
+        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="160" aria-label="Explore Hummanaya Blow Hole — Kudawella">
+          <div class="beyond-card-image-wrap">
+            <img src="assets/images/explore/dest-hummanaya-blowhole.jpg"
+                 alt="Hummanaya Blow Hole — powerful Indian Ocean seawater eruptions at Kudawella"
+                 loading="lazy">
+            <div class="beyond-card-overlay"></div>
+          </div>
+          <div class="beyond-card-body">
+            <div class="beyond-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>Kudawella</div>
+            <h3 class="beyond-card-title">Hummanaya Blow Hole</h3>
+            <span class="beyond-card-cta">Discover <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></span>
+          </div>
+        </a>
+
+        <!-- Dickwella Beach -->
+        <a href="explore.php" class="beyond-card" data-reveal="up" data-reveal-delay="240" aria-label="Explore Dickwella Beach — Southern Province">
+          <div class="beyond-card-image-wrap">
+            <img src="assets/images/explore/dest-dickwella-beach.jpg"
+                 alt="Dickwella Beach — golden sandy shores on Sri Lanka's southern coast"
+                 loading="lazy">
+            <div class="beyond-card-overlay"></div>
+          </div>
+          <div class="beyond-card-body">
+            <div class="beyond-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i>Southern Province</div>
+            <h3 class="beyond-card-title">Dickwella Beach</h3>
+            <span class="beyond-card-cta">Discover <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="beyond-stay-footer" data-reveal="up">
+        <a href="explore.php" class="btn btn-view-all" id="discoverAllDestBtn">
+          Discover All Destinations <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== AMENITIES STRIP ===== -->
   <section class="amenities-strip" id="amenities-strip" aria-label="Denvonbay amenities">
     <div class="container">
