@@ -36,8 +36,8 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/explore.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=<?= filemtime(__DIR__ . '/assets/css/common.css') ?>">
+    <link rel="stylesheet" href="assets/css/explore.css?v=<?= filemtime(__DIR__ . '/assets/css/explore.css') ?>">
 </head>
 <body>
 
@@ -90,7 +90,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=blue-beach" class="dest-card" aria-label="Explore Blue Beach Island">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-blue-beach-island.jpg"
+                                src="assets/images/explore/dest-blue-beach-island.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-blue-beach-island.jpg') ?>"
                                 alt="Blue Beach Island — pristine natural sandbar and turquoise waters at Nilwella, Sri Lanka"
                                 loading="lazy"
                             >
@@ -114,7 +114,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=turtle-view" class="dest-card" aria-label="Explore Turtle View Point">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-turtle-view-point.jpg"
+                                src="assets/images/explore/dest-turtle-view-point.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-turtle-view-point.jpg') ?>"
                                 alt="Turtle View Point — coastal scenery and swimming sea turtles near Hiriketiya Dickwella"
                                 loading="lazy"
                             >
@@ -138,7 +138,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=wewurukannala" class="dest-card" aria-label="Explore Wewurukannala Temple">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-wewurukannala-temple.jpg"
+                                src="assets/images/explore/dest-wewurukannala-temple.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-wewurukannala-temple.jpg') ?>"
                                 alt="Wewurukannala Temple — 160-foot seated Buddha statue and sacred Buddhist artwork in Dickwella"
                                 loading="lazy"
                             >
@@ -162,7 +162,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=hummanaya" class="dest-card" aria-label="Explore Hummanaya Blow Hole">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-hummanaya-blowhole.jpg"
+                                src="assets/images/explore/dest-hummanaya-blowhole.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-hummanaya-blowhole.jpg') ?>"
                                 alt="Hummanaya Blow Hole — powerful seawater geyser eruption through rock fissure at Kudawella"
                                 loading="lazy"
                             >
@@ -186,7 +186,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=dickwella-beach" class="dest-card" aria-label="Explore Dickwella Beach">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-dickwella-beach.jpg"
+                                src="assets/images/explore/dest-dickwella-beach.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-dickwella-beach.jpg') ?>"
                                 alt="Dickwella Beach — expansive golden sands and tropical sunset views in Southern Province"
                                 loading="lazy"
                             >
@@ -210,7 +210,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=rekawa" class="dest-card" aria-label="Explore Rekawa Turtle Beach">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-rekawa-turtle-beach.jpg"
+                                src="assets/images/explore/dest-rekawa-turtle-beach.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-rekawa-turtle-beach.jpg') ?>"
                                 alt="Rekawa Turtle Beach — natural sea turtle conservation and nesting beach in Tangalle"
                                 loading="lazy"
                             >
@@ -234,7 +234,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=ella" class="dest-card" aria-label="Explore Ella Hill Country">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-ella-hill-country.jpg"
+                                src="assets/images/explore/dest-ella-hill-country.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-ella-hill-country.jpg') ?>"
                                 alt="Ella Hill Country — iconic Nine Arch Bridge surrounded by lush tea hills and jungle"
                                 loading="lazy"
                             >
@@ -258,7 +258,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                     <a href="destination-details.php?slug=yala" class="dest-card" aria-label="Explore Yala National Park">
                         <div class="dest-card-image-wrap">
                             <img
-                                src="assets/images/explore/dest-yala-national-park.jpg"
+                                src="assets/images/explore/dest-yala-national-park.jpg?v=<?= filemtime(__DIR__ . '/assets/images/explore/dest-yala-national-park.jpg') ?>"
                                 alt="Yala National Park — Sri Lankan leopard in its natural wilderness habitat"
                                 loading="lazy"
                             >
