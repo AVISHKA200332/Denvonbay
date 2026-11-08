@@ -37,10 +37,21 @@ if (!$room) {
         'price_per_night' => 40.00,
         'capacity' => 1,
         'bed_type' => 'Single Bed',
-        'image_url' => 'assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg',
+        'image_url' => 'assets/images/rooms/cozy-room.jpg',
         'description' => 'A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.',
         'amenities' => 'High-Speed Wi-Fi, Ceiling Fan, Work Desk, Private Bathroom, Daily Housekeeping'
     ];
+}
+
+$roomImageMap = [
+    'cozy'    => 'assets/images/rooms/cozy-room.jpg',
+    'couples' => 'assets/images/rooms/couples-retreat.png',
+    'friends' => 'assets/images/rooms/friends-stay.png',
+    'family'  => 'assets/images/rooms/family-room.png',
+    'suite'   => 'assets/images/rooms/garden-suite.png'
+];
+if ($room && isset($room['slug'], $roomImageMap[$room['slug']]) && (empty($room['image_url']) || strpos($room['image_url'], 'assets/images/explore') !== false)) {
+    $room['image_url'] = $roomImageMap[$room['slug']];
 }
 
 $amenitiesList = array_map('trim', explode(',', $room['amenities'] ?? ''));
@@ -71,7 +82,7 @@ $pageDescription = e($room['description']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=<?= file_exists('assets/css/common.css') ? filemtime('assets/css/common.css') : '2.0' ?>">
     <link rel="stylesheet" href="assets/css/rooms.css">
 </head>
 <body>

@@ -2,12 +2,29 @@
 // Dynamic footer settings if functions & pdo are loaded
 $f_phone = isset($pdo) ? get_setting($pdo, 'contact_phone', '+9477 301 1436') : '+9477 301 1436';
 $f_wa = isset($pdo) ? get_setting($pdo, 'whatsapp_number', '94773011436') : '94773011436';
-$f_email = isset($pdo) ? get_setting($pdo, 'contact_email', 'hello@denvonbay.com') : 'hello@denvonbay.com';
+$f_email = isset($pdo) ? get_setting($pdo, 'contact_email', 'hello@denonbay.com') : 'hello@denonbay.com';
 $f_address = isset($pdo) ? get_setting($pdo, 'hotel_address', 'Hiriketiya, Dickwella, Sri Lanka') : 'Hiriketiya, Dickwella, Sri Lanka';
 $f_insta = isset($pdo) ? get_setting($pdo, 'instagram_url', 'https://instagram.com') : 'https://instagram.com';
 $f_fb = isset($pdo) ? get_setting($pdo, 'facebook_url', 'https://facebook.com') : 'https://facebook.com';
 $f_wa_digits = preg_replace('/[^0-9]/', '', $f_wa);
 ?>
+<?php if (empty($hideFooterCta)): ?>
+<!-- ===== FINAL CTA SECTION (HOME PAGE CTA BANNER) ===== -->
+<section class="final-cta-section" id="final-cta" aria-label="Book your stay at Denvonbay">
+    <div class="container">
+        <div class="final-cta-inner" data-reveal="up">
+            <p class="final-cta-eyebrow"><i class="bi bi-water me-2"></i>Hiriketiya Awaits</p>
+            <h2 class="final-cta-heading">Your Hiriketiya Stay<br><span class="final-cta-accent">Starts Here.</span></h2>
+            <p class="final-cta-text">Choose your room, find the package that suits your trip, and make Denvonbay part of your Sri Lankan adventure.</p>
+            <div class="final-cta-buttons">
+                <a href="booking.php" class="btn btn-cta-primary" id="finalCtaCheckBtn"><i class="bi bi-calendar2-check me-2"></i>Check Availability</a>
+                <a href="https://wa.me/<?= $f_wa_digits ?>" target="_blank" rel="noopener" class="btn btn-cta-whatsapp" id="finalCtaWhatsappBtn" aria-label="Book via WhatsApp"><i class="bi bi-whatsapp me-2"></i>Book via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- ===== SITE FOOTER ===== -->
 <footer class="site-footer" role="contentinfo">
     <div class="footer-main">

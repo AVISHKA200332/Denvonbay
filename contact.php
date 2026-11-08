@@ -15,7 +15,7 @@ $flash = get_flash();
 $settings = get_site_settings($pdo);
 $c_phone = $settings['contact_phone'] ?? '+9477 301 1436';
 $c_wa = $settings['whatsapp_number'] ?? '94773011436';
-$c_email = $settings['contact_email'] ?? 'hello@denvonbay.com';
+$c_email = $settings['contact_email'] ?? 'hello@denonbay.com';
 $c_address = $settings['hotel_address'] ?? 'Hiriketiya, Dickwella, Southern Province, Sri Lanka';
 $c_insta = $settings['instagram_url'] ?? 'https://instagram.com';
 $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
@@ -43,7 +43,7 @@ $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=<?= file_exists('assets/css/common.css') ? filemtime('assets/css/common.css') : '2.0' ?>">
     <link rel="stylesheet" href="assets/css/contact.css">
 </head>
 <body>

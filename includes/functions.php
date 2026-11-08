@@ -237,3 +237,57 @@ function upload_image_file($file, $targetDir, $allowedTypes = ['image/jpeg', 'im
 
     return $safeName;
 }
+
+/**
+ * Send an email notification (e.g. for contact form inquiries or new bookings).
+ * Dispatches to hello@denonbay.com via mail() and records in logs/mail.log for audit & local visibility.
+ */
+function send_system_email($to, $subject, $htmlBody, $replyTo = null, $replyToName = null) {
+    if (empty($to) || $to === 'hello@denvonbay.com') {
+        $to = 'hello@denonbay.com';
+    }
+
+    $headers = [];
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-type: text/html; charset=UTF-8';
+    $headers[] = 'From: Denvonbay <no-reply@denonbay.com>';
+
+    if (!empty($replyTo)) {
+        $cleanReplyTo = filter_var($replyTo, FILTER_SANITIZE_EMAIL);
+        if ($cleanReplyTo) {
+            $senderLabel = !empty($replyToName) ? addcslashes($replyToName, '"') : '';
+            $headers[] = $senderLabel ? "Reply-To: \"{$senderLabel}\" <{$cleanReplyTo}>" : "Reply-To: <{$cleanReplyTo}>";
+        }
+    }
+
+    $headers[] = 'X-Mailer: PHP/' . phpversion();
+
+    $headerStr = implode("\r\n", $headers);
+
+    // Attempt mail() delivery
+    $sent = false;
+    try {
+        $sent = @mail($to, $subject, $htmlBody, $headerStr);
+    } catch (\Throwable $e) {
+        error_log('send_system_email error: ' . $e->getMessage());
+    }
+
+    // Always log to logs/mail.log for local development audit and confirmation
+    $logDir = __DIR__ . '/../logs';
+    if (!is_dir($logDir)) {
+        @mkdir($logDir, 0755, true);
+    }
+    $logFile = $logDir . '/mail.log';
+    $logEntry = sprintf(
+        "[%s] TO: %s | SUBJECT: %s | REPLY-TO: %s | STATUS: %s\n%s\n\n",
+        date('Y-m-d H:i:s'),
+        $to,
+        $subject,
+        $replyTo ?? 'none',
+        $sent ? 'SENT' : 'LOGGED_ONLY',
+        strip_tags(str_replace(['<br>', '<br/>', '<br />', '</p>', '</div>'], "\n", $htmlBody))
+    );
+    @file_put_contents($logFile, $logEntry, FILE_APPEND | LOCK_EX);
+
+    return $sent;
+}

@@ -288,25 +288,6 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
         </div>
     </section>
 
-    <!-- ===== FINAL CTA: EXPLORE SRI LANKA. STAY AT DENVONBAY. ===== -->
-    <section class="explore-cta-section" id="explore-cta" aria-label="Book your stay at Denvonbay">
-        <div class="container">
-            <div class="explore-cta-inner" data-reveal="up">
-                <span class="explore-cta-eyebrow"><i class="bi bi-water me-2" aria-hidden="true"></i>Your Coastal Base</span>
-                <h2 class="explore-cta-heading">Explore Sri Lanka.<br>Stay at Denvonbay.</h2>
-                <p class="explore-cta-text">Make Denvonbay your coastal base while discovering the natural beauty and unforgettable experiences of Sri Lanka. Ask us about exploring the area.</p>
-                <div class="explore-cta-buttons">
-                    <a href="booking.php" class="btn-cta-book" id="exploreCtaBookBtn">
-                        <i class="bi bi-calendar2-check" aria-hidden="true"></i>Book Your Stay
-                    </a>
-                    <a href="contact.php" class="btn-cta-contact-outline" id="exploreCtaContactBtn">
-                        <i class="bi bi-chat-dots" aria-hidden="true"></i>Contact Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
 </main>
 
 <!-- ===== DESTINATION DETAIL MODAL ===== -->
