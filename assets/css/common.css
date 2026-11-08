@@ -1,3 +1,5 @@
+@import url('dark-mode.css');
+
 /**
  * Denvonbay - Common Stylesheet
  * --------------------------------------------------
@@ -328,9 +330,9 @@ h6 {
 }
 
 .btn-cta-primary {
-  background: var(--white);
-  color: var(--primary-blue);
-  border-color: var(--white);
+  background: #FFFFFF;
+  color: #0758D9;
+  border-color: #FFFFFF;
   padding: 16px 36px;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
@@ -803,7 +805,7 @@ body.nav-open {
    SUBPAGE HERO BANNER
    ============================================================ */
 .page-hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #0D3E85 100%);
+  background: linear-gradient(135deg, #0B2A5B 0%, #0D3E85 100%);
   color: var(--white);
   padding: 72px 0 64px;
   text-align: center;
@@ -880,7 +882,7 @@ body.nav-open {
    GLOBAL FINAL CTA BANNER (STANDARDIZED ACROSS ALL PAGES)
    ============================================================ */
 .final-cta-section {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--brand-blue) 50%, var(--navy) 100%);
+  background: linear-gradient(135deg, #1266F1 0%, #0758D9 50%, #0B2A5B 100%);
   padding: var(--section-py) 0;
   position: relative;
   overflow: hidden;
@@ -920,7 +922,7 @@ body.nav-open {
 .final-cta-heading {
   font-size: clamp(2.25rem, 5vw, 4rem);
   font-weight: var(--fw-extrabold);
-  color: var(--white);
+  color: #FFFFFF;
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 20px;

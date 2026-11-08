@@ -122,10 +122,18 @@
 }
 
 .package-custom-callout {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 100%);
-  color: var(--white);
+  background: linear-gradient(135deg, #0B2A5B 0%, var(--brand-blue) 100%);
+  color: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 48px;
   text-align: center;
   margin-top: 64px;
+}
+
+.package-custom-callout h3 {
+  color: #FFFFFF;
+}
+
+.package-custom-callout p {
+  color: rgba(255, 255, 255, 0.9);
 }

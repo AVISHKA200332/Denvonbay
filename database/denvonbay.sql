@@ -163,6 +163,7 @@ VALUES
 ('contact_phone', '+9477 301 1436'),
 ('contact_whatsapp', '94773011436'),
 ('contact_location', 'Hiriketiya, Dickwella, Sri Lanka'),
+('hotel_address', 'Hiriketiya, Dickwella, Sri Lanka'),
 ('instagram_url', 'https://instagram.com'),
 ('facebook_url', 'https://facebook.com')
 ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);

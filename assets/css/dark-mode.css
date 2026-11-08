@@ -1,0 +1,1309 @@
+/**
+ * Denvonbay - Luxury Coastal Dark Mode Stylesheet
+ * -------------------------------------------------------------
+ * Provides high-contrast, elegant deep-ocean dark theme styling across
+ * all pages, components, modals, forms, and interactive widgets.
+ */
+
+/* ============================================================
+   1. DESIGN TOKENS & SYSTEM VARIABLES (DARK THEME)
+   ============================================================ */
+:root[data-theme="dark"],
+html[data-theme="dark"],
+html.dark-theme {
+  color-scheme: dark;
+
+  /* Theme Core Palette */
+  --navy: #E2E8F0;
+  --navy-heading: #F8FAFC;
+  --white: #0F182C;
+  --off-white: #080D1A;
+  --light-grey: #16223B;
+  --text-grey: #94A3B8;
+  --border-grey: rgba(255, 255, 255, 0.09);
+
+  /* Brand Accents */
+  --primary-blue: #3B82F6;
+  --brand-blue: #2563EB;
+  --aqua: #38BDF8;
+  --aqua-light: rgba(56, 189, 248, 0.16);
+
+  /* Shadows with Soft Dark Elevation */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 26px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-blue: 0 8px 32px rgba(56, 189, 248, 0.25);
+}
+
+/* Base Body & Typography */
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+body[data-theme="dark"],
+[data-theme="dark"] body {
+  background-color: var(--off-white) !important;
+  color: var(--navy) !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--navy-heading);
+}
+
+[data-theme="dark"] p {
+  color: var(--text-grey);
+}
+
+[data-theme="dark"] .text-navy {
+  color: var(--navy-heading) !important;
+}
+
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .text-grey {
+  color: var(--text-grey) !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--white) !important;
+}
+
+[data-theme="dark"] .bg-off-white,
+[data-theme="dark"] .bg-light {
+  background-color: var(--off-white) !important;
+}
+
+[data-theme="dark"] hr {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   2. NAVBAR & HEADER ACTIONS
+   ============================================================ */
+[data-theme="dark"] .site-header {
+  background: rgba(15, 24, 44, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+[data-theme="dark"] .site-header.scrolled {
+  background: rgba(15, 24, 44, 0.98);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .desktop-nav .nav-link {
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .desktop-nav .nav-link:hover {
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .desktop-nav .nav-link.active {
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .desktop-nav .nav-link.active::after {
+  background: var(--aqua);
+}
+
+[data-theme="dark"] .menu-toggle {
+  background: #16223B;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .hamburger-bar {
+  background: #F8FAFC;
+}
+
+/* Mobile Drawer */
+[data-theme="dark"] .mobile-nav {
+  background: #0F182C;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .mobile-nav-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .mobile-close-btn {
+  background: #16223B;
+  color: #E2E8F0;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .mobile-nav-link {
+  color: #CBD5E1;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .mobile-nav-link:hover,
+[data-theme="dark"] .mobile-nav-link.active {
+  color: var(--aqua);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+/* ============================================================
+   3. THEME TOGGLE BUTTONS (DESKTOP & MOBILE)
+   ============================================================ */
+.theme-toggle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(11, 42, 91, 0.14);
+  background: var(--off-white);
+  color: var(--navy);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+  box-shadow: 0 4px 14px rgba(18, 102, 241, 0.2);
+}
+
+.theme-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle-btn .moon-icon,
+.theme-toggle-btn .sun-icon {
+  position: absolute;
+  font-size: 1.125rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Light mode state: Moon shows, Sun hidden */
+.theme-toggle-btn .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle-btn .sun-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.3);
+}
+
+/* Dark mode state: Sun shows, Moon hidden */
+[data-theme="dark"] .theme-toggle-btn {
+  background: #16223B;
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #FACC15;
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  border-color: var(--aqua);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  color: #FEF08A;
+}
+
+[data-theme="dark"] .theme-toggle-btn .moon-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.3);
+}
+
+[data-theme="dark"] .theme-toggle-btn .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Mobile Nav Drawer Theme Switcher */
+.mobile-theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--off-white);
+  border: 1px solid rgba(11, 42, 91, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--navy);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9375rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.mobile-theme-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-theme-label .moon-icon {
+  display: inline-block;
+  color: var(--navy);
+}
+
+.mobile-theme-label .sun-icon {
+  display: none;
+  color: #FACC15;
+}
+
+[data-theme="dark"] .mobile-theme-toggle-btn {
+  background: #16223B;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .mobile-theme-label .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .mobile-theme-label .sun-icon {
+  display: inline-block;
+}
+
+.theme-switch-slider {
+  width: 44px;
+  height: 24px;
+  background: #CBD5E1;
+  border-radius: 9999px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.theme-switch-slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .theme-switch-slider {
+  background: var(--primary-blue);
+}
+
+[data-theme="dark"] .theme-switch-slider::before {
+  transform: translateX(20px);
+}
+
+/* ============================================================
+   4. HOME PAGE & HERO ELEMENTS
+   ============================================================ */
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(180deg, #080D1A 0%, #0F182C 100%);
+}
+
+[data-theme="dark"] .hero-heading {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .hero-heading-accent {
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .hero-subtext {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .hero-pill,
+[data-theme="dark"] .hero-float-pill,
+[data-theme="dark"] .hero-float-badge {
+  background: rgba(15, 24, 44, 0.88);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--aqua);
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .brand-wave-section {
+  background: #080D1A;
+}
+
+[data-theme="dark"] .brand-marquee-wrap {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  background: #0B1325;
+}
+
+[data-theme="dark"] .brand-marquee-item {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .brand-marquee-aqua {
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .perk-card,
+[data-theme="dark"] .highlight-card,
+[data-theme="dark"] .feature-card {
+  background: #0F182C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .perk-card:hover,
+[data-theme="dark"] .highlight-card:hover,
+[data-theme="dark"] .feature-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 18px rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="dark"] .testimonials-section {
+  background-color: #0A1122;
+}
+
+[data-theme="dark"] .testimonial-card {
+  background: #0F182C;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .host-story-section {
+  background: #080D1A;
+}
+
+[data-theme="dark"] .host-story-content {
+  background: #0F182C;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   5. CARDS & PREVIEW GRIDS (ROOMS, PACKAGES, EXPLORE)
+   ============================================================ */
+[data-theme="dark"] .card,
+[data-theme="dark"] .room-card,
+[data-theme="dark"] .home-room-card,
+[data-theme="dark"] .room-full-card,
+[data-theme="dark"] .package-card,
+[data-theme="dark"] .home-package-card,
+[data-theme="dark"] .package-full-card,
+[data-theme="dark"] .explore-card,
+[data-theme="dark"] .home-explore-card,
+[data-theme="dark"] .destination-card,
+[data-theme="dark"] .amenity-card,
+[data-theme="dark"] .faq-card {
+  background-color: #0F182C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] .room-card:hover,
+[data-theme="dark"] .home-room-card:hover,
+[data-theme="dark"] .room-full-card:hover,
+[data-theme="dark"] .package-card:hover,
+[data-theme="dark"] .home-package-card:hover,
+[data-theme="dark"] .package-full-card:hover,
+[data-theme="dark"] .explore-card:hover,
+[data-theme="dark"] .home-explore-card:hover,
+[data-theme="dark"] .destination-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+/* Specs & Pills in Dark Mode */
+[data-theme="dark"] .room-tag,
+[data-theme="dark"] .category-pill,
+[data-theme="dark"] .package-duration-pill,
+[data-theme="dark"] .filter-btn {
+  background: #16223B;
+  color: #CBD5E1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Room Card Facility/Specs - Clean text without boxes */
+[data-theme="dark"] .room-specs .room-spec-item,
+[data-theme="dark"] .room-spec-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .room-spec-item i {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .filter-btn:hover,
+[data-theme="dark"] .category-pill:hover {
+  border-color: var(--aqua);
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .filter-btn.active,
+[data-theme="dark"] .category-pill.active {
+  background: var(--primary-blue);
+  color: #FFFFFF;
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .room-price-val,
+[data-theme="dark"] .package-price-num {
+  color: var(--aqua);
+}
+
+[data-theme="dark"] .room-price-unit,
+[data-theme="dark"] .package-price-sub {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .package-price-box {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   6. SUBPAGE HEROES & BREADCRUMBS
+   ============================================================ */
+[data-theme="dark"] .page-hero {
+  background: linear-gradient(180deg, #0F182C 0%, #080D1A 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .page-hero-title {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .page-hero-desc {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .page-hero-badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--aqua);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+/* ============================================================
+   7. DESTINATION DETAILS & EXPLORE PAGE
+   ============================================================ */
+[data-theme="dark"] .destination-details-page,
+[data-theme="dark"] .explore-page-section {
+  background-color: #080D1A;
+}
+
+[data-theme="dark"] .dest-info-card,
+[data-theme="dark"] .dest-sidebar-card,
+[data-theme="dark"] .itinerary-item,
+[data-theme="dark"] .dest-tip-box {
+  background: #0F182C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .dest-highlight-item {
+  background: #16223B;
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #CBD5E1;
+}
+
+/* ============================================================
+   8. FORMS, INPUTS & BOOKING WIZARD
+   ============================================================ */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="tel"],
+[data-theme="dark"] input[type="date"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] textarea {
+  background-color: #141F38 !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] textarea:focus {
+  background-color: #162442 !important;
+  border-color: var(--aqua) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #64748B !important;
+}
+
+[data-theme="dark"] .form-label {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .input-group-text {
+  background-color: #16223B;
+  color: #94A3B8;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .contact-info-card,
+[data-theme="dark"] .contact-form-card,
+[data-theme="dark"] .booking-widget-card,
+[data-theme="dark"] .booking-summary-card,
+[data-theme="dark"] .booking-step-box {
+  background: #0F182C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .contact-method-item {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .contact-method-icon {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--aqua);
+}
+
+/* ============================================================
+   9. ACCORDION & FAQ
+   ============================================================ */
+[data-theme="dark"] .accordion-item {
+  background-color: #0F182C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .accordion-button {
+  background-color: #0F182C;
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+  background-color: #16223B;
+  color: var(--aqua);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .accordion-button::after {
+  filter: invert(1) brightness(0.8);
+}
+
+[data-theme="dark"] .accordion-body {
+  background-color: #0F182C;
+  color: #CBD5E1;
+}
+
+/* FAQ Specific Rules */
+[data-theme="dark"] .faq-page-section {
+  background-color: #080D1A !important;
+}
+
+[data-theme="dark"] .faq-card {
+  background-color: #0F182C !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .faq-question {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .faq-question i {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .faq-answer {
+  color: #CBD5E1 !important;
+}
+
+/* ============================================================
+   10. MODALS & POPUPS
+   ============================================================ */
+[data-theme="dark"] .modal-content {
+  background-color: #0F182C;
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* ============================================================
+   11. FOOTER & SITE POLISH
+   ============================================================ */
+[data-theme="dark"] .site-footer {
+  background: #050811;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .footer-social-link {
+  background: #0F182C;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .footer-social-link:hover {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #FFFFFF;
+}
+
+/* Smooth transitions for theme toggle switch */
+body,
+.site-header,
+.card,
+.perk-card,
+.mobile-nav,
+.form-control,
+.form-select,
+.accordion-item,
+.accordion-button {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* ============================================================
+   12. SPECIALIZED REFINEMENTS & NATIVE CONTROLS
+   ============================================================ */
+[data-theme="dark"] .site-logo-img {
+  filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.2));
+}
+
+[data-theme="dark"] .hero-badge-title,
+[data-theme="dark"] .hero-badge-score {
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .dest-detail-card,
+[data-theme="dark"] .dest-facts-card {
+  background: #0F182C !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .dest-detail-section-title,
+[data-theme="dark"] .dest-facts-title {
+  color: #F8FAFC !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .dest-detail-prose p,
+[data-theme="dark"] .dest-prose p {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .dest-highlight-box {
+  background: #16223B !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .dest-hl-text {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .dest-tip-card {
+  background: #1A1C16 !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  border-left-color: #F59E0B !important;
+}
+
+[data-theme="dark"] .dest-tip-title {
+  color: #FBBF24 !important;
+}
+
+[data-theme="dark"] .dest-tip-text {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .dest-related-section {
+  background-color: #080D1A !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] select option {
+  background-color: #0F182C;
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .star-rating,
+[data-theme="dark"] .bi-star-fill {
+  color: #FACC15;
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #6EE7B7;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #FCA5A5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .booking-form-wrap,
+[data-theme="dark"] .booking-sidebar-card,
+[data-theme="dark"] .booking-success-box {
+  background-color: #0F182C;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .sidebar-heading,
+[data-theme="dark"] .sidebar-row.total {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #F8FAFC;
+}
+
+/* Custom Scrollbar for Dark Mode */
+[data-theme="dark"]::-webkit-scrollbar {
+  width: 10px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-track {
+  background: #080D1A;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 5px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+
+/* ============================================================
+   13. HOME PAGE ROOM CARDS - "VIEW ROOM ->" IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .btn-room-view,
+[data-theme="dark"] .room-card .btn-room-view,
+[data-theme="dark"] .room-card a.btn-room-view,
+[data-theme="dark"] a.btn-room-view,
+[data-theme="dark"] .btn-room-view i,
+[data-theme="dark"] .room-card .btn-room-view i,
+[data-theme="dark"] .btn-room-view--primary,
+[data-theme="dark"] .btn-room-view--primary i {
+  color: #FFFFFF !important;
+  background-color: var(--primary-blue) !important;
+  border-color: var(--primary-blue) !important;
+}
+
+[data-theme="dark"] .btn-room-view:hover,
+[data-theme="dark"] .room-card .btn-room-view:hover,
+[data-theme="dark"] .room-card a.btn-room-view:hover,
+[data-theme="dark"] a.btn-room-view:hover,
+[data-theme="dark"] .btn-room-view:hover i,
+[data-theme="dark"] .room-card .btn-room-view:hover i,
+[data-theme="dark"] .btn-room-view--primary:hover,
+[data-theme="dark"] .btn-room-view--primary:hover i {
+  color: #FFFFFF !important;
+  background-color: var(--brand-blue) !important;
+  border-color: var(--brand-blue) !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4) !important;
+}
+
+[data-theme="dark"] .section-heading-dark {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .section-subtext-dark {
+  color: #94A3B8 !important;
+}
+
+
+/* ============================================================
+   14. HOME PAGE - PACKAGES PREVIEW ("STAY YOUR WAY") IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .packages-section {
+  background: #080D1A !important;
+}
+
+[data-theme="dark"] .packages-bg {
+  background: linear-gradient(135deg, #091326 0%, #0F1E3A 50%, #060A14 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .packages-section .section-eyebrow {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .packages-section .section-heading,
+[data-theme="dark"] .packages-section .section-heading.text-white {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .packages-section .section-subtext,
+[data-theme="dark"] .packages-section .section-subtext.text-white-75 {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .pkg-card {
+  background: rgba(15, 24, 44, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .pkg-card:hover {
+  background: rgba(22, 36, 64, 0.95) !important;
+  border-color: #38BDF8 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 24px rgba(56, 189, 248, 0.25) !important;
+}
+
+[data-theme="dark"] .pkg-card--highlight {
+  background: rgba(22, 36, 68, 0.95) !important;
+  border: 2px solid #38BDF8 !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 28px rgba(56, 189, 248, 0.3) !important;
+}
+
+[data-theme="dark"] .pkg-card-icon {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #38BDF8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+[data-theme="dark"] .pkg-card-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .pkg-card-duration {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .pkg-card-desc {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .pkg-card-popular-badge {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .btn-pkg {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+[data-theme="dark"] .btn-pkg:hover {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  border-color: #38BDF8 !important;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4) !important;
+}
+
+[data-theme="dark"] .btn-pkg-primary {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  border-color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .btn-pkg-primary:hover {
+  background: #0284C7 !important;
+  color: #FFFFFF !important;
+  border-color: #0284C7 !important;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5) !important;
+}
+
+
+/* ============================================================
+   15. HOME PAGE - EXPLORE THE SOUTH COAST IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .explore-section {
+  background-color: #080D1A !important;
+}
+
+[data-theme="dark"] .explore-heading {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .explore-text {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .explore-chip {
+  background: #16223B !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .explore-chip:hover {
+  border-color: #38BDF8 !important;
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+}
+
+[data-theme="dark"] .explore-img-badge {
+  background: rgba(15, 24, 44, 0.92) !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .btn-explore-cta,
+[data-theme="dark"] .btn-explore-cta i,
+[data-theme="dark"] #exploreNearbyBtn {
+  background: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+  border-color: var(--primary-blue) !important;
+}
+
+[data-theme="dark"] .btn-explore-cta:hover,
+[data-theme="dark"] .btn-explore-cta:hover i,
+[data-theme="dark"] #exploreNearbyBtn:hover {
+  background: var(--brand-blue) !important;
+  color: #FFFFFF !important;
+  border-color: var(--brand-blue) !important;
+  box-shadow: 0 6px 22px rgba(59, 130, 246, 0.45) !important;
+}
+
+/* ============================================================
+   16. HOME PAGE - BEYOND THE STAY IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .beyond-stay-section {
+  background-color: #080D1A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .beyond-stay-eyebrow {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .beyond-stay-heading {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .beyond-stay-subtext {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .beyond-card {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .beyond-card:hover {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.8), 0 0 24px rgba(56, 189, 248, 0.25) !important;
+}
+
+[data-theme="dark"] .beyond-card-body,
+[data-theme="dark"] .beyond-card-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .beyond-card-location {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .beyond-card-cta {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="dark"] .beyond-card:hover .beyond-card-cta {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .beyond-stay-footer .btn-view-all {
+  color: #38BDF8 !important;
+  border-color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .beyond-stay-footer .btn-view-all:hover {
+  background: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+
+/* ============================================================
+   17. GLOBAL FINAL CTA BANNER IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .final-cta-section {
+  background: linear-gradient(135deg, #091734 0%, #0D2248 50%, #060B18 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .final-cta-eyebrow {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .final-cta-heading {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .final-cta-accent {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .final-cta-text {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .btn-cta-primary,
+[data-theme="dark"] #finalCtaCheckBtn {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  border: 2px solid #38BDF8 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45) !important;
+}
+
+[data-theme="dark"] .btn-cta-primary:hover,
+[data-theme="dark"] #finalCtaCheckBtn:hover {
+  background: #FFFFFF !important;
+  color: #0B2A5B !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 255, 255, 0.45) !important;
+}
+
+[data-theme="dark"] .btn-cta-whatsapp,
+[data-theme="dark"] #finalCtaWhatsappBtn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .btn-cta-whatsapp:hover,
+[data-theme="dark"] #finalCtaWhatsappBtn:hover {
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  border-color: #25D366 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45) !important;
+}
+
+
+/* ============================================================
+   18. HOME PAGE - EXPERIENCES SECTION ("WHAT AWAITS YOU")
+   ============================================================ */
+[data-theme="dark"] .experiences-section {
+  background: linear-gradient(180deg, #091326 0%, #0F1E3A 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .experiences-section::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .experiences-section .section-eyebrow {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .experiences-section .section-heading,
+[data-theme="dark"] .experiences-section .section-heading.text-white {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .experiences-section .section-subtext,
+[data-theme="dark"] .experiences-section .section-subtext.text-white-75 {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .experiences-wave-bottom svg path {
+  fill: #080D1A !important;
+}
+
+[data-theme="dark"] .brand-wave-bottom svg path {
+  fill: #080D1A !important;
+}
+
+[data-theme="dark"] .packages-wave-bottom svg path {
+  fill: #080D1A !important;
+}
+
+[data-theme="dark"] .exp-card {
+  background: #0F182C !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .exp-card:hover {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.2) !important;
+}
+
+[data-theme="dark"] .exp-card-label {
+  background: #0F182C !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .exp-card-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .exp-card-desc {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .exp-card-label-icon {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .exp-card:hover .exp-card-label-icon {
+  background: var(--primary-blue) !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .exp-card-arrow {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .exp-card:hover .exp-card-arrow {
+  background: #38BDF8 !important;
+  border-color: #38BDF8 !important;
+  color: #080D1A !important;
+}
+
+/* Why Stay With Us in Dark Mode */
+[data-theme="dark"] .why-section {
+  background: #080D1A !important;
+}
+
+[data-theme="dark"] .why-number {
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .why-title {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .why-desc {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .why-item {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .why-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+
+/* ============================================================
+   19. PACKAGES PAGE - CUSTOM CALLOUT BANNER IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .package-custom-callout {
+  background: linear-gradient(135deg, #091734 0%, #0F2552 50%, #060B18 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6) !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .package-custom-callout h3 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .package-custom-callout p {
+  color: #CBD5E1 !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .package-custom-callout .btn-cta-primary {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  border: 2px solid #38BDF8 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(56, 189, 248, 0.4) !important;
+}
+
+[data-theme="dark"] .package-custom-callout .btn-cta-primary:hover {
+  background: #FFFFFF !important;
+  color: #0B2A5B !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.45) !important;
+}
+
+/* ============================================================
+   20. FAQ PAGE - "STILL HAVE QUESTIONS?" BANNER IN DARK MODE
+   ============================================================ */
+[data-theme="dark"] .faq-contact-card {
+  background: linear-gradient(135deg, #091734 0%, #0F2552 50%, #060B18 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6) !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .faq-contact-card h3 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .faq-contact-card p {
+  color: #CBD5E1 !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] .faq-contact-card .btn-cta-primary {
+  background: #38BDF8 !important;
+  color: #080D1A !important;
+  border: 2px solid #38BDF8 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(56, 189, 248, 0.4) !important;
+}
+
+[data-theme="dark"] .faq-contact-card .btn-cta-primary:hover {
+  background: #FFFFFF !important;
+  color: #0B2A5B !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.45) !important;
+}
+
+[data-theme="dark"] .faq-contact-card .btn-cta-whatsapp {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="dark"] .faq-contact-card .btn-cta-whatsapp:hover {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35) !important;
+}

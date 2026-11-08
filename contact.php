@@ -16,7 +16,7 @@ $settings = get_site_settings($pdo);
 $c_phone = $settings['contact_phone'] ?? '+9477 301 1436';
 $c_wa = $settings['whatsapp_number'] ?? '94773011436';
 $c_email = $settings['contact_email'] ?? 'hello@denonbay.com';
-$c_address = $settings['hotel_address'] ?? 'Hiriketiya, Dickwella, Southern Province, Sri Lanka';
+$c_address = (!empty($settings['hotel_address'])) ? $settings['hotel_address'] : ((!empty($settings['contact_location'])) ? $settings['contact_location'] : 'Hiriketiya, Dickwella, Sri Lanka');
 $c_insta = $settings['instagram_url'] ?? 'https://instagram.com';
 $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
 ?>
@@ -174,7 +174,7 @@ $c_wa_digits = preg_replace('/[^0-9]/', '', $c_wa);
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Scripts -->
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?v=<?= file_exists('assets/js/common.js') ? filemtime('assets/js/common.js') : '2.0' ?>"></script>
 <script src="assets/js/contact.js"></script>
 
 </body>

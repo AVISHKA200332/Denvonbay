@@ -3,7 +3,10 @@
 $f_phone = isset($pdo) ? get_setting($pdo, 'contact_phone', '+9477 301 1436') : '+9477 301 1436';
 $f_wa = isset($pdo) ? get_setting($pdo, 'whatsapp_number', '94773011436') : '94773011436';
 $f_email = isset($pdo) ? get_setting($pdo, 'contact_email', 'hello@denonbay.com') : 'hello@denonbay.com';
-$f_address = isset($pdo) ? get_setting($pdo, 'hotel_address', 'Hiriketiya, Dickwella, Sri Lanka') : 'Hiriketiya, Dickwella, Sri Lanka';
+$f_address = isset($pdo) ? (get_setting($pdo, 'hotel_address') ?: get_setting($pdo, 'contact_location', 'Hiriketiya, Dickwella, Sri Lanka')) : 'Hiriketiya, Dickwella, Sri Lanka';
+if (empty($f_address)) {
+    $f_address = 'Hiriketiya, Dickwella, Sri Lanka';
+}
 $f_insta = isset($pdo) ? get_setting($pdo, 'instagram_url', 'https://instagram.com') : 'https://instagram.com';
 $f_fb = isset($pdo) ? get_setting($pdo, 'facebook_url', 'https://facebook.com') : 'https://facebook.com';
 $f_wa_digits = preg_replace('/[^0-9]/', '', $f_wa);
