@@ -25,7 +25,7 @@ if (empty($rooms)) {
             'price_per_night' => 40.00,
             'capacity' => 1,
             'bed_type' => 'Single Bed',
-            'image_url' => 'assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg',
+            'image_url' => 'assets/images/rooms/cozy-room.jpg',
             'description' => 'A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.',
             'amenities' => 'High-Speed Wi-Fi, Ceiling Fan, Work Desk, Private Bathroom, Daily Housekeeping'
         ],
@@ -37,7 +37,7 @@ if (empty($rooms)) {
             'price_per_night' => 65.00,
             'capacity' => 2,
             'bed_type' => 'Queen Bed',
-            'image_url' => 'assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg',
+            'image_url' => 'assets/images/rooms/couples-retreat.png',
             'description' => 'A romantic coastal escape designed for two - comfortable, private and just steps from the beach.',
             'amenities' => 'Air Conditioning, High-Speed Wi-Fi, Balcony, Private En-suite, Mini Fridge, Breakfast Included'
         ],
@@ -49,7 +49,7 @@ if (empty($rooms)) {
             'price_per_night' => 90.00,
             'capacity' => 4,
             'bed_type' => '2 Double Beds',
-            'image_url' => 'assets/images/explore/Friends_walking_on_beach_202607210209.jpg',
+            'image_url' => 'assets/images/rooms/friends-stay.png',
             'description' => 'Spacious, social and fun. The ideal base for a group trip to the south coast surf scene.',
             'amenities' => 'Air Conditioning, High-Speed Wi-Fi, Board Rack, Spacious Lounge, Garden View'
         ],
@@ -61,7 +61,7 @@ if (empty($rooms)) {
             'price_per_night' => 110.00,
             'capacity' => 5,
             'bed_type' => '1 King + 2 Singles',
-            'image_url' => 'assets/images/explore/Tote_bag_with_branding_202607210209.jpg',
+            'image_url' => 'assets/images/rooms/family-room.png',
             'description' => 'Generously sized accommodation perfect for families traveling together, offering safety and comfort.',
             'amenities' => 'Air Conditioning, Fast Wi-Fi, Full En-suite, Kid-Friendly, Tea & Coffee Station'
         ],
@@ -73,12 +73,26 @@ if (empty($rooms)) {
             'price_per_night' => 80.00,
             'capacity' => 2,
             'bed_type' => 'King Bed',
-            'image_url' => 'assets/images/explore/White_spa_slippers_on_beach_202607210209.jpg',
+            'image_url' => 'assets/images/rooms/garden-suite.png',
             'description' => 'Overlooking our lush tropical coastal greenery with a private terrace and refreshing breeze.',
             'amenities' => 'Tropical Garden Terrace, Air Conditioning, Rain Shower, Wi-Fi, Outdoor Seating'
         ]
     ];
 }
+
+$roomImageMap = [
+    'cozy'    => 'assets/images/rooms/cozy-room.jpg',
+    'couples' => 'assets/images/rooms/couples-retreat.png',
+    'friends' => 'assets/images/rooms/friends-stay.png',
+    'family'  => 'assets/images/rooms/family-room.png',
+    'suite'   => 'assets/images/rooms/garden-suite.png'
+];
+foreach ($rooms as &$r) {
+    if (isset($r['slug'], $roomImageMap[$r['slug']]) && (empty($r['image_url']) || strpos($r['image_url'], 'assets/images/explore') !== false)) {
+        $r['image_url'] = $roomImageMap[$r['slug']];
+    }
+}
+unset($r);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +117,7 @@ if (empty($rooms)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=<?= file_exists('assets/css/common.css') ? filemtime('assets/css/common.css') : '2.0' ?>">
     <link rel="stylesheet" href="assets/css/rooms.css">
 </head>
 <body>

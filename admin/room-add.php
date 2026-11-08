@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($imageUrl)) {
-        $imageUrl = 'assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg'; // default
+        $imageUrl = 'assets/images/rooms/cozy-room.jpg'; // default
     }
 
     // Check slug uniqueness

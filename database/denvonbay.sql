@@ -115,12 +115,12 @@ ON DUPLICATE KEY UPDATE `username` = VALUES(`username`);
 -- -----------------------------------------------------
 INSERT INTO `rooms` (`id`, `name`, `slug`, `tag`, `price_per_night`, `capacity`, `bed_type`, `image_url`, `description`, `amenities`, `is_available`)
 VALUES
-(1, 'The Cozy Room', 'cozy', 'Perfect for Solo', 40.00, 1, 'Single Bed', 'assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg', 'A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.', 'High-Speed Wi-Fi, Ceiling Fan, Work Desk, Private Bathroom, Daily Housekeeping', 1),
-(2, 'The Couple\'s Retreat', 'couples', 'Most Popular', 65.00, 2, 'Queen Bed', 'assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg', 'A romantic coastal escape designed for two - comfortable, private and just steps from the beach.', 'Air Conditioning, High-Speed Wi-Fi, Balcony, Private En-suite, Mini Fridge, Breakfast Included', 1),
-(3, 'The Friends\' Stay', 'friends', 'Great for Groups', 90.00, 4, '2 Double Beds', 'assets/images/explore/Friends_walking_on_beach_202607210209.jpg', 'Spacious, social and fun. The ideal base for a group trip to the south coast surf scene.', 'Air Conditioning, High-Speed Wi-Fi, Board Rack, Spacious Lounge, Garden View', 1),
-(4, 'Family Room', 'family', 'Spacious & Bright', 110.00, 5, '1 King + 2 Singles', 'assets/images/explore/Tote_bag_with_branding_202607210209.jpg', 'Generously sized accommodation perfect for families traveling together, offering safety and comfort.', 'Air Conditioning, Fast Wi-Fi, Full En-suite, Kid-Friendly, Tea & Coffee Station', 1),
-(5, 'Garden Suite', 'suite', 'Peaceful Outlook', 80.00, 2, 'King Bed', 'assets/images/explore/White_spa_slippers_on_beach_202607210209.jpg', 'Overlooking our lush tropical coastal greenery with a private terrace and refreshing breeze.', 'Tropical Garden Terrace, Air Conditioning, Rain Shower, Wi-Fi, Outdoor Seating', 1)
-ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `price_per_night` = VALUES(`price_per_night`);
+(1, 'The Cozy Room', 'cozy', 'Perfect for Solo', 40.00, 1, 'Single Bed', 'assets/images/rooms/cozy-room.jpg', 'A thoughtfully designed quiet retreat for the solo traveler who values simplicity and calm.', 'High-Speed Wi-Fi, Ceiling Fan, Work Desk, Private Bathroom, Daily Housekeeping', 1),
+(2, 'The Couple\'s Retreat', 'couples', 'Most Popular', 65.00, 2, 'Queen Bed', 'assets/images/rooms/couples-retreat.png', 'A romantic coastal escape designed for two - comfortable, private and just steps from the beach.', 'Air Conditioning, High-Speed Wi-Fi, Balcony, Private En-suite, Mini Fridge, Breakfast Included', 1),
+(3, 'The Friends\' Stay', 'friends', 'Great for Groups', 90.00, 4, '2 Double Beds', 'assets/images/rooms/friends-stay.png', 'Spacious, social and fun. The ideal base for a group trip to the south coast surf scene.', 'Air Conditioning, High-Speed Wi-Fi, Board Rack, Spacious Lounge, Garden View', 1),
+(4, 'Family Room', 'family', 'Spacious & Bright', 110.00, 5, '1 King + 2 Singles', 'assets/images/rooms/family-room.png', 'Generously sized accommodation perfect for families traveling together, offering safety and comfort.', 'Air Conditioning, Fast Wi-Fi, Full En-suite, Kid-Friendly, Tea & Coffee Station', 1),
+(5, 'Garden Suite', 'suite', 'Peaceful Outlook', 80.00, 2, 'King Bed', 'assets/images/rooms/garden-suite.png', 'Overlooking our lush tropical coastal greenery with a private terrace and refreshing breeze.', 'Tropical Garden Terrace, Air Conditioning, Rain Shower, Wi-Fi, Outdoor Seating', 1)
+ON DUPLICATE KEY UPDATE `name` = VALUES(`name`), `price_per_night` = VALUES(`price_per_night`), `image_url` = VALUES(`image_url`);
 
 -- -----------------------------------------------------
 -- Initial Data: Packages
@@ -159,7 +159,7 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`)
 VALUES
 ('site_name', 'Denvonbay'),
 ('site_tagline', 'Your Relaxed Stay in Hiriketiya, Sri Lanka'),
-('contact_email', 'hello@denvonbay.com'),
+('contact_email', 'hello@denonbay.com'),
 ('contact_phone', '+9477 301 1436'),
 ('contact_whatsapp', '94773011436'),
 ('contact_location', 'Hiriketiya, Dickwella, Sri Lanka'),

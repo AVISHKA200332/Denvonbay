@@ -15,6 +15,21 @@ $flash = get_flash();
 
 // Dynamic content from database
 $featuredRooms = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC LIMIT 3")->fetchAll();
+$roomImageMap = [
+    'cozy'    => 'assets/images/rooms/cozy-room.jpg',
+    'couples' => 'assets/images/rooms/couples-retreat.png',
+    'friends' => 'assets/images/rooms/friends-stay.png',
+    'family'  => 'assets/images/rooms/family-room.png',
+    'suite'   => 'assets/images/rooms/garden-suite.png'
+];
+if (!empty($featuredRooms)) {
+    foreach ($featuredRooms as &$fR) {
+        if (isset($fR['slug'], $roomImageMap[$fR['slug']]) && (empty($fR['image_url']) || strpos($fR['image_url'], 'assets/images/explore') !== false)) {
+            $fR['image_url'] = $roomImageMap[$fR['slug']];
+        }
+    }
+    unset($fR);
+}
 $featuredPackages = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC LIMIT 4")->fetchAll();
 $featuredReviews = get_approved_reviews($pdo, 3);
 $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
@@ -226,8 +241,8 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
 
         <article class="exp-card" data-reveal="up" data-reveal-delay="300">
           <div class="exp-card-image-wrap">
-            <img src="assets/images/explore/White_spa_slippers_on_beach_202607210209.jpg"
-                 alt="Comfortable coastal accommodation - spa slippers on beach" class="exp-card-img" loading="lazy">
+            <img src="assets/images/rooms/couples-retreat.png"
+                 alt="Comfortable boutique coastal accommodation at Denvonbay Hiriketiya" class="exp-card-img" loading="lazy">
           </div>
           <div class="exp-card-label">
             <div class="exp-card-label-icon"><i class="bi bi-house-heart"></i></div>
@@ -330,7 +345,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
           <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="0">
             <article class="room-card" id="room-cozy">
               <div class="room-card-image-wrap">
-                <img src="assets/images/explore/Surfboard_logo_detail_macro_shot_202607210209.jpg"
+                <img src="assets/images/rooms/cozy-room.jpg?v=<?= file_exists('assets/images/rooms/cozy-room.jpg') ? filemtime('assets/images/rooms/cozy-room.jpg') : '1.0' ?>"
                      alt="The Cozy Room - comfortable single room at Denvonbay" class="room-card-img" loading="lazy">
                 <div class="room-card-badge">Perfect for Solo</div>
               </div>
@@ -350,7 +365,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
           <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="150">
             <article class="room-card room-card--featured" id="room-couples">
               <div class="room-card-image-wrap">
-                <img src="assets/images/explore/Woman_posing_in_bikini_2K_202607210231.jpg"
+                <img src="assets/images/rooms/couples-retreat.png?v=<?= file_exists('assets/images/rooms/couples-retreat.png') ? filemtime('assets/images/rooms/couples-retreat.png') : '1.0' ?>"
                      alt="The Couple's Retreat room at Denvonbay" class="room-card-img" loading="lazy">
                 <div class="room-card-badge room-card-badge--blue">Most Popular</div>
               </div>
@@ -370,7 +385,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
           <div class="col-lg-4 col-md-6" data-reveal="up" data-reveal-delay="300">
             <article class="room-card" id="room-friends">
               <div class="room-card-image-wrap">
-                <img src="assets/images/explore/Friends_walking_on_beach_202607210209.jpg"
+                <img src="assets/images/rooms/friends-stay.png?v=<?= file_exists('assets/images/rooms/friends-stay.png') ? filemtime('assets/images/rooms/friends-stay.png') : '1.0' ?>"
                      alt="The Friends' Stay room at Denvonbay" class="room-card-img" loading="lazy">
                 <div class="room-card-badge">Great for Groups</div>
               </div>
@@ -690,21 +705,6 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
             </article>
           </div>
         <?php endif; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FINAL CTA ===== -->
-  <section class="final-cta-section" id="final-cta" aria-label="Book your stay at Denvonbay">
-    <div class="container">
-      <div class="final-cta-inner" data-reveal="up">
-        <p class="final-cta-eyebrow"><i class="bi bi-water me-2"></i>Hiriketiya Awaits</p>
-        <h2 class="final-cta-heading">Your Hiriketiya Stay<br><span class="final-cta-accent">Starts Here.</span></h2>
-        <p class="final-cta-text">Choose your room, find the package that suits your trip, and make Denvonbay part of your Sri Lankan adventure.</p>
-        <div class="final-cta-buttons">
-          <a href="booking.php" class="btn btn-cta-primary" id="finalCtaCheckBtn"><i class="bi bi-calendar2-check me-2"></i>Check Availability</a>
-          <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $whatsappNumber) ?>" target="_blank" rel="noopener" class="btn btn-cta-whatsapp" id="finalCtaWhatsappBtn" aria-label="Book via WhatsApp"><i class="bi bi-whatsapp me-2"></i>Book via WhatsApp</a>
-        </div>
       </div>
     </div>
   </section>

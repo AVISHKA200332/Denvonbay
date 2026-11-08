@@ -98,6 +98,99 @@ try {
         $specialRequests
     ]);
 
+    // Send email notification to hello@denonbay.com
+    $toEmail = get_setting($pdo, 'contact_email', 'hello@denonbay.com');
+    if (empty($toEmail) || $toEmail === 'hello@denvonbay.com') {
+        $toEmail = 'hello@denonbay.com';
+    }
+
+    $roomName = !empty($room['name']) ? $room['name'] : 'Coastal Stay';
+    $bookingSubject = "New Booking Request [" . $bookingRef . "] - " . $guestName;
+    $bookingBody = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 24px; color: #1e293b; }
+            .card { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
+            .header { background: #0B2A5B; padding: 24px 28px; color: #ffffff; }
+            .badge { display: inline-block; background: #42CFE8; color: #0B2A5B; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 6px; }
+            .header h1 { margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; }
+            .body { padding: 28px; }
+            .grid { display: table; width: 100%; margin-bottom: 16px; }
+            .col { display: table-cell; width: 50%; vertical-align: top; padding-bottom: 12px; }
+            .label { font-size: 11px; text-transform: uppercase; font-weight: 700; color: #64748b; letter-spacing: 0.05em; margin-bottom: 4px; }
+            .value { font-size: 14px; font-weight: 600; color: #0f172a; }
+            .total-box { background: #EFF6FF; border: 1px solid #BFDBFE; padding: 14px 18px; border-radius: 8px; margin-top: 14px; margin-bottom: 14px; }
+            .total-label { font-size: 12px; color: #1E40AF; font-weight: 600; }
+            .total-val { font-size: 20px; color: #1266F1; font-weight: 800; }
+            .footer { background: #f8fafc; padding: 16px 28px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="header">
+                <span class="badge">New Reservation</span>
+                <h1>' . htmlspecialchars($bookingRef, ENT_QUOTES, 'UTF-8') . '</h1>
+                <p style="margin:4px 0 0; opacity:0.85; font-size:12px; color:#ffffff;">Submitted via Denvonbay booking system</p>
+            </div>
+            <div class="body">
+                <div class="grid">
+                    <div class="col">
+                        <div class="label">Guest Name</div>
+                        <div class="value">' . htmlspecialchars($guestName, ENT_QUOTES, 'UTF-8') . '</div>
+                    </div>
+                    <div class="col">
+                        <div class="label">Phone / WhatsApp</div>
+                        <div class="value">' . htmlspecialchars($phone, ENT_QUOTES, 'UTF-8') . '</div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col">
+                        <div class="label">Email Address</div>
+                        <div class="value"><a href="mailto:' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="label">Room</div>
+                        <div class="value">' . htmlspecialchars($roomName, ENT_QUOTES, 'UTF-8') . '</div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col">
+                        <div class="label">Check-In</div>
+                        <div class="value">' . htmlspecialchars($checkIn, ENT_QUOTES, 'UTF-8') . '</div>
+                    </div>
+                    <div class="col">
+                        <div class="label">Check-Out</div>
+                        <div class="value">' . htmlspecialchars($checkOut, ENT_QUOTES, 'UTF-8') . ' (' . (int)$nights . ' night' . ($nights > 1 ? 's' : '') . ')</div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col">
+                        <div class="label">Guests</div>
+                        <div class="value">' . (int)$guests . ' Guest(s)</div>
+                    </div>
+                </div>
+                <div class="total-box">
+                    <div class="total-label">Estimated Total</div>
+                    <div class="total-val">$' . number_format($totalPrice, 2) . '</div>
+                </div>
+                ' . (!empty($specialRequests) ? '
+                <div>
+                    <div class="label">Special Requests</div>
+                    <div style="background:#f8fafc; padding:10px 14px; border-radius:6px; font-size:13px; color:#334155;">' . nl2br(htmlspecialchars($specialRequests, ENT_QUOTES, 'UTF-8')) . '</div>
+                </div>' : '') . '
+            </div>
+            <div class="footer">
+                Review this booking in the Denvonbay Admin Panel or reply directly to ' . htmlspecialchars($guestName, ENT_QUOTES, 'UTF-8') . '.
+            </div>
+        </div>
+    </body>
+    </html>';
+
+    send_system_email($toEmail, $bookingSubject, $bookingBody, $email, $guestName);
+
     // Store in session for confirmation display
     $_SESSION['last_booking'] = [
         'ref'        => $bookingRef,

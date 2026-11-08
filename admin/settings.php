@@ -89,7 +89,7 @@ require_once __DIR__ . '/admin-header.php';
                         <label class="form-label fw-semibold">Contact Email</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" name="contact_email" class="form-control" value="<?= htmlspecialchars($settings['contact_email'] ?? '') ?>" placeholder="hello@denvonbay.com">
+                            <input type="email" name="contact_email" class="form-control" value="<?= htmlspecialchars($settings['contact_email'] ?? 'hello@denonbay.com') ?>" placeholder="hello@denonbay.com">
                         </div>
                     </div>
                 </div>
