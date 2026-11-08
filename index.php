@@ -43,8 +43,8 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=<?= file_exists('assets/css/common.css') ? filemtime('assets/css/common.css') : '2.0' ?>">
+    <link rel="stylesheet" href="assets/css/home.css?v=<?= file_exists('assets/css/home.css') ? filemtime('assets/css/home.css') : '2.0' ?>">
 </head>
 <body>
 
@@ -66,26 +66,50 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
     <div class="container hero-container">
       <div class="row align-items-center hero-row">
         <div class="col-lg-6 hero-content" data-reveal="left">
-          <p class="hero-accent-label"><i class="bi bi-water me-2"></i>Stay by the Coast</p>
-          <h1 class="hero-heading">Your Relaxed Stay in <span class="hero-heading-accent">Hiriketiya.</span></h1>
-          <p class="hero-subtext">Affordable, comfortable stays near the beach for couples, solo travelers, friends and families exploring Sri Lanka's south coast.</p>
+          <div class="hero-accent-label">
+            <i class="bi bi-water me-2" aria-hidden="true"></i>
+            <span>Stay by the Coast</span>
+          </div>
+          <h1 class="hero-heading">
+            Your Relaxed Stay in <span class="hero-heading-accent">Hiriketiya.</span>
+          </h1>
+          <p class="hero-subtext">
+            Affordable, comfortable stays near the beach for couples, solo travelers, friends and families exploring Sri Lanka's south coast.
+          </p>
           <div class="hero-buttons">
-            <a href="rooms.php" class="btn btn-hero-primary" id="heroExploreRoomsBtn">Explore Our Rooms <i class="bi bi-arrow-right ms-2"></i></a>
-            <a href="booking.php" class="btn btn-hero-secondary" id="heroBookBtn">Book Your Stay</a>
+            <a href="rooms.php" class="btn btn-hero-primary" id="heroExploreRoomsBtn">
+              Explore Our Rooms <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
+            </a>
+            <a href="booking.php" class="btn btn-hero-secondary" id="heroBookBtn">
+              Book Your Stay
+            </a>
           </div>
           <div class="hero-pills">
-            <span class="hero-pill"><i class="bi bi-house-door me-1"></i>Only 5 unique rooms</span>
-            <span class="hero-pill"><i class="bi bi-calendar2 me-1"></i>Flexible stay packages</span>
-            <span class="hero-pill"><i class="bi bi-cup-hot me-1"></i>Breakfast available</span>
+            <span class="hero-pill"><i class="bi bi-door-open-fill me-1" aria-hidden="true"></i>Only 5 unique rooms</span>
+            <span class="hero-pill"><i class="bi bi-calendar2-check-fill me-1" aria-hidden="true"></i>Flexible stay packages</span>
+            <span class="hero-pill"><i class="bi bi-cup-hot-fill me-1" aria-hidden="true"></i>Breakfast available</span>
           </div>
         </div>
         <div class="col-lg-6 hero-visual" data-reveal="right">
           <div class="hero-image-wrap">
-            <img src="assets/images/explore/Female_surfer_walking_tropical_b…_202607210158.jpg"
-                 alt="Female surfer walking on a tropical beach near Hiriketiya, Sri Lanka"
+            <img src="assets/images/explore/hero-surfer-girl.jpg"
+                 alt="Female surfer walking on tropical beach in Hiriketiya with Denvonbay surfboard"
                  class="hero-main-img" loading="eager" fetchpriority="high">
-            <div class="hero-float-badge"><i class="bi bi-star-fill text-warning me-1"></i><span>Hiriketiya's Favourite Stay</span></div>
-            <div class="hero-float-pill"><i class="bi bi-geo-alt-fill me-1"></i>South Coast, Sri Lanka</div>
+            <div class="hero-float-pill">
+              <i class="bi bi-geo-alt-fill text-primary me-1" aria-hidden="true"></i>
+              <span>South Coast, Sri Lanka</span>
+            </div>
+            <div class="hero-float-badge">
+              <div class="hero-badge-stars">
+                <i class="bi bi-star-fill text-warning" aria-hidden="true"></i>
+                <i class="bi bi-star-fill text-warning" aria-hidden="true"></i>
+                <i class="bi bi-star-fill text-warning" aria-hidden="true"></i>
+                <i class="bi bi-star-fill text-warning" aria-hidden="true"></i>
+                <i class="bi bi-star-fill text-warning" aria-hidden="true"></i>
+                <span class="hero-badge-score">5.0</span>
+              </div>
+              <span class="hero-badge-title">Hiriketiya's Favourite Stay</span>
+            </div>
           </div>
         </div>
       </div>
@@ -172,8 +196,8 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
 
         <article class="exp-card" data-reveal="up" data-reveal-delay="100">
           <div class="exp-card-image-wrap">
-            <img src="assets/images/explore/Woman_lying_on_beach_towel_202607210218.jpg"
-                 alt="Relaxed coastal lifestyle near Hiriketiya beach" class="exp-card-img" loading="lazy">
+            <img src="assets/images/explore/Friends_walking_on_beach_202607210209.jpg"
+                 alt="Relaxed coastal lifestyle and beach vibes near Hiriketiya" class="exp-card-img" loading="lazy">
           </div>
           <div class="exp-card-label">
             <div class="exp-card-label-icon"><i class="bi bi-cup-straw"></i></div>

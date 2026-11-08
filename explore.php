@@ -95,6 +95,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Beaches &amp; Islands</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>4 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Nilwella</div>
@@ -118,6 +119,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Nature &amp; Wildlife</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>4 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Hiriketiya / Dickwella</div>
@@ -141,6 +143,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Culture &amp; Heritage</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>5 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Dickwella</div>
@@ -164,6 +167,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Nature &amp; Wildlife</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>1 Photo</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Kudawella</div>
@@ -187,6 +191,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Beaches &amp; Islands</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>3 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Southern Province</div>
@@ -210,6 +215,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Nature &amp; Wildlife</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>3 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Tangalle</div>
@@ -233,6 +239,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Hill Country</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>4 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Sri Lanka's Hill Country</div>
@@ -256,6 +263,7 @@ $pageDescription = "Discover Sri Lanka's beautiful beaches, Blue Beach Island, H
                                 loading="lazy"
                             >
                             <span class="dest-card-category-badge">Nature &amp; Wildlife</span>
+                            <span class="dest-card-photos-badge"><i class="bi bi-images me-1"></i>3 Photos</span>
                         </div>
                         <div class="dest-card-body">
                             <div class="dest-card-location"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Southeastern Sri Lanka</div>

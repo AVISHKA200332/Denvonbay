@@ -39,7 +39,29 @@ Visitors can walk across the natural sandbar, explore the surrounding coastline 
             'Peaceful coastal ambiance far removed from busy tourist spots'
         ],
         'tip'         => 'Sea conditions and sandbar accessibility vary with the tide and season. We recommend visiting during calmer weather and lower tides for the best walking and swimming experience. Speak with our team at Denvonbay before leaving so we can advise on the day\'s conditions.',
-        'host_note'   => 'We can arrange a reliable local tuk-tuk for you right after breakfast at Denvonbay. Pack reef-safe sunscreen, a dry bag for cameras, and water shoes for the rocky sections.'
+        'host_note'   => 'We can arrange a reliable local tuk-tuk for you right after breakfast at Denvonbay. Pack reef-safe sunscreen, a dry bag for cameras, and water shoes for the rocky sections.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/blue-beach-1.jpg',
+                'title'   => 'Sandbar & Coastal Panorama',
+                'caption' => 'Aerial view of Blue Beach Island and its natural connecting sandbar at Nilwella.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/blue-beach-2.jpg',
+                'title'   => 'Turquoise Ocean Waters',
+                'caption' => 'The vivid sapphire and turquoise hues of the Indian Ocean surrounding Nilwella.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/blue-beach-3.jpg',
+                'title'   => 'Island Shoreline & Rocky Headland',
+                'caption' => 'Rocky headlands and tranquil coastal coves ideal for walking and photography.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/blue-beach-4.jpg',
+                'title'   => 'Nilwella Coastal Sweep',
+                'caption' => 'Sweeping coastal outlook across the bay and protective rocky reefs.'
+            ]
+        ]
     ],
 
     'turtle-view' => [
@@ -70,7 +92,29 @@ The point offers lovely panoramic ocean scenery, refreshing swimming when condit
             'Gentle, responsible eco-tourism encounter without cages or enclosures'
         ],
         'tip'         => 'Please observe sea turtles from a respectful distance (at least 3-4 meters). Never touch, chase, feed or disturb them while swimming or surfacing for air. Wild sightings depend entirely on sea conditions and tide levels.',
-        'host_note'   => 'Because Turtle View Point is practically on Denvonbay\'s doorstep, our guests often visit early in the morning before breakfast when the waters are calmest and the beach is wonderfully quiet.'
+        'host_note'   => 'Because Turtle View Point is practically on Denvonbay\'s doorstep, our guests often visit early in the morning before breakfast when the waters are calmest and the beach is wonderfully quiet.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/turtle-view-1.jpg',
+                'title'   => 'Sea Turtle Encounter',
+                'caption' => 'Wild green sea turtle swimming peacefully in the shallow waters near Dickwella.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/turtle-view-2.jpg',
+                'title'   => 'Hiriketiya Coastal Point',
+                'caption' => 'Elevated viewpoint looking across Hiriketiya bay and rocky headlands.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/turtle-view-3.jpg',
+                'title'   => 'Reef Feeding Habitat',
+                'caption' => 'Sea turtle grazing naturally along the coastal coral shelves.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/turtle-view-4.jpg',
+                'title'   => 'Ocean Vantage & Rocks',
+                'caption' => 'Panoramic coastal scenery along the southern ocean rocks near Denvonbay.'
+            ]
+        ]
     ],
 
     'wewurukannala' => [
@@ -101,7 +145,34 @@ Visitors can explore the eight-story museum building behind the statue, view vib
             'An authentic active place of Buddhist worship with peaceful chanting'
         ],
         'tip'         => 'Wewurukannala is an active place of worship. Visitors must dress respectfully: shoulders and knees must be fully covered (light sarongs work well). Please remove footwear and hats before entering temple grounds.',
-        'host_note'   => 'A morning visit here pairs beautifully with an afternoon surf or relaxation session at Denvonbay. We can arrange a local driver to wait for you while you explore.'
+        'host_note'   => 'A morning visit here pairs beautifully with an afternoon surf or relaxation session at Denvonbay. We can arrange a local driver to wait for you while you explore.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/wewurukannala-1.jpg',
+                'title'   => '160-Foot Seated Buddha',
+                'caption' => 'The celebrated 160-foot seated Buddha statue rising serenely above the temple complex.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/wewurukannala-2.jpg',
+                'title'   => 'Historic Temple Entrance',
+                'caption' => 'Traditional entrance gateway and architecture of Wewurukannala Vihara.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/wewurukannala-3.jpg',
+                'title'   => 'Sacred Buddhist Murals',
+                'caption' => 'Detailed classical southern Sri Lankan mural paintings narrating Jataka teachings.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/wewurukannala-4.jpg',
+                'title'   => 'Temple Stupa & Shrine',
+                'caption' => 'White pagoda stupa and shrine courtyard within the historic grounds.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/wewurukannala-5.jpg',
+                'title'   => 'Temple Grounds & Sanctuary',
+                'caption' => 'Tranquil gardens and architectural details of this active place of worship.'
+            ]
+        ]
     ],
 
     'hummanaya' => [
@@ -132,7 +203,14 @@ The geyser can shoot water up to 25 to 30 meters into the air, accompanied by an
             'Scenic drive passing peaceful fishing harbors along Kudawella bay'
         ],
         'tip'         => 'Eruption height and frequency depend heavily on sea swell and tide. Remain strictly within designated safety railings as the surrounding black volcanic rocks are wet and slippery. Bring a light waterproof pouch for electronics.',
-        'host_note'   => 'Ask our team about current swell conditions before heading out — high tide always offers the most spectacular eruptions!'
+        'host_note'   => 'Ask our team about current swell conditions before heading out — high tide always offers the most spectacular eruptions!',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/hummanaya-1.jpg',
+                'title'   => 'Seawater Geyser Eruption',
+                'caption' => 'Dramatic ocean seawater erupting through the natural rock fissure high into the air at Kudawella.'
+            ]
+        ]
     ],
 
     'dickwella-beach' => [
@@ -163,7 +241,24 @@ The beach features warm turquoise waters sheltered by shallow coral barriers at 
             'Only minutes from Denvonbay, making multiple visits effortless'
         ],
         'tip'         => 'While the central and eastern sections are gentle, currents can become stronger near open headlands. Stick to the reef-sheltered sandy shallows for safe swimming. The beach is at its most magical during sunset.',
-        'host_note'   => 'Guests love taking a sunset walk along Dickwella Beach before returning to Denvonbay for a quiet, relaxing tropical evening.'
+        'host_note'   => 'Guests love taking a sunset walk along Dickwella Beach before returning to Denvonbay for a quiet, relaxing tropical evening.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/dickwella-beach-1.jpg',
+                'title'   => 'Golden Shoreline & Palms',
+                'caption' => 'The wide golden sandy crescent of Dickwella Beach with tranquil turquoise waters.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/dickwella-beach-2.jpg',
+                'title'   => 'Peaceful Tropical Bay',
+                'caption' => 'Uncrowded southern coastal shores sheltered by natural offshore coral formations.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/dickwella-beach-3.jpg',
+                'title'   => 'Sunset Over Dickwella',
+                'caption' => 'Golden twilight reflecting across the sand and waves along Dickwella Beach.'
+            ]
+        ]
     ],
 
     'rekawa' => [
@@ -194,7 +289,24 @@ Unlike commercial hatcheries, Rekawa protects turtles in their purely natural, w
             'Rare, ethical wildlife experience with no captive tanks or handling'
         ],
         'tip'         => 'Strict eco-guidelines apply: white lights, flashlights, and camera flashes are strictly forbidden as they disorient nesting mothers. Red-filtered lights are provided by official guides. Wear dark clothing and quiet footwear for walking on sand.',
-        'host_note'   => 'This is a wonderful evening trip from Denvonbay. We can book a trusted driver who will wait for you at the conservation center and drive you safely back to Denvonbay afterwards.'
+        'host_note'   => 'This is a wonderful evening trip from Denvonbay. We can book a trusted driver who will wait for you at the conservation center and drive you safely back to Denvonbay afterwards.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/rekawa-1.jpg',
+                'title'   => 'Sea Turtle Nesting',
+                'caption' => 'Endangered sea turtle on the natural protected nesting sands of Rekawa Beach.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/rekawa-2.jpg',
+                'title'   => 'Conservation Coastline',
+                'caption' => 'The pristine, untouched beach of Rekawa dedicated to ethical marine conservation.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/rekawa-3.jpg',
+                'title'   => 'Baby Turtle Hatchling',
+                'caption' => 'A newborn hatchling making its remarkable first journey into the Indian Ocean.'
+            ]
+        ]
     ],
 
     'ella' => [
@@ -225,7 +337,29 @@ The world-famous Nine Arch Bridge, built entirely of stone and brick without ste
             'Cool, refreshing mountain climate providing a delightful contrast to the beach'
         ],
         'tip'         => 'Because Ella is a longer journey from the coast, we recommend departing Denvonbay by 6:00 AM for a full-day trip, or planning an overnight stay. Carry a light jacket or fleece as highland evenings can be cool.',
-        'host_note'   => 'Denvonbay can arrange an air-conditioned private vehicle and driver for your Ella day-trip, or assist you with luggage storage if you plan an overnight mountain journey before returning to the coast.'
+        'host_note'   => 'Denvonbay can arrange an air-conditioned private vehicle and driver for your Ella day-trip, or assist you with luggage storage if you plan an overnight mountain journey before returning to the coast.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/ella-1.jpg',
+                'title'   => 'Iconic Nine Arch Bridge',
+                'caption' => 'The world-famous Nine Arch Bridge spanning a lush green valley in Ella.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/ella-2.jpg',
+                'title'   => 'Highland Mountain Vista',
+                'caption' => 'Panoramic mountain vistas and dramatic ravines characteristic of the central highlands.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/ella-3.jpg',
+                'title'   => 'Scenic Viaduct Crossing',
+                'caption' => 'Historic stone railway viaduct surrounded by towering forests and emerald hills.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/ella-4.jpg',
+                'title'   => 'Ceylon Tea Hillside',
+                'caption' => 'Rolling green Ceylon tea estates and walking trails in the mountains of Ella.'
+            ]
+        ]
     ],
 
     'yala' => [
@@ -256,7 +390,24 @@ Yala Block 1 boasts one of the highest leopard densities in the entire world (th
             'Conveniently accessible for an early-morning safari excursion from Denvonbay'
         ],
         'tip'         => 'Park regulations require all visitors to stay inside authorized safari jeeps. Wildlife sightings are authentic and never guaranteed. Bring binoculars, a zoom lens, sunglasses, and dust protection (a light scarf or bandana).',
-        'host_note'   => 'We can organize an early-morning departure from Denvonbay (around 4:30 AM) with a packed breakfast, connecting you directly with trusted, respectful safari jeep drivers at the park gate.'
+        'host_note'   => 'We can organize an early-morning departure from Denvonbay (around 4:30 AM) with a packed breakfast, connecting you directly with trusted, respectful safari jeep drivers at the park gate.',
+        'gallery'     => [
+            [
+                'url'     => 'assets/images/explore/gallery/yala-1.jpg',
+                'title'   => 'Sri Lankan Leopard',
+                'caption' => 'The majestic endemic Sri Lankan leopard resting in the wild at Yala National Park.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/yala-2.jpg',
+                'title'   => 'Wild Safari Landscape',
+                'caption' => 'Untamed savanna and thorny dry forests bordering coastal lagoons in Yala.'
+            ],
+            [
+                'url'     => 'assets/images/explore/gallery/yala-3.jpg',
+                'title'   => 'Wild Asian Elephant',
+                'caption' => 'Wild elephant grazing peacefully in its natural protected habitat.'
+            ]
+        ]
     ]
 ];
 
@@ -520,6 +671,11 @@ $pageDescription = e($currentDest['summary']);
                 <div class="dest-detail-photo-badge">
                     <i class="bi bi-camera-fill me-1"></i><?= e($currentDest['location']) ?>, Sri Lanka
                 </div>
+                <?php if (!empty($currentDest['gallery'])): ?>
+                <a href="#photo-gallery" class="dest-detail-gallery-pill">
+                    <i class="bi bi-images me-1"></i>View All <?= count($currentDest['gallery']) ?> Photos
+                </a>
+                <?php endif; ?>
             </div>
 
             <div class="row gy-5 mt-2">
@@ -554,6 +710,34 @@ $pageDescription = e($currentDest['summary']);
                             <?php endforeach; ?>
                         </div>
                     </div>
+
+                    <!-- Destination Photo Gallery Section -->
+                    <?php if (!empty($currentDest['gallery'])): ?>
+                    <div class="dest-detail-card mb-4" id="photo-gallery">
+                        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                            <div>
+                                <span class="dest-detail-card-eyebrow"><i class="bi bi-images me-1"></i>Authentic Photography</span>
+                                <h2 class="dest-detail-section-title mb-0 border-0 pb-0">Photo Gallery: <?= e($currentDest['title']) ?></h2>
+                            </div>
+                            <span class="dest-gallery-count-pill"><i class="bi bi-camera me-1"></i><?= count($currentDest['gallery']) ?> Photos</span>
+                        </div>
+                        <p class="text-muted small mb-4">Real images from <?= e($currentDest['title']) ?>. Click any image to view in high resolution.</p>
+                        
+                        <div class="dest-photo-gallery-grid">
+                            <?php foreach ($currentDest['gallery'] as $gIndex => $gItem): ?>
+                                <div class="dest-gallery-item" onclick="openLightbox(<?= $gIndex ?>)" role="button" tabindex="0" aria-label="View photo: <?= e($gItem['title']) ?>">
+                                    <img src="<?= e($gItem['url']) ?>" alt="<?= e($gItem['caption']) ?>" loading="lazy">
+                                    <div class="dest-gallery-overlay">
+                                        <div class="dest-gallery-info">
+                                            <span class="dest-gallery-title"><?= e($gItem['title']) ?></span>
+                                            <span class="dest-gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
 
                     <!-- Visitor Guidance & Responsible Tourism -->
                     <?php if (!empty($currentDest['tip'])): ?>
@@ -703,7 +887,94 @@ $pageDescription = e($currentDest['summary']);
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Common JS -->
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?v=<?= file_exists('assets/js/common.js') ? filemtime('assets/js/common.js') : '2.0' ?>"></script>
+
+<!-- Lightbox Modal -->
+<div class="dest-lightbox" id="destLightbox" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <button type="button" class="dest-lightbox-close" id="lightboxClose" aria-label="Close Lightbox">
+        <i class="bi bi-x-lg"></i>
+    </button>
+    <button type="button" class="dest-lightbox-nav dest-lightbox-prev" id="lightboxPrev" aria-label="Previous photo">
+        <i class="bi bi-chevron-left"></i>
+    </button>
+    <button type="button" class="dest-lightbox-nav dest-lightbox-next" id="lightboxNext" aria-label="Next photo">
+        <i class="bi bi-chevron-right"></i>
+    </button>
+
+    <div class="dest-lightbox-content">
+        <div class="dest-lightbox-img-wrap">
+            <img src="" alt="" id="lightboxImg" class="dest-lightbox-img">
+        </div>
+        <div class="dest-lightbox-caption-wrap">
+            <h4 id="lightboxTitle" class="dest-lightbox-title"></h4>
+            <p id="lightboxCaption" class="dest-lightbox-caption"></p>
+            <span id="lightboxCounter" class="dest-lightbox-counter"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+var galleryData = <?= json_encode($currentDest['gallery'] ?? []) ?>;
+var currentLightboxIndex = 0;
+var lightbox = document.getElementById('destLightbox');
+var lightboxImg = document.getElementById('lightboxImg');
+var lightboxTitle = document.getElementById('lightboxTitle');
+var lightboxCaption = document.getElementById('lightboxCaption');
+var lightboxCounter = document.getElementById('lightboxCounter');
+
+function openLightbox(index) {
+    if (!galleryData || !galleryData.length) return;
+    currentLightboxIndex = (index >= 0 && index < galleryData.length) ? index : 0;
+    renderLightboxItem();
+    lightbox.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-active');
+    document.body.style.overflow = '';
+}
+
+function renderLightboxItem() {
+    var item = galleryData[currentLightboxIndex];
+    if (!item) return;
+    lightboxImg.src = item.url;
+    lightboxImg.alt = item.caption || item.title;
+    lightboxTitle.textContent = item.title || '';
+    lightboxCaption.textContent = item.caption || '';
+    lightboxCounter.textContent = (currentLightboxIndex + 1) + ' / ' + galleryData.length;
+}
+
+function nextLightbox() {
+    if (!galleryData.length) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
+    renderLightboxItem();
+}
+
+function prevLightbox() {
+    if (!galleryData.length) return;
+    currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
+    renderLightboxItem();
+}
+
+document.getElementById('lightboxClose')?.addEventListener('click', closeLightbox);
+document.getElementById('lightboxNext')?.addEventListener('click', nextLightbox);
+document.getElementById('lightboxPrev')?.addEventListener('click', prevLightbox);
+
+lightbox?.addEventListener('click', function(e) {
+    if (e.target === lightbox || e.target.classList.contains('dest-lightbox-content')) {
+        closeLightbox();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (!lightbox || !lightbox.classList.contains('is-active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextLightbox();
+    if (e.key === 'ArrowLeft') prevLightbox();
+});
+</script>
 
 </body>
 </html>
