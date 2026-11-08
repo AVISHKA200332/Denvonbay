@@ -5,8 +5,12 @@
  * Simple session-based admin authentication.
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+    $tmpDir = sys_get_temp_dir();
+    if ($tmpDir && is_dir($tmpDir) && is_writable($tmpDir)) {
+        @session_save_path($tmpDir);
+    }
+    @session_start();
 }
 
 /**

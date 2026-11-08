@@ -28,6 +28,8 @@ if ($databaseUrl) {
     $password = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
 }
 
+$pdo = null;
+
 // Attempt MySQL connection
 try {
     $options = [
@@ -43,22 +45,32 @@ try {
         $options
     );
 
-} catch (PDOException $mysqlError) {
-    // 3. Fallback: If MySQL is not reachable (e.g. on Vercel preview), use bundled SQLite
-    $sqlitePath = __DIR__ . '/../database/denvonbay.sqlite';
+} catch (\Throwable $mysqlError) {
+    // 3. Fallback: If MySQL is not reachable (e.g. on Vercel preview/serverless), use bundled SQLite
+    $sqliteSource = __DIR__ . '/../database/denvonbay.sqlite';
+    $sqliteTemp   = sys_get_temp_dir() . '/denvonbay.sqlite';
 
-    if (file_exists($sqlitePath)) {
+    // On Vercel Lambda, root filesystem is read-only. Copy sqlite to /tmp so SQLite can lock/read-write safely.
+    if (file_exists($sqliteSource)) {
+        if (!file_exists($sqliteTemp)) {
+            @copy($sqliteSource, $sqliteTemp);
+        }
+    }
+
+    $activeSqlite = file_exists($sqliteTemp) ? $sqliteTemp : (file_exists($sqliteSource) ? $sqliteSource : null);
+
+    if ($activeSqlite) {
         try {
-            $pdo = new PDO('sqlite:' . $sqlitePath);
+            $pdo = new PDO('sqlite:' . $activeSqlite);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $pdo->exec('PRAGMA foreign_keys = ON;');
-        } catch (PDOException $sqliteError) {
-            error_log('Database fallback error: ' . $sqliteError->getMessage());
-            die('Database connection failed. Please try again later.');
+        } catch (\Throwable $sqliteError) {
+            error_log('Database SQLite fallback notice: ' . $sqliteError->getMessage());
+            $pdo = null;
         }
     } else {
-        error_log('Database connection error: ' . $mysqlError->getMessage());
-        die('Database connection failed. Please try again later.');
+        error_log('Database notice: No MySQL or SQLite available. Using fallback static data.');
+        $pdo = null;
     }
 }

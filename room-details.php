@@ -12,20 +12,26 @@ $roomId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $slug   = isset($_GET['slug']) ? sanitize($_GET['slug']) : '';
 
 $room = null;
-if ($roomId > 0) {
-    $stmt = $pdo->prepare("SELECT * FROM rooms WHERE id = ? LIMIT 1");
-    $stmt->execute([$roomId]);
-    $room = $stmt->fetch();
-} elseif (!empty($slug)) {
-    $stmt = $pdo->prepare("SELECT * FROM rooms WHERE slug = ? LIMIT 1");
-    $stmt->execute([$slug]);
-    $room = $stmt->fetch();
-}
+if ($pdo instanceof PDO) {
+    try {
+        if ($roomId > 0) {
+            $stmt = $pdo->prepare("SELECT * FROM rooms WHERE id = ? LIMIT 1");
+            $stmt->execute([$roomId]);
+            $room = $stmt->fetch();
+        } elseif (!empty($slug)) {
+            $stmt = $pdo->prepare("SELECT * FROM rooms WHERE slug = ? LIMIT 1");
+            $stmt->execute([$slug]);
+            $room = $stmt->fetch();
+        }
 
-// Fallback to room 1 if not found
-if (!$room) {
-    $stmt = $pdo->query("SELECT * FROM rooms ORDER BY id ASC LIMIT 1");
-    $room = $stmt->fetch();
+        // Fallback to room 1 if not found
+        if (!$room) {
+            $stmt = $pdo->query("SELECT * FROM rooms ORDER BY id ASC LIMIT 1");
+            $room = $stmt ? $stmt->fetch() : null;
+        }
+    } catch (\Throwable $e) {
+        $room = null;
+    }
 }
 
 if (!$room) {

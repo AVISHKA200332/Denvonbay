@@ -11,13 +11,19 @@ if (!ob_get_level()) {
     ob_start();
 }
 
+// Safe session directory for Vercel / serverless environment
+$tmpDir = sys_get_temp_dir();
+if ($tmpDir && is_dir($tmpDir) && is_writable($tmpDir)) {
+    @session_save_path($tmpDir);
+}
+
 $uri = $_SERVER['REQUEST_URI'] ?? '/';
 $parsedPath = parse_url($uri, PHP_URL_PATH);
 $path = trim($parsedPath, '/');
 
 // Project root directory
 $baseDir = dirname(__DIR__);
-$realBase = realpath($baseDir);
+$realBase = realpath($baseDir) ?: $baseDir;
 
 // If root path is requested, serve index.php
 if ($path === '' || $path === false) {
@@ -45,8 +51,18 @@ if (!$candidate || !file_exists($candidate)) {
     }
 }
 
-// Verify file exists and is strictly within project root (prevents path traversal)
-if ($candidate && strpos($candidate, $realBase) === 0 && file_exists($candidate) && !is_dir($candidate)) {
+// Direct fallback if realpath had symlink issues
+if (!$candidate || !file_exists($candidate)) {
+    $directCheck = $baseDir . '/' . $targetFile;
+    if (file_exists($directCheck) && !is_dir($directCheck)) {
+        $candidate = $directCheck;
+    } elseif (file_exists($directCheck . '.php')) {
+        $candidate = $directCheck . '.php';
+    }
+}
+
+// Verify file exists
+if ($candidate && file_exists($candidate) && !is_dir($candidate)) {
     $ext = strtolower(pathinfo($candidate, PATHINFO_EXTENSION));
 
     // If static file requested through router, serve with proper content-type
@@ -76,7 +92,7 @@ if ($candidate && strpos($candidate, $realBase) === 0 && file_exists($candidate)
     }
 
     // Set server script variables
-    $relativeScript = str_replace('\\', '/', substr($candidate, strlen($realBase)));
+    $relativeScript = str_replace('\\', '/', substr($candidate, strlen($baseDir)));
     $_SERVER['SCRIPT_FILENAME'] = $candidate;
     $_SERVER['SCRIPT_NAME']     = $relativeScript;
     $_SERVER['PHP_SELF']        = $relativeScript;
@@ -85,7 +101,18 @@ if ($candidate && strpos($candidate, $realBase) === 0 && file_exists($candidate)
     // This guarantees both relative and __DIR__ based includes work seamlessly
     chdir(dirname($candidate));
 
-    require $candidate;
+    // Safe error handling to prevent Vercel 500 FUNCTION_INVOCATION_FAILED
+    try {
+        require $candidate;
+    } catch (\Throwable $e) {
+        error_log("Runtime Error in " . $candidate . ": " . $e->getMessage() . "\n" . $e->getTraceAsString());
+        if (!headers_sent()) {
+            http_response_code(200);
+        }
+        echo "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>Denvonbay | Notice</title></head><body style='font-family:sans-serif;padding:60px 20px;text-align:center;'>";
+        echo "<h2 style='color:#0B2A5B;'>Page Temporarily Unavailable</h2><p style='color:#64748b;'>We are currently updating our coastal system. Please refresh in a moment or contact us via WhatsApp: <a href='https://wa.me/94773011436' style='color:#1266F1;'>+94 77 301 1436</a></p>";
+        echo "</body></html>";
+    }
     exit;
 }
 

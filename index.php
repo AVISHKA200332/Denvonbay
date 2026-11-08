@@ -13,8 +13,27 @@ $pageDescription = "Stay at Denvonbay, Hiriketiya's most relaxed coastal retreat
 
 $flash = get_flash();
 
-// Dynamic content from database
-$featuredRooms = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC LIMIT 3")->fetchAll();
+// Dynamic content from database (with safe fallback if database is not running or on serverless)
+$featuredRooms = [];
+$featuredPackages = [];
+$featuredReviews = [];
+
+if ($pdo instanceof PDO) {
+    try {
+        $stmt = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC LIMIT 3");
+        $featuredRooms = $stmt ? $stmt->fetchAll() : [];
+    } catch (\Throwable $e) {
+        $featuredRooms = [];
+    }
+    try {
+        $stmt = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC LIMIT 4");
+        $featuredPackages = $stmt ? $stmt->fetchAll() : [];
+    } catch (\Throwable $e) {
+        $featuredPackages = [];
+    }
+    $featuredReviews = get_approved_reviews($pdo, 3);
+}
+
 $roomImageMap = [
     'cozy'    => 'assets/images/rooms/cozy-room.jpg',
     'couples' => 'assets/images/rooms/couples-retreat.png',
@@ -30,8 +49,6 @@ if (!empty($featuredRooms)) {
     }
     unset($fR);
 }
-$featuredPackages = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC LIMIT 4")->fetchAll();
-$featuredReviews = get_approved_reviews($pdo, 3);
 $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
 ?>
 <!DOCTYPE html>

@@ -5,9 +5,13 @@
  * Simple, beginner-friendly procedural helpers.
  */
 
-// Start session if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+// Start session if not already started (safe for serverless / read-only filesystem environments)
+if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+    $tmpDir = sys_get_temp_dir();
+    if ($tmpDir && is_dir($tmpDir) && is_writable($tmpDir)) {
+        @session_save_path($tmpDir);
+    }
+    @session_start();
 }
 require_once __DIR__ . '/auth.php';
 
@@ -74,10 +78,13 @@ function redirect($url) {
  * Fetch all available rooms from database
  */
 function get_rooms($pdo) {
+    if (!$pdo || !($pdo instanceof PDO)) {
+        return [];
+    }
     try {
         $stmt = $pdo->query("SELECT * FROM rooms WHERE is_available = 1 ORDER BY id ASC");
-        return $stmt->fetchAll();
-    } catch (PDOException $e) {
+        return $stmt ? $stmt->fetchAll() : [];
+    } catch (\Throwable $e) {
         return [];
     }
 }
@@ -86,10 +93,13 @@ function get_rooms($pdo) {
  * Fetch all active packages from database
  */
 function get_packages($pdo) {
+    if (!$pdo || !($pdo instanceof PDO)) {
+        return [];
+    }
     try {
         $stmt = $pdo->query("SELECT * FROM packages WHERE is_active = 1 ORDER BY id ASC");
-        return $stmt->fetchAll();
-    } catch (PDOException $e) {
+        return $stmt ? $stmt->fetchAll() : [];
+    } catch (\Throwable $e) {
         return [];
     }
 }
@@ -99,12 +109,15 @@ function get_packages($pdo) {
  * Fetch approved guest reviews from database
  */
 function get_approved_reviews($pdo, $limit = 6) {
+    if (!$pdo || !($pdo instanceof PDO)) {
+        return [];
+    }
     try {
         $stmt = $pdo->prepare("SELECT * FROM reviews WHERE is_approved = 1 ORDER BY id DESC LIMIT ?");
         $stmt->bindValue(1, (int)$limit, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
-    } catch (PDOException $e) {
+    } catch (\Throwable $e) {
         return [];
     }
 }
@@ -119,12 +132,18 @@ function get_site_settings($pdo) {
     }
 
     $cachedSettings = [];
+    if (!$pdo || !($pdo instanceof PDO)) {
+        return $cachedSettings;
+    }
+
     try {
         $stmt = $pdo->query("SELECT setting_key, setting_value FROM site_settings");
-        while ($row = $stmt->fetch()) {
-            $cachedSettings[$row['setting_key']] = $row['setting_value'];
+        if ($stmt) {
+            while ($row = $stmt->fetch()) {
+                $cachedSettings[$row['setting_key']] = $row['setting_value'];
+            }
         }
-    } catch (PDOException $e) {
+    } catch (\Throwable $e) {
         // Fallback gracefully
     }
     return $cachedSettings;
