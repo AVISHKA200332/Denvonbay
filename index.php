@@ -129,7 +129,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
                  class="hero-main-img" loading="eager" fetchpriority="high">
             <div class="hero-float-pill">
               <i class="bi bi-geo-alt-fill text-primary me-1" aria-hidden="true"></i>
-              <span>South Coast, Sri Lanka</span>
+              <span>Hiriketiya, Dickwella, Sri Lanka</span>
             </div>
             <div class="hero-float-badge">
               <div class="hero-badge-stars">
@@ -513,7 +513,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
             <img src="assets/images/explore/Surfer_carving_ocean_barrel_2K_202607210258.jpg"
                  alt="Surfer carving through an ocean barrel wave at Hiriketiya"
                  class="explore-img" loading="lazy">
-            <div class="explore-img-badge"><i class="bi bi-geo-alt-fill me-1"></i>Hiriketiya, Sri Lanka</div>
+            <div class="explore-img-badge"><i class="bi bi-geo-alt-fill me-1"></i>Hiriketiya, Dickwella, Sri Lanka</div>
           </div>
         </div>
         <div class="col-lg-6" data-reveal="right">
@@ -733,7 +733,7 @@ $whatsappNumber = get_setting($pdo, 'whatsapp_number', '94773011436');
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Scripts -->
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?v=<?= file_exists('assets/js/common.js') ? filemtime('assets/js/common.js') : '2.0' ?>"></script>
 <script src="assets/js/home.js"></script>
 
 </body>

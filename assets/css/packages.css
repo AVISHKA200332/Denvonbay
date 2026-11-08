@@ -1,5 +1,7 @@
+
 /**
  * Denvonbay - Packages Page Premium Styles
+ * Git Merge Conflicts Resolved
  */
 
 /* ============================================================
@@ -23,10 +25,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-base);
   overflow: hidden;
+  transition:
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth),
+    border-color var(--transition-base);
 }
 
+/* Top Decorative Line */
 .package-full-card::before {
   content: '';
   position: absolute;
@@ -34,11 +40,17 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-blue),
+    transparent
+  );
   opacity: 0;
   transition: opacity var(--transition-base);
 }
 
+/* Card Hover Effect */
 .package-full-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
@@ -49,20 +61,32 @@
   opacity: 1;
 }
 
-/* Featured card */
+/* ============================================================
+   FEATURED PACKAGE CARD
+   ============================================================ */
 .package-full-card.featured {
   border: 2px solid var(--primary-blue);
   box-shadow: var(--shadow-blue);
-  background: linear-gradient(160deg, rgba(18, 102, 241, 0.02) 0%, var(--white) 60%);
+  background: linear-gradient(
+    160deg,
+    rgba(18, 102, 241, 0.02) 0%,
+    var(--white) 60%
+  );
 }
 
 .package-full-card.featured::before {
   opacity: 1;
-  background: linear-gradient(90deg, var(--primary-blue), var(--aqua));
+  background: linear-gradient(
+    90deg,
+    var(--primary-blue),
+    var(--aqua)
+  );
   height: 4px;
 }
 
-/* Badge tag — positioned at top-center */
+/* ============================================================
+   PACKAGE BADGE TAG
+   ============================================================ */
 .package-badge-tag {
   position: absolute;
   top: -1px;
@@ -72,13 +96,18 @@
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
   padding: 7px 18px;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border-radius:
+    0 0
+    var(--radius-md)
+    var(--radius-md);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   box-shadow: 0 4px 12px rgba(18, 102, 241, 0.35);
 }
 
-/* Package header area */
+/* ============================================================
+   PACKAGE HEADER AREA
+   ============================================================ */
 .package-header {
   text-align: center;
   margin-bottom: 28px;
@@ -86,6 +115,7 @@
   border-bottom: 1px solid var(--border-grey);
 }
 
+/* Package Icon */
 .package-icon-wrap {
   width: 72px;
   height: 72px;
@@ -97,15 +127,20 @@
   justify-content: center;
   font-size: 2rem;
   margin: 0 auto 20px;
-  transition: background var(--transition-base), transform var(--transition-smooth);
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-smooth);
 }
 
+/* Package Icon Hover */
 .package-full-card:hover .package-icon-wrap {
   background: var(--primary-blue);
   color: var(--white);
   transform: scale(1.06) rotate(-5deg);
 }
 
+/* Package Name */
 .package-name {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
@@ -114,6 +149,9 @@
   letter-spacing: -0.02em;
 }
 
+/* ============================================================
+   PACKAGE DURATION PILL
+   ============================================================ */
 .package-duration-pill {
   font-size: var(--fs-xs);
   color: var(--primary-blue);
@@ -130,6 +168,9 @@
   letter-spacing: 0.06em;
 }
 
+/* ============================================================
+   PACKAGE PRICE BOX
+   ============================================================ */
 .package-price-box {
   display: flex;
   align-items: baseline;
@@ -150,7 +191,9 @@
   font-weight: var(--fw-medium);
 }
 
-/* Feature list */
+/* ============================================================
+   PACKAGE FEATURES LIST
+   ============================================================ */
 .package-features {
   margin-bottom: 32px;
   flex: 1;
@@ -173,6 +216,7 @@
   background: var(--warm-white);
 }
 
+/* Feature Check Icon */
 .package-feature-item i {
   color: var(--aqua);
   font-size: 1rem;
@@ -188,12 +232,18 @@
 }
 
 /* ============================================================
-   CUSTOM CALLOUT BANNER
+   CUSTOM PACKAGE CALLOUT BANNER
+   PREMIUM MERGED DESIGN
    ============================================================ */
 .package-custom-callout {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 60%, #0D4BAF 100%);
-  color: var(--white);
-  border-radius: var(--radius-2xl);
+  background: linear-gradient(
+    135deg,
+    var(--navy, #0B2A5B) 0%,
+    var(--brand-blue, #1266F1) 60%,
+    #0D4BAF 100%
+  );
+  color: var(--white, #FFFFFF);
+  border-radius: var(--radius-2xl, 24px);
   padding: 64px 72px;
   text-align: center;
   margin-top: 72px;
@@ -201,6 +251,7 @@
   overflow: hidden;
 }
 
+/* Decorative Background Glow */
 .package-custom-callout::before {
   content: '';
   position: absolute;
@@ -209,19 +260,114 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(66, 207, 232, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(66, 207, 232, 0.12) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 991.98px) {
-  .package-full-card { padding: 32px 28px; }
-  .package-custom-callout { padding: 48px 40px; }
+/* Content Above Background Effects */
+.package-custom-callout > * {
+  position: relative;
+  z-index: 1;
 }
 
+/* Callout Heading */
+.package-custom-callout h3 {
+  color: #FFFFFF;
+}
+
+/* Callout Description */
+.package-custom-callout p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN — TABLET
+   ============================================================ */
+@media (max-width: 991.98px) {
+  .package-full-card {
+    padding: 32px 28px;
+  }
+
+  .package-custom-callout {
+    padding: 48px 40px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN — MOBILE
+   ============================================================ */
 @media (max-width: 767.98px) {
-  .package-full-card { padding: 28px 24px; }
-  .package-custom-callout { padding: 40px 28px; margin-top: 48px; border-radius: var(--radius-xl); }
+  .package-full-card {
+    padding: 28px 24px;
+  }
+
+  .package-custom-callout {
+    padding: 40px 28px;
+    margin-top: 48px;
+    border-radius: var(--radius-xl);
+  }
+
+  .package-custom-callout::before {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN — SMALL MOBILE
+   ============================================================ */
+@media (max-width: 479.98px) {
+  .package-full-card {
+    padding: 24px 20px;
+  }
+
+  .package-header {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+
+  .package-icon-wrap {
+    width: 64px;
+    height: 64px;
+    font-size: 1.75rem;
+  }
+
+  .package-feature-item {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .package-badge-tag {
+    right: 16px;
+    padding: 6px 12px;
+  }
+
+  .package-custom-callout {
+    padding: 36px 20px;
+    margin-top: 40px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .package-full-card,
+  .package-full-card::before,
+  .package-icon-wrap,
+  .package-feature-item {
+    transition: none;
+  }
+
+  .package-full-card:hover {
+    transform: none;
+  }
+
+  .package-full-card:hover .package-icon-wrap {
+    transform: none;
+  }
 }

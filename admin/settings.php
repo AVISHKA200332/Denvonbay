@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'contact_phone' => trim($_POST['contact_phone'] ?? ''),
         'contact_email' => trim($_POST['contact_email'] ?? ''),
         'whatsapp_number' => trim($_POST['whatsapp_number'] ?? ''),
-        'hotel_address' => trim($_POST['hotel_address'] ?? ''),
+        'hotel_address' => trim($_POST['hotel_address'] ?? '') ?: 'Hiriketiya, Dickwella, Sri Lanka',
+        'contact_location' => trim($_POST['hotel_address'] ?? '') ?: 'Hiriketiya, Dickwella, Sri Lanka',
         'instagram_url' => trim($_POST['instagram_url'] ?? ''),
         'facebook_url' => trim($_POST['facebook_url'] ?? ''),
         'checkin_time' => trim($_POST['checkin_time'] ?? '14:00'),
@@ -61,7 +62,7 @@ require_once __DIR__ . '/admin-header.php';
                     </div>
                     <div class="col-12">
                         <label class="form-label fw-semibold">Physical Location & Address</label>
-                        <input type="text" name="hotel_address" class="form-control" value="<?= htmlspecialchars($settings['hotel_address'] ?? '') ?>" placeholder="e.g. 142 Beach Road, Weligama, Southern Province, Sri Lanka">
+                        <input type="text" name="hotel_address" class="form-control" value="<?= htmlspecialchars(!empty($settings['hotel_address']) ? $settings['hotel_address'] : ($settings['contact_location'] ?? 'Hiriketiya, Dickwella, Sri Lanka')) ?>" placeholder="Hiriketiya, Dickwella, Sri Lanka">
                     </div>
                 </div>
             </div>

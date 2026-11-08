@@ -86,7 +86,7 @@ if (empty($packages)) {
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/common.css?v=<?= file_exists('assets/css/common.css') ? filemtime('assets/css/common.css') : '2.0' ?>">
-    <link rel="stylesheet" href="assets/css/packages.css">
+    <link rel="stylesheet" href="assets/css/packages.css?v=<?= file_exists('assets/css/packages.css') ? filemtime('assets/css/packages.css') : '2.0' ?>">
 </head>
 <body>
 
@@ -168,7 +168,7 @@ if (empty($packages)) {
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Common JS -->
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?v=<?= file_exists('assets/js/common.js') ? filemtime('assets/js/common.js') : '2.0' ?>"></script>
 
 </body>
 </html>

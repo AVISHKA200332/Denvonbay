@@ -242,4 +242,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, { passive: true });
 
+  /* ============================================================
+     5. LUXURY COASTAL DARK / LIGHT THEME TOGGLE
+     ============================================================ */
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
+
+  if (themeToggleBtn && typeof window.toggleDenvonbayTheme === 'function') {
+    themeToggleBtn.onclick = window.toggleDenvonbayTheme;
+  }
+  if (mobileThemeToggleBtn && typeof window.toggleDenvonbayTheme === 'function') {
+    mobileThemeToggleBtn.onclick = window.toggleDenvonbayTheme;
+  }
 });

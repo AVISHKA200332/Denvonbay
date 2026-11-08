@@ -1,123 +1,16 @@
-/**
- * Denvonbay - FAQ Page Premium Styles
- */
-
-/* ============================================================
-   FAQ PAGE SECTION
-   ============================================================ */
-.faq-page-section {
-  padding: var(--section-py) 0;
-  background: var(--warm-white);
-}
-
-/* ============================================================
-   FAQ ACCORDION CARD
-   ============================================================ */
-.faq-card {
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-grey);
-  box-shadow: var(--shadow-xs);
-  margin-bottom: 16px;
-  overflow: hidden;
-  transition: box-shadow var(--transition-smooth), border-color var(--transition-base);
-}
-
-.faq-card:hover {
-  box-shadow: var(--shadow-sm);
-  border-color: rgba(18, 102, 241, 0.2);
-}
-
-.faq-card.is-open {
-  box-shadow: var(--shadow-md);
-  border-color: rgba(18, 102, 241, 0.25);
-}
-
-/* Question toggle button */
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 26px 32px;
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
-  color: var(--dark-text);
-  cursor: pointer;
-  width: 100%;
-  background: transparent;
-  border: none;
-  text-align: left;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-  user-select: none;
-  transition: color var(--transition-base);
-}
-
-.faq-question:hover {
-  color: var(--primary-blue);
-}
-
-.faq-card.is-open .faq-question {
-  color: var(--primary-blue);
-  border-bottom: 1px solid var(--border-grey);
-}
-
-.faq-question-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(18, 102, 241, 0.07);
-  border: 1.5px solid rgba(18, 102, 241, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all var(--transition-smooth);
-}
-
-.faq-question-icon-wrap i {
-  font-size: 1rem;
-  color: var(--primary-blue);
-  transition: transform var(--transition-smooth);
-}
-
-.faq-card.is-open .faq-question-icon-wrap {
-  background: var(--primary-blue);
-  border-color: var(--primary-blue);
-}
-
-.faq-card.is-open .faq-question-icon-wrap i {
-  color: var(--white);
-  transform: rotate(45deg);
-}
-
-/* Answer body */
-.faq-answer-wrap {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.faq-card.is-open .faq-answer-wrap {
-  max-height: 600px;
-}
-
-.faq-answer {
-  font-size: var(--fs-base);
-  color: var(--muted-text);
-  line-height: 1.85;
-  margin: 0;
-  padding: 22px 32px 28px 32px;
-}
 
 /* ============================================================
    FAQ CONTACT CARD
    ============================================================ */
 .faq-contact-card {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--brand-blue) 60%, #0D4BAF 100%);
-  color: var(--white);
-  border-radius: var(--radius-2xl);
+  background: linear-gradient(
+    135deg,
+    var(--navy, #0B2A5B) 0%,
+    var(--brand-blue, #1266F1) 60%,
+    #0D4BAF 100%
+  );
+  color: var(--white, #FFFFFF);
+  border-radius: var(--radius-2xl, 24px);
   padding: 56px 64px;
   text-align: center;
   margin-top: 56px;
@@ -133,13 +26,25 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(66, 207, 232, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(66, 207, 232, 0.12) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
 .faq-contact-card > * {
   position: relative;
   z-index: 1;
+}
+
+.faq-contact-card h3 {
+  color: #FFFFFF;
+}
+
+.faq-contact-card p {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================================
@@ -157,7 +62,7 @@
 
   .faq-contact-card {
     padding: 40px 28px;
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-xl, 16px);
     margin-top: 40px;
   }
 }

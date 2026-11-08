@@ -154,7 +154,7 @@ function get_site_settings($pdo) {
  */
 function get_setting($pdo, $key, $default = '') {
     $settings = get_site_settings($pdo);
-    return $settings[$key] ?? $default;
+    return (!empty($settings[$key])) ? $settings[$key] : $default;
 }
 
 /**
