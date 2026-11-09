@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/USERNAME/public_html/denonbay.com/
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/cp -R index.php assets css js includes "$DEPLOYPATH"
