@@ -104,11 +104,11 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- -----------------------------------------------------
--- Initial Data: Default Admin User (admin@denvonbay.com / admin123)
+-- Initial Data: Default Admin User (admin@denonbay.com / denonbay123@)
 -- -----------------------------------------------------
 INSERT INTO `admin_users` (`username`, `email`, `password`)
-VALUES ('Admin', 'admin@denvonbay.com', '$2y$10$DrWnkYuUZCQYBjUFOnCVburyl4PwJfTJdBSTnWym/gF9XRIg1L.9.')
-ON DUPLICATE KEY UPDATE `username` = VALUES(`username`);
+VALUES ('Manager', 'admin@denonbay.com', '$2y$10$tDXb1rNfokTpW1D.FdkNne9RNHxB.EA5UP445/cMtQ0lxFN8moEQy')
+ON DUPLICATE KEY UPDATE `username` = VALUES(`username`), `password` = VALUES(`password`);
 
 -- -----------------------------------------------------
 -- Initial Data: Rooms

@@ -345,39 +345,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--brand-primary);
         }
 
-        /* Demo Chip Button */
-        .demo-chip-bar {
-            margin-bottom: 24px;
-            padding: 10px 14px;
-            background: #F0F7FF;
-            border: 1px dashed #BFDBFE;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.8rem;
-        }
-        .demo-chip-text {
-            color: var(--brand-navy);
-            font-weight: 500;
-        }
-        .demo-chip-btn {
-            background: #FFFFFF;
-            border: 1px solid #BFDBFE;
-            color: var(--brand-primary);
-            font-weight: 700;
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .demo-chip-btn:hover {
-            background: var(--brand-primary);
-            color: #FFFFFF;
-            border-color: var(--brand-primary);
-        }
-
         /* Submit Button */
         .btn-submit-login {
             width: 100%;
@@ -485,18 +452,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background: #1A2946;
             border-color: #38BDF8;
         }
-        [data-theme="dark"] .demo-chip-bar {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: rgba(56, 189, 248, 0.25);
-        }
-        [data-theme="dark"] .demo-chip-text {
-            color: #CBD5E1;
-        }
-        [data-theme="dark"] .demo-chip-badge {
-            background: #16223B;
-            color: #38BDF8;
-            border-color: rgba(56, 189, 248, 0.3);
-        }
         [data-theme="dark"] .login-footer-links {
             border-color: rgba(255, 255, 255, 0.08);
         }
@@ -585,16 +540,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif; ?>
 
-            <!-- Quick Demo Credentials Filler -->
-            <div class="demo-chip-bar">
-                <div class="demo-chip-text">
-                    <i class="bi bi-key-fill text-primary me-1"></i> Demo: <code>admin@denvonbay.com</code>
-                </div>
-                <button type="button" class="demo-chip-btn" id="fillDemoBtn" title="Fill credentials automatically">
-                    Auto-Fill
-                </button>
-            </div>
-
             <!-- Login Form -->
             <form method="POST" action="login.php" id="loginForm">
                 <div class="custom-form-group">
@@ -659,18 +604,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         eyeIcon.className = 'bi bi-eye';
                     }
                     passwordInput.focus();
-                });
-            }
-
-            // Quick Auto-Fill Demo Credentials
-            const fillDemoBtn = document.getElementById('fillDemoBtn');
-            const emailInput = document.getElementById('adminEmail');
-
-            if (fillDemoBtn && emailInput && passwordInput) {
-                fillDemoBtn.addEventListener('click', function() {
-                    emailInput.value = 'admin@denvonbay.com';
-                    passwordInput.value = 'admin123';
-                    emailInput.focus();
                 });
             }
         });
