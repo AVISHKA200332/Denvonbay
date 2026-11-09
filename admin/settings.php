@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     redirect('settings.php');
 }
 
+$adminTitle = 'Site Settings';
 $page_title = "Site Settings";
 require_once __DIR__ . '/admin-header.php';
 ?>

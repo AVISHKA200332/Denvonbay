@@ -20,6 +20,8 @@ $confirmedBookings = (int)$pdo->query("SELECT COUNT(*) FROM bookings WHERE statu
 $unreadMessages    = (int)$pdo->query("SELECT COUNT(*) FROM contact_messages WHERE is_read = 0")->fetchColumn();
 $approvedReviews   = (int)$pdo->query("SELECT COUNT(*) FROM reviews WHERE is_approved = 1")->fetchColumn();
 $totalPackages     = (int)$pdo->query("SELECT COUNT(*) FROM packages WHERE is_active = 1")->fetchColumn();
+$totalRevenue      = (float)$pdo->query("SELECT COALESCE(SUM(total_price), 0) FROM bookings WHERE status IN ('confirmed', 'completed')")->fetchColumn();
+$averageRating     = (float)$pdo->query("SELECT COALESCE(AVG(rating), 5.0) FROM reviews WHERE is_approved = 1")->fetchColumn();
 
 // Fetch 5 most recent bookings with room details
 $recentBookingsStmt = $pdo->query("
@@ -40,49 +42,71 @@ $recentMessagesStmt = $pdo->query("
 $recentMessages = $recentMessagesStmt->fetchAll();
 ?>
 
-<div class="admin-page-header">
+<div class="admin-page-header flex-wrap gap-3">
     <div>
         <h2 class="admin-page-title">Welcome back, <?= e($adminUsername) ?></h2>
-        <p class="admin-page-desc">Here is the real-time operational overview of Denvonbay property activity.</p>
+        <p class="admin-page-desc">Operational overview for Denvonbay Hiriketiya, Sri Lanka.</p>
     </div>
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 flex-wrap">
         <a href="bookings.php" class="admin-btn admin-btn-primary">
             <i class="bi bi-calendar2-check"></i>
-            <span>Manage Bookings</span>
+            <span>Bookings</span>
+        </a>
+        <a href="room-add.php" class="admin-btn admin-btn-secondary">
+            <i class="bi bi-plus-lg"></i>
+            <span>Add Room</span>
+        </a>
+        <a href="package-add.php" class="admin-btn admin-btn-secondary">
+            <i class="bi bi-boxes"></i>
+            <span>Add Package</span>
+        </a>
+        <a href="../index.php" target="_blank" rel="noopener" class="admin-btn admin-btn-secondary" title="View customer-facing website">
+            <i class="bi bi-box-arrow-up-right"></i>
+            <span>View Site</span>
         </a>
     </div>
 </div>
 
 <!-- ===== SUMMARY METRICS GRID (6 Real Data Cards) ===== -->
 <div class="admin-stats-grid">
-    <!-- Total Rooms -->
+    <!-- Confirmed Bookings & Revenue -->
     <div class="admin-stat-card">
         <div class="admin-stat-top">
-            <span class="admin-stat-label">Active Rooms</span>
-            <div class="admin-stat-icon blue"><i class="bi bi-door-open"></i></div>
+            <span class="admin-stat-label">Confirmed Revenue</span>
+            <div class="admin-stat-icon green"><i class="bi bi-currency-dollar"></i></div>
         </div>
-        <div class="admin-stat-num"><?= $totalRooms ?></div>
-        <div class="admin-help-text">Available on site</div>
+        <div class="admin-stat-num">$<?= number_format($totalRevenue, 2) ?></div>
+        <div class="admin-help-text"><?= $confirmedBookings ?> confirmed reservations</div>
     </div>
 
     <!-- Pending Bookings -->
     <div class="admin-stat-card">
         <div class="admin-stat-top">
-            <span class="admin-stat-label">Pending</span>
+            <span class="admin-stat-label">Pending Bookings</span>
             <div class="admin-stat-icon yellow"><i class="bi bi-hourglass-split"></i></div>
         </div>
         <div class="admin-stat-num"><?= $pendingBookings ?></div>
         <div class="admin-help-text">Awaiting confirmation</div>
     </div>
 
-    <!-- Confirmed Bookings -->
+    <!-- Active Rooms -->
     <div class="admin-stat-card">
         <div class="admin-stat-top">
-            <span class="admin-stat-label">Confirmed</span>
-            <div class="admin-stat-icon green"><i class="bi bi-check2-circle"></i></div>
+            <span class="admin-stat-label">Active Rooms</span>
+            <div class="admin-stat-icon blue"><i class="bi bi-door-open"></i></div>
         </div>
-        <div class="admin-stat-num"><?= $confirmedBookings ?></div>
-        <div class="admin-help-text">Active reservations</div>
+        <div class="admin-stat-num"><?= $totalRooms ?></div>
+        <div class="admin-help-text">Live on site</div>
+    </div>
+
+    <!-- Packages -->
+    <div class="admin-stat-card">
+        <div class="admin-stat-top">
+            <span class="admin-stat-label">Packages</span>
+            <div class="admin-stat-icon teal"><i class="bi bi-boxes"></i></div>
+        </div>
+        <div class="admin-stat-num"><?= $totalPackages ?></div>
+        <div class="admin-help-text">Active stay offers</div>
     </div>
 
     <!-- New Messages -->
@@ -95,24 +119,14 @@ $recentMessages = $recentMessagesStmt->fetchAll();
         <div class="admin-help-text">Unread inquiries</div>
     </div>
 
-    <!-- Approved Reviews -->
+    <!-- Guest Reviews Rating -->
     <div class="admin-stat-card">
         <div class="admin-stat-top">
-            <span class="admin-stat-label">Reviews</span>
-            <div class="admin-stat-icon cyan"><i class="bi bi-star"></i></div>
+            <span class="admin-stat-label">Guest Rating</span>
+            <div class="admin-stat-icon cyan"><i class="bi bi-star-fill text-warning"></i></div>
         </div>
-        <div class="admin-stat-num"><?= $approvedReviews ?></div>
-        <div class="admin-help-text">Approved & published</div>
-    </div>
-
-    <!-- Total Packages -->
-    <div class="admin-stat-card">
-        <div class="admin-stat-top">
-            <span class="admin-stat-label">Packages</span>
-            <div class="admin-stat-icon teal"><i class="bi bi-boxes"></i></div>
-        </div>
-        <div class="admin-stat-num"><?= $totalPackages ?></div>
-        <div class="admin-help-text">Active stay offers</div>
+        <div class="admin-stat-num"><?= number_format($averageRating, 1) ?> <span class="fs-6 text-muted">/ 5.0</span></div>
+        <div class="admin-help-text"><?= $approvedReviews ?> verified reviews</div>
     </div>
 </div>
 
@@ -160,7 +174,14 @@ $recentMessages = $recentMessagesStmt->fetchAll();
                                     </td>
                                     <td>
                                         <div class="fw-semibold"><?= e($b['guest_name']) ?></div>
-                                        <div class="admin-help-text" style="margin:0;"><?= e($b['phone']) ?></div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <span class="admin-help-text" style="margin:0;"><?= e($b['phone']) ?></span>
+                                            <?php $bwa = preg_replace('/[^0-9]/', '', $b['phone']); if ($bwa): ?>
+                                                <a href="https://wa.me/<?= $bwa ?>" target="_blank" rel="noopener" class="text-success small" title="Chat on WhatsApp">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
                                     </td>
                                     <td>
                                         <?= e($b['room_name'] ?? 'Custom / Package') ?>

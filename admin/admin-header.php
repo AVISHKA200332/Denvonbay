@@ -29,6 +29,7 @@ try {
     // Graceful fallback
 }
 
+$adminTitle = $adminTitle ?? $page_title ?? 'Dashboard';
 $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
 ?>
 <!DOCTYPE html>
@@ -37,6 +38,18 @@ $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($adminTitle) ? e($adminTitle) . ' | ' : '' ?>Denvonbay Admin Portal</title>
+
+    <!-- Theme Initialization: prevents white flash in dark mode -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem('denvonbay_theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +64,7 @@ $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
 
     <!-- Admin Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin.css?v=<?= file_exists(__DIR__ . '/../assets/css/admin.css') ? filemtime(__DIR__ . '/../assets/css/admin.css') : '2.0' ?>">
 </head>
 <body class="admin-body">
 
@@ -82,6 +95,11 @@ $adminUsername = $_SESSION['admin_username'] ?? 'Administrator';
             </div>
 
             <div class="admin-topbar-right">
+                <!-- Theme Toggle Button -->
+                <button type="button" class="admin-theme-toggle" id="adminThemeToggleBtn" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+                    <i class="bi bi-moon-stars" id="adminThemeIcon"></i>
+                </button>
+
                 <a href="../index.php" target="_blank" rel="noopener" class="admin-quick-link" title="Open customer website in a new tab">
                     <i class="bi bi-box-arrow-up-right"></i>
                     <span>Live Site</span>

@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $reviews = $pdo->query("SELECT * FROM reviews ORDER BY created_at DESC")->fetchAll();
 
+$adminTitle = 'Reviews';
 $page_title = "Reviews Management";
 require_once __DIR__ . '/admin-header.php';
 ?>

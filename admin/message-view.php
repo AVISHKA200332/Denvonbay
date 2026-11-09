@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$adminTitle = 'View Message';
 $page_title = "Message: " . htmlspecialchars($msg['subject'] ?? 'Inquiry');
 require_once __DIR__ . '/admin-header.php';
 ?>

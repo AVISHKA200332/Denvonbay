@@ -409,8 +409,7 @@ body[data-theme="dark"],
 [data-theme="dark"] .explore-card,
 [data-theme="dark"] .home-explore-card,
 [data-theme="dark"] .destination-card,
-[data-theme="dark"] .amenity-card,
-[data-theme="dark"] .faq-card {
+[data-theme="dark"] .amenity-card {
   background-color: #0F182C;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4);
@@ -623,9 +622,12 @@ body[data-theme="dark"],
 }
 
 [data-theme="dark"] .faq-card {
-  background-color: #0F182C !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0 28px 0 !important;
+  margin-bottom: 28px !important;
 }
 
 [data-theme="dark"] .faq-question {

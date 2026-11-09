@@ -61,4 +61,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Admin Dark / Light Theme Controller
+  const themeToggleBtn = document.getElementById('adminThemeToggleBtn');
+  const themeIcon = document.getElementById('adminThemeIcon');
+
+  function updateThemeUI(theme) {
+    if (!themeIcon) return;
+    if (theme === 'dark') {
+      themeIcon.className = 'bi bi-sun-fill text-warning';
+      if (themeToggleBtn) themeToggleBtn.title = 'Switch to Light Mode';
+    } else {
+      themeIcon.className = 'bi bi-moon-stars';
+      if (themeToggleBtn) themeToggleBtn.title = 'Switch to Dark Mode';
+    }
+  }
+
+  const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('denvonbay_theme') || 'light';
+  updateThemeUI(currentTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function () {
+      const active = document.documentElement.getAttribute('data-theme');
+      const next = active === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('denvonbay_theme', next);
+      updateThemeUI(next);
+    });
+  }
+
 });

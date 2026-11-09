@@ -1,4 +1,47 @@
 
+/**
+ * Denvonbay - FAQ Page Styles
+ */
+
+.faq-page-section {
+  padding: var(--section-py, 80px) 0;
+  background-color: var(--off-white, #F8FAFC);
+}
+
+.faq-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 0 28px 0;
+  margin-bottom: 28px;
+  border-radius: 0;
+}
+
+.faq-question {
+  font-size: var(--fs-md, 1.25rem);
+  font-weight: var(--fw-bold, 700);
+  color: var(--navy, #0B2A5B);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.faq-question i {
+  color: var(--primary-blue, #2563EB);
+  font-size: 1.35rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  font-size: var(--fs-base, 1rem);
+  color: var(--text-grey, #64748B);
+  line-height: 1.8;
+  margin: 0;
+  padding-left: 36px;
+}
+
 /* ============================================================
    FAQ CONTACT CARD
    ============================================================ */
@@ -52,16 +95,17 @@
    ============================================================ */
 @media (max-width: 767.98px) {
   .faq-question {
-    padding: 20px 24px;
-    font-size: var(--fs-base);
+    font-size: 1.1rem;
+    gap: 10px;
   }
 
   .faq-answer {
-    padding: 16px 24px 24px;
+    padding-left: 30px;
+    font-size: 0.95rem;
   }
 
   .faq-contact-card {
-    padding: 40px 28px;
+    padding: 40px 24px;
     border-radius: var(--radius-xl, 16px);
     margin-top: 40px;
   }

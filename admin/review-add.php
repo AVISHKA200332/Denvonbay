@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$adminTitle = 'Add Review';
 $page_title = "Add Review";
 require_once __DIR__ . '/admin-header.php';
 ?>

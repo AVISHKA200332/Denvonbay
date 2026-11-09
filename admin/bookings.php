@@ -106,10 +106,16 @@ $adminTitle = 'Bookings';
 require_once __DIR__ . '/admin-header.php';
 ?>
 
-<div class="admin-page-header">
+<div class="admin-page-header flex-wrap gap-3">
     <div>
         <h2 class="admin-page-title">Guest Reservations</h2>
         <p class="admin-page-desc">Track, confirm, and manage all room and package booking requests.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <button type="button" class="admin-btn admin-btn-secondary" onclick="window.print();" title="Print reservation schedule">
+            <i class="bi bi-printer"></i>
+            <span>Print Schedule</span>
+        </button>
     </div>
 </div>
 

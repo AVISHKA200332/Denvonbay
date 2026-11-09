@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$adminTitle = 'Admin Profile';
 $page_title = "Admin Profile";
 require_once __DIR__ . '/admin-header.php';
 ?>

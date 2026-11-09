@@ -9,6 +9,11 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/auth.php';
 
+if (is_admin_logged_in()) {
+    header('Location: dashboard.php');
+    exit;
+}
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Portal Authentication | Denvonbay Surf & Stay</title>
+
+    <script>
+        (function() {
+            var theme = localStorage.getItem('denvonbay_theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -442,6 +458,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .login-logo-mobile {
                 display: block;
             }
+        }
+
+        /* Dark Mode for Admin Login */
+        [data-theme="dark"] body.login-page {
+            background: #080D1A;
+        }
+        [data-theme="dark"] .login-form-pane {
+            background: #0F182C;
+        }
+        [data-theme="dark"] .login-title {
+            color: #FFFFFF;
+        }
+        [data-theme="dark"] .login-subtitle {
+            color: #94A3B8;
+        }
+        [data-theme="dark"] .custom-form-label {
+            color: #E2E8F0;
+        }
+        [data-theme="dark"] .custom-input {
+            background: #16223B;
+            border-color: rgba(255, 255, 255, 0.12);
+            color: #FFFFFF;
+        }
+        [data-theme="dark"] .custom-input:focus {
+            background: #1A2946;
+            border-color: #38BDF8;
+        }
+        [data-theme="dark"] .demo-chip-bar {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.25);
+        }
+        [data-theme="dark"] .demo-chip-text {
+            color: #CBD5E1;
+        }
+        [data-theme="dark"] .demo-chip-badge {
+            background: #16223B;
+            color: #38BDF8;
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        [data-theme="dark"] .login-footer-links {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        [data-theme="dark"] .return-link {
+            color: #94A3B8;
+        }
+        [data-theme="dark"] .return-link:hover {
+            color: #38BDF8;
         }
     </style>
 </head>

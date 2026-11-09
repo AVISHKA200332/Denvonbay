@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$adminTitle = 'Edit Review';
 $page_title = "Edit Review";
 require_once __DIR__ . '/admin-header.php';
 ?>
