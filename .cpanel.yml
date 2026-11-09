@@ -3,4 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/thelanka/public_html/denonbay.com/
     - /bin/mkdir -p "$DEPLOYPATH"
-    - /usr/bin/rsync -av --exclude='.git/' --exclude='.github/' --exclude='.env' --exclude='*.sql' --exclude='database/' --exclude='tests/' --exclude='logs/' --exclude='uploads/' --exclude='.cpanel.yml' ./ "$DEPLOYPATH"
+    - /bin/mkdir -p "$DEPLOYPATH/uploads/rooms"
+    - /bin/mkdir -p "$DEPLOYPATH/logs"
+    - /usr/bin/rsync -av --exclude='.git/' --exclude='.github/' --exclude='.env' --exclude='config/db_config.php' --exclude='*.sql' --exclude='database/' --exclude='tests/' --exclude='logs/' --exclude='.cpanel.yml' ./ "$DEPLOYPATH"

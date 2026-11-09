@@ -4,6 +4,8 @@
 
 # Database credentials and environment settings
 /config/config.php
+/config/db_config.php
+.env
 
 # Runtime logs
 /logs/*.log

@@ -9,6 +9,11 @@ if (!ob_get_level()) {
  * Included by pages requiring database access.
  */
 
+// Optional: Load standalone configuration file if present (recommended for cPanel / Hostware)
+if (file_exists(__DIR__ . '/db_config.php')) {
+    require_once __DIR__ . '/db_config.php';
+}
+
 // 1. Check for remote cloud database URL (e.g. Railway, PlanetScale, TiDB, Supabase)
 $databaseUrl = getenv('DATABASE_URL') ?: getenv('MYSQL_URL');
 
@@ -20,12 +25,12 @@ if ($databaseUrl) {
     $username = $dbParts['user'] ?? '';
     $password = $dbParts['pass'] ?? '';
 } else {
-    // 2. Or standard environment variables (Vercel Project Settings)
-    $host     = getenv('DB_HOST') ?: 'localhost';
-    $port     = getenv('DB_PORT') ?: '3306';
-    $dbname   = getenv('DB_NAME') ?: 'denvonbay';
-    $username = getenv('DB_USER') ?: 'root';
-    $password = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
+    // 2. Standard credentials with fallback to environment variables or localhost XAMPP
+    $host     = isset($host) ? $host : (getenv('DB_HOST') ?: 'localhost');
+    $port     = isset($port) ? $port : (getenv('DB_PORT') ?: '3306');
+    $dbname   = isset($dbname) ? $dbname : (getenv('DB_NAME') ?: 'denvonbay');
+    $username = isset($username) ? $username : (getenv('DB_USER') ?: 'root');
+    $password = isset($password) ? $password : (getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '');
 }
 
 $pdo = null;
