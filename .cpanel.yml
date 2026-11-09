@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/thelanka/public_html/denonbay.com/
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /usr/bin/rsync -av --exclude='.git/' --exclude='.github/' --exclude='.env' --exclude='*.sql' --exclude='database/' --exclude='tests/' --exclude='logs/' --exclude='uploads/' --exclude='.cpanel.yml' ./ "$DEPLOYPATH"
